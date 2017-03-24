@@ -232,6 +232,19 @@ svg.square g:nth-child(10) rect{
   border-bottom: 5px solid rgba(255,255,255,0.5);
 }
 
+.drawer-content{
+  display: none;
+  padding: 1rem;
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  top: 30%;
+}
+
+.drawer-wrapper{
+  background-color: #fafafa;
+}
+
 .logo-wrapper{
  /* position: absolute;
   top: 40%;
