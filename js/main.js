@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+	$(".filter-wrapper").stick_in_parent();
+
 	$("a[title]").parent("div").remove();
 
 	$(".hamburger").click(function(e){
@@ -21,7 +24,7 @@ $(document).ready(function(){
 		$(".main-wrapper").addClass("nav-open");
 	});
 
-	$(".filter-item").click(function(e){
+	$(".filter-item:not(:last-child)").click(function(e){
 		$(this).addClass("active");
 		$(".filter-item").not($(this)).removeClass("active");
 	});
@@ -71,6 +74,13 @@ $(document).ready(function(){
 		$.sweetModal({
 			content: content
 		});
+	});
+
+	$(".filter-item:last-child").click(function(e){
+		e.preventDefault();
+		$("html, body").animate({ 
+			scrollTop: 0
+		},800);
 	});
 
 	$(".scroll-down").click(function(e){

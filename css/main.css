@@ -323,7 +323,7 @@ svg.square g:nth-child(10) rect{
   position: absolute;
   left: 49%;
   transition: all 1s ease-in-out;
-  animation: arrow-move 600ms infinite alternate, bnw-text-color 12s linear infinite;;
+  animation: arrow-move 600ms infinite alternate, bnw-text-color 12s linear infinite;
 }
 
 .scroll-down:after{
@@ -354,6 +354,10 @@ svg.square g:nth-child(10) rect{
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
+  box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
+  -o-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
 }
 
 ul.filter-list{
@@ -367,10 +371,14 @@ ul.filter-list{
 
 li.filter-item{
   cursor: pointer;
-  width: 33.33%;
+  width: 31.66%;
   height: 3.5rem;
   background-color: #fafafa;
   transition: all 160ms ease-in-out;
+}
+
+li.filter-item:last-child{
+  width: 5%;
 }
 
 li.filter-item:not(.active) a.filter{
@@ -379,6 +387,19 @@ li.filter-item:not(.active) a.filter{
 
 li.filter-item:hover{
   border-bottom: 0.5rem solid #424242;
+}
+
+li.filter-item:last-child:hover{
+  border-bottom: 0;
+}
+
+li.filter-item:last-child:before{
+  color: rgba(0,0,0,0.5);
+  content: "\f106";
+  font-family: FontAwesome;
+  font-size: 2rem;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 a.filter{
