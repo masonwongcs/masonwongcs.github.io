@@ -20,6 +20,11 @@ $(document).ready(function(){
 	// 	$(this).toggleClass("nav-item-hovered");
 	// });
 
+	$(".filter-item").click(function(e){
+		$(this).addClass("active");
+		$(".filter-item").not($(this)).removeClass("active");
+	});
+
 	$(".close").click(function(e){
 		e.preventDefault();
 		$(".main-wrapper").removeClass("drawer-open");	
