@@ -9,6 +9,7 @@ $(document).ready(function(){
 		$(".nav-wrapper").fadeToggle(160);
 		$(".hamburger-icon").toggleClass("transparent");
 		$("body").toggleClass("disable-scrolling");
+		$(".bg").toggleClass("transparent");
 	});
 
 	$(".hamburger-icon").hover(function(){
@@ -16,9 +17,9 @@ $(document).ready(function(){
 		$(".hamburger-icon").find(".bottom").toggleClass("hamburger-expand-down");
 	});
 
-	// $(".nav-wrapper .nav-item").hover(function(){
-	// 	$(this).toggleClass("nav-item-hovered");
-	// });
+	$(".nav-wrapper .nav-item").click(function(){
+		$(".main-wrapper").addClass("nav-open");
+	});
 
 	$(".filter-item").click(function(e){
 		$(this).addClass("active");
@@ -32,7 +33,9 @@ $(document).ready(function(){
 		$(".close").fadeOut(160);
 		$(".nav-wrapper").fadeOut(160);
 		$(".hamburger-icon").removeClass("transparent");
+		$(".main-wrapper").removeClass("nav-open");
 		$("body").removeClass("disable-scrolling");
+		setTimeout('$(".bg").removeClass("transparent")', 1000);
 	});
 
 	$(".content").hover(function(){
