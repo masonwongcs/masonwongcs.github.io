@@ -12,6 +12,8 @@ html, body{
   margin: 0px; padding: 0px;
   animation: bg-color 120s infinite alternate;
   font-family: Biko-Regular;
+  transition: all 1s ease-in-out;
+  background-color: #424242;
 }
 
 @-webkit-keyframes bg-color {
@@ -28,8 +30,41 @@ html, body{
     100% {background-color:#2C82C9;}
 }
 
+@-webkit-keyframes color {
+    0% {color: #e85454;}
+    10% {color: #F7DA64;}
+    20% {color: #7d7d7d;}
+    30% {color: #2969B0;}
+    40% {color: #5562eb;}
+    50% {color: #597571;}
+    60% {color: #28324E;}
+    70% {color: #41A85F;}
+    80% {color: #FBA026;}
+    90% {color: #B8312F;}
+    100% {color:#2C82C9;}
+}
+
+@-webkit-keyframes  {
+    0% {background: #e85454;}
+    10% {background: #F7DA64;}
+    20% {background: #7d7d7d;}
+    30% {background: #2969B0;}
+    40% {background: #5562eb;}
+    50% {background: #597571;}
+    60% {background: #28324E;}
+    70% {background: #41A85F;}
+    80% {background: #FBA026;}
+    90% {background: #B8312F;}
+    100% {background:#2C82C9;}
+}
+
 .disable-scrolling{
   overflow: hidden;
+}
+
+.bg-color-paused{
+   -webkit-animation-play-state: paused !important; /* Safari 4.0 - 8.0 */
+    animation-play-state: paused !important;
 }
 
 .transparent {
@@ -157,6 +192,7 @@ svg.square g:nth-child(10) rect{
   right: 1rem;
   width: 3rem;
   height: 3rem;
+  z-index: 9999;
 }
 
 .close{
@@ -187,6 +223,7 @@ svg.square g:nth-child(10) rect{
   padding: 2rem;
   position: absolute;
   top: 0;
+  z-index: 9999;
 }
 
 .nav{
@@ -234,15 +271,129 @@ svg.square g:nth-child(10) rect{
 
 .drawer-content{
   display: none;
-  padding: 1rem;
   width: 100%;
-  height: 500px;
+  height: 100%;
   position: absolute;
-  top: 30%;
+  top: 0;
+  color: #fafafa;
 }
 
 .drawer-wrapper{
-  background-color: #fafafa;
+  background-color: #424242;
+  height: 100%;
+  padding-top: 10rem;
+}
+
+.drawer-item{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.drawer-item.resume ul{
+  width: 47%;
+  list-style: none;
+}
+
+.drawer-item.resume ul.skill-set{
+  width: 46%;
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+}
+
+.drawer-item.resume ul.skill-set li{
+  width: 50%;
+  height: 150px;
+}
+.drawer-item.resume ul.skill-set .icon-wrapper {
+  padding: 5% 27% 0 27%;
+}
+
+.drawer-item.resume ul.skill-set .icon-wrapper:after {
+  content: attr(data-label);
+  padding-top: 1rem;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.drawer-item.resume ul.skill-set svg path{
+  fill: #3498db;
+}
+
+.drawer-item ul:not(.skill-set) li:first-child{
+  border-bottom: 0.5rem solid rgba(0,0,0,0.1);
+}
+
+.drawer-item h3{
+  color: #3498db;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.drawer-item.resume ul .progress-bar{
+    padding: 1rem 0;
+    width: 80%;
+    font-size: 12px;
+}
+
+.progress-bar:before {
+    content: attr(data-label);
+    display: block;
+}
+
+/*.progress-bar:after {
+    content: attr(data-value)"%";
+    display: block;
+    float: right;
+    margin-top: -1.5rem;
+}*/
+
+/* All Progress Bars */
+progress {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+}
+
+/* Determinate */
+progress[value] {
+    /* Reset the default appearance */
+    height: 0.3rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Indeterminate */
+progress:not([value]) {
+    /* Reset the default appearance */
+    height: 0.3rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background: rgba(33,33,33,0.2);
+    border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+progress {
+    background: rgba(33,33,33,0.2);
+    border-radius: 4px;
+}
+
+progress::-moz-progress-bar {
+    background: rgba(33,33,33,0.2);
+    border-radius: 4px;
 }
 
 .logo-wrapper{

@@ -22,6 +22,9 @@ $(document).ready(function(){
 
 	$(".nav-wrapper .nav-item").click(function(){
 		$(".main-wrapper").addClass("nav-open");
+		$(".drawer-content").fadeToggle();
+		$("html, body").addClass("bg-color-paused");
+		$(".drawer-content").addClass("bg-color-paused");
 	});
 
 	$(".filter-item:not(:last-child)").click(function(e){
@@ -38,6 +41,8 @@ $(document).ready(function(){
 		$(".hamburger-icon").removeClass("transparent");
 		$(".main-wrapper").removeClass("nav-open");
 		$("body").removeClass("disable-scrolling");
+		$(".drawer-content").fadeOut();
+		$("html, body").removeClass("bg-color-paused");
 		setTimeout('$(".bg").removeClass("transparent")', 1000);
 	});
 
@@ -88,6 +93,10 @@ $(document).ready(function(){
 		$("html, body").animate({ 
 			scrollTop: $(".main-content").offset().top 
 		},800);
+	});
+
+	$(".progress-bar progress").each(function(){
+		$(this).val($(this).parent(".progress-bar").data("value"));
 	});
 
 });
