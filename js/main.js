@@ -21,10 +21,19 @@ $(document).ready(function(){
 	});
 
 	$(".nav-wrapper .nav-item").click(function(){
+		$(this).addClass("active");
+		$(".nav-wrapper .nav-item").not($(this)).removeClass("active");
+		var selected = $(this).find("a").attr("class");
 		$(".main-wrapper").addClass("nav-open");
-		$(".drawer-content").fadeToggle();
+		if(!$(".drawer-content").is(':visible')){
+			$(".drawer-content").fadeIn(100);
+			$(".drawer-content").removeClass("transparent");
+		};
+		$("#" + selected).parent(".drawer-wrapper").show();
+		$(":not(#" + selected + ")").parent(".drawer-wrapper").hide();
 		$("html, body").addClass("bg-color-paused");
 		$(".drawer-content").addClass("bg-color-paused");
+		setTimeout('$(".drawer-content").removeClass("perspective")', 500);
 	});
 
 	$(".filter-item:not(:last-child)").click(function(e){
@@ -38,10 +47,12 @@ $(document).ready(function(){
 		$(".logo").removeClass("logo-float");
 		$(".close").fadeOut(160);
 		$(".nav-wrapper").fadeOut(160);
+		$(".nav-wrapper .nav-item").removeClass("active");
 		$(".hamburger-icon").removeClass("transparent");
 		$(".main-wrapper").removeClass("nav-open");
 		$("body").removeClass("disable-scrolling");
 		$(".drawer-content").fadeOut();
+		$(".drawer-content").addClass("perspective")
 		$("html, body").removeClass("bg-color-paused");
 		setTimeout('$(".bg").removeClass("transparent")', 1000);
 	});
