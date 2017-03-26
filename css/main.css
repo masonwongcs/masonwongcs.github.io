@@ -323,9 +323,17 @@ svg.square g:nth-child(10) rect{
 }
 
 .drawer-item.resume ul.skill-set li{
+  opacity: 0;
   width: 50%;
   height: 150px;
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
+
+.drawer-item.resume ul.skill-set li.show{
+  opacity: 1;
+}
+
 .drawer-item.resume ul.skill-set .icon-wrapper {
   padding: 5% 27% 0 27%;
 }
@@ -342,15 +350,19 @@ svg.square g:nth-child(10) rect{
   fill: #3498db;
 }
 
-.drawer-item.resume  ul:not(.skill-set) li:first-child{
-  border-bottom: 0.5rem solid rgba(0,0,0,0.1);
+/*.drawer-item.resume  ul:not(.skill-set) li:first-child:before{
+  content: "";
+  width: 30%;
+  float: right;
+  position: absolute;
+  border-bottom: 0.2rem solid rgba(0,0,0,0.1);
 }
 
 .drawer-item.resume h3{
   color: #3498db;
   text-transform: uppercase;
   font-size: 1rem;
-}
+}*/
 
 .drawer-item.resume ul .progress-bar{
     padding: 1rem 0;
@@ -405,16 +417,24 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
     background: #3498db;
     border-radius: 4px;
+    width: 0;
 }
 
 progress {
     background: rgba(33,33,33,0.2);
     border-radius: 4px;
+    transition: all 0.6s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    width: 0;
 }
 
 progress::-moz-progress-bar {
     background: rgba(33,33,33,0.2);
     border-radius: 4px;
+}
+
+.show-progress{
+  width: 100%;
 }
 
 .drawer-item.experience ul{
@@ -505,9 +525,21 @@ progress::-moz-progress-bar {
 }
 
 .drawer-item.contact .location iframe{
+  filter: grayscale(100%);
   padding-top: 1rem;
+  opacity: 0;
   width: 100%;
   height: 70%;
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.drawer-item.contact .location iframe:hover{
+  filter: grayscale(0%);
+}
+
+.drawer-item.contact .location iframe.show{
+  opacity: 1;
 }
 
 .drawer-item.contact ul{
@@ -519,9 +551,17 @@ progress::-moz-progress-bar {
 }
 
 .drawer-item.contact ul li{
+  opacity: 0;
   padding: 1.5rem;
   width: 100%;
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
+
+.drawer-item.contact ul li.show{
+  opacity: 1;
+}
+
 
 .drawer-item.contact ul li span{
   color: #fafafa;
@@ -583,11 +623,22 @@ progress::-moz-progress-bar {
 .drawer-item.about .profile-pic{
   height: 200px;
   width: 200px;
+  transform: scale(0);
   margin: 0 auto;
   background: url(../img/profile.svg) no-repeat;
   filter: grayscale(100%);
   border: 4px solid #fafafa;
   border-radius: 50%;
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.drawer-item.about .profile-pic:hover{
+  filter: grayscale(0%);
+}
+
+.drawer-item.about .profile-pic.show{
+  transform: scale(1);
 }
 
 .drawer-item.about .profile-pic-bg.photography{
@@ -611,18 +662,27 @@ progress::-moz-progress-bar {
 
 .drawer-item.about span{
   display: block;
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .drawer-item.about .name{
   text-transform: uppercase;
-  font-size: 1.7rem;
+  font-size: 0;
   font-family: Biko-bold;
   padding-top: 1rem;
+}
+.drawer-item.about .name.show{
+  font-size: 1.7rem;
 }
 
 .drawer-item.about .designation{
   color: rgba(255,255,255, 0.5);
   text-transform: uppercase;
+  font-size: 0;
+}
+
+.drawer-item.about .designation.show{
   font-size: 0.7rem;
 }
 
@@ -739,6 +799,7 @@ progress::-moz-progress-bar {
   -webkit-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
   -moz-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
   -o-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
+  z-index: 2;
 }
 
 ul.filter-list{
@@ -808,30 +869,48 @@ a.filter{
   display: flex;
   height: 70%;
   width: 70%;
-  transition: all 0.6s ease-in-out;
+}
+.content figure:hover{
+
 }
 
-.content figure.hover{
-  height: 75%;
-  width: 75%;
+.content:hover figure img{
+  transform: scale(1.1);
+  filter: blur(1px);
 }
 
 .content figure img{
 /*  width: 100%;
   height: 100%;
   vertical-align: middle;*/
-   margin: auto;  /* Magic! */
+  margin: auto;  /* Magic! */
   max-width: 100%;
   max-height: 100%;
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2,1,0.3,1);
 }
 
 .content figure figcaption{
   display: none;
-  text-align: center;
   text-transform: uppercase;
   position: absolute;
+ /* margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;*/
+  transition: all 0.6s;
+  transition-timing-function: cubic-bezier(0.2,1,0.3,1);
 }
 
+/*.content figure figcaption:before{
+  content: "";
+  background-color: #fafafa;
+  width: 100%;
+  display: block;
+  height: 4rem;
+}
+*/
 .content figure .desc-text{
   display: none;
 }

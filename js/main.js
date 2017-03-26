@@ -31,6 +31,35 @@ $(document).ready(function(){
 		};
 		$("#" + selected).parent(".drawer-wrapper").show();
 		$(":not(#" + selected + ")").parent(".drawer-wrapper").hide();
+		if (selected == "skills"){
+			for (var i=1; i <= $(".progress-bar progress").length ; i++){
+				setTimeout('$(".skills li:nth-child(' + i + ') .progress-bar progress").addClass("show-progress")', i*200);
+			}
+			for (var i=1; i <= $(".skill-set li").length ; i++){
+				setTimeout('$(".skill-set li:nth-child(' + i + ')").addClass("show")', i*200);
+			}
+		} else{
+			$(".progress-bar progress").removeClass("show-progress");
+			$(".skill-set li").removeClass("show");
+		}
+		if (selected == "contact"){
+			setTimeout('$(".contact .location iframe").addClass("show")', 1600);
+			for (var i=1; i <= $(".contact li").length ; i++){
+				setTimeout('$(".contact li:nth-child(' + i + ')").addClass("show")', i*300);
+			}
+		} else{
+			$(".contact li").removeClass("show");
+			$(".contact .location iframe").removeClass("show");
+		}
+		if (selected == "about"){
+			setTimeout('$(".about .profile-pic").addClass("show")', 600);
+			setTimeout('$(".about .profile .name").addClass("show")', 800);
+			setTimeout('$(".about .profile .designation").addClass("show")', 1000);
+		} else{
+			$(".about .profile-pic").removeClass("show");
+			$(".about .profile .name").removeClass("show");
+			$(".about .profile .designation").removeClass("show");
+		}
 		$("html, body").addClass("bg-color-paused");
 		$(".drawer-content").addClass("bg-color-paused");
 		setTimeout('$(".drawer-content").removeClass("perspective")', 500);
@@ -39,6 +68,17 @@ $(document).ready(function(){
 	$(".filter-item:not(:last-child)").click(function(e){
 		$(this).addClass("active");
 		$(".filter-item").not($(this)).removeClass("active");
+		var filterItem = $(this).find("a").text();
+		if(filterItem == "Design"){
+			$('.content[data-type="design"]').fadeIn();
+			$('.content:not([data-type="design"])').fadeOut();
+		} else if(filterItem == "Photography"){
+			$('.content[data-type="photography"]').fadeIn();
+			$('.content:not([data-type="photography"])').fadeOut();
+		} else{
+			$('.content[data-type="design"]').fadeIn();
+			$('.content[data-type="photography"]').fadeIn();
+		}
 	});
 
 	$(".close").click(function(e){
@@ -53,13 +93,17 @@ $(document).ready(function(){
 		$("body").removeClass("disable-scrolling");
 		$(".drawer-content").fadeOut();
 		$(".drawer-content").addClass("perspective")
+
+		$(".progress-bar progress").removeClass("show-progress");
+		$(".skill-set li").removeClass("show");
+
 		$("html, body").removeClass("bg-color-paused");
 		setTimeout('$(".bg").removeClass("transparent")', 1000);
 	});
 
-	$(".content").hover(function(){
-		$(this).find("figure").toggleClass("hover");
-	});
+	// $(".content").hover(function(){
+	// 	$(this).find("figure figcaption").fadeToggle();
+	// });
 
 	$(".content").click(function(){
 		var img = $(this).find("img");
@@ -109,5 +153,57 @@ $(document).ready(function(){
 	$(".progress-bar progress").each(function(){
 		$(this).val($(this).parent(".progress-bar").data("value"));
 	});
+
+	$(".content figure img").each(function(){ 
+		initImageUrl($(this).attr("src"));
+
+		// $(this).load(function(){
+			// var img = $(this);
+			// getDataUri(img, function(dataUri) {
+			    // Do whatever you'd like with the Data URI!
+			    // console.log(dataUri);
+			// });
+			// img.on("load", function(){
+			// 	var colorThief = new ColorThief();
+			// 	var color = colorThief.getColor(img);
+			// 	$(this).closest(".content").css("background-color", "rgb(" + color + ")");
+			// });
+			// img.onload = function (){
+				// var colorThief = new ColorThief();
+				// var color = colorThief.getColor($(this));
+				// $(this).closest(".content").css("background-color", "rgb(" + color + ")");
+			// }
+		// });
+	});
+
+	function initImageUrl(url)
+	{
+	    var xmlHTTP = new XMLHttpRequest();
+	    xmlHTTP.open('GET', url ,true);
+
+	    // Must include this line - specifies the response type we want
+	    xmlHTTP.responseType = 'arraybuffer';
+
+	    xmlHTTP.onload = function(e)
+	    {
+
+	        var arr = new Uint8Array(this.response);
+
+
+	        // Convert the int array to a binary string
+	        // We have to use apply() as we are converting an *array*
+	        // and String.fromCharCode() takes one or more single values, not
+	        // an array.
+	        var raw = String.fromCharCode.apply(null,arr);
+
+	        // This works!!!
+	        var b64=btoa(raw);
+	        var dataURL="data:image/jpeg;base64,"+b64;
+	        // document.getElementById("image").src = dataURL;
+	        console.log(dataUrl);
+	    };
+
+	    xmlHTTP.send();
+	}
 
 });
