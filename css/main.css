@@ -213,7 +213,7 @@ svg.square g:nth-child(10) rect{
 
 
 .drawer-open{
-  transform: perspective(1500px) translate3d(0, 10vh, 0) rotate3d(1, 0, 0, 20deg);
+  transform: perspective(5000px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 4deg);
   box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
   -webkit-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
   -moz-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
@@ -294,7 +294,7 @@ svg.square g:nth-child(10) rect{
 }
 
 .drawer-content.perspective {
-  transform: perspective(1500px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 30deg);
+  transform: perspective(1500px) translate3d(0, 100vh, 0) rotate3d(1, 0, 0, 30deg);
 }
 
 .drawer-wrapper{
@@ -649,7 +649,7 @@ progress::-moz-progress-bar {
 }
 
 .drawer-item.about .profile{
-  width: 50%;
+  width: 40%;
   text-align: center;
   padding: 3rem;
 }
@@ -718,6 +718,53 @@ progress::-moz-progress-bar {
 
 .drawer-item.about .designation.show{
   font-size: 0.7rem;
+}
+
+.drawer-item.about .about-me {
+  width: 45%;
+}
+
+.drawer-item.about .about-me .my-word {
+  padding-left: 1rem;
+  line-height: 20px;
+  font-size: 0.8rem;
+}
+
+.drawer-item.about .about-me .quote{
+  padding: 1rem 1rem 2rem 1rem;
+}
+
+.drawer-item.about .about-me .quote .quote-text{
+  font-size: 2rem;
+}
+
+.drawer-item.about .about-me .quote .quote-text:before{
+  content: "\f10d";
+  font-family: FontAwesome;
+  font-size: 1rem;
+  color: #757575;
+  padding: 0.5rem;
+}
+
+.drawer-item.about .about-me .quote .quote-text:after{
+  content: "\f10e";
+  font-family: FontAwesome;
+  font-size: 1rem;
+  color: #757575;
+  padding: 0.5rem;
+}
+
+.drawer-item.about .about-me .quote .quote-author{
+  font-size: 1rem;
+  float: right;
+}
+
+.drawer-item.about .about-me .quote .quote-author:before{
+  content: "\f068";
+  font-family: FontAwesome;
+  font-size: 0.5rem;
+  color: #757575;
+  padding: 0.5rem;
 }
 
 .logo-wrapper{
@@ -1199,7 +1246,7 @@ a.filter{
     .footer p:not(.footer-text) {
       padding: 5rem;
     }
-    
+
     .sweet-modal-box {
       width: 100% !important;
       left: 0 !important;
