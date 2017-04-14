@@ -83,7 +83,6 @@
     };
     for (var i = 0; i < length; i++) {
       elem = nodes[i];
-      elem.style.opacity = 0;
       if (inView(elem, view)) {
 
         if (unload) {
@@ -95,7 +94,6 @@
         }
         else if (elem.src !== (src = elem.getAttribute('data-echo'))) {
           elem.src = src;
-          elem.style.opacity = 1;
         }
 
         if (!unload) {
