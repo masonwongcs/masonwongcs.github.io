@@ -201,4 +201,12 @@ $(document).ready(function() {
 
     echo.init();
 
+    function initParallax() {
+        $(document).mousemove(function(e) {
+            $('.laptop').parallax(-30, e);
+            $('.mouse').parallax(60, e);
+        });
+    }
+
+    new Vivus('background-svg', { duration: 200 }, initParallax());
 });
