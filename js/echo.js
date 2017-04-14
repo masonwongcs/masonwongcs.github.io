@@ -93,7 +93,9 @@
           elem.style.backgroundImage = 'url(' + elem.getAttribute('data-echo-background') + ')';
         }
         else if (elem.src !== (src = elem.getAttribute('data-echo'))) {
+          elem.style.opacity = 0;
           elem.src = src;
+          elem.style.opacity = 1;
         }
 
         if (!unload) {
