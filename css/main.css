@@ -252,12 +252,12 @@ svg.square g:nth-child(10) rect {
 
 .hamburger-expand-up {
     /*transform: translate3d(12px,-55px, 12px);*/
-    transform: translate3d(25%, 25%, 0);
+    transform: translate3d(22%, 22%, 0);
 }
 
 .hamburger-expand-down {
     /*transform: translate3d(0,45px,0);*/
-    transform: translate3d(25%, 25%, 0);
+    transform: translate3d(-22%, -22%, 0);
 }
 
 @keyframes dash-line {
