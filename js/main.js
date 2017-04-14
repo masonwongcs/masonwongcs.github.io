@@ -199,4 +199,6 @@ $(document).ready(function(){
 		// // });
 	});
 
+	echo.init();
+
 });

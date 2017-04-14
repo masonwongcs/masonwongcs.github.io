@@ -14,6 +14,7 @@ html, body{
   font-family: Biko-Regular;
   transition: all 1s ease-in-out;
   background-color: #424242;
+  overflow-x: hidden;
 }
 
 @-webkit-keyframes bg-color {
@@ -144,36 +145,31 @@ svg.square g:nth-child(10) rect{
   width: 3rem;
   height: 3rem;
   transition: all 0.6s;
-  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  /*transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);*/
 }
 
-.hamburger-icon{
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 3rem;
-  height: 3rem;
+.hamburger-icon g{
   transition: all 0.6s;
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .hamburger-icon path{
-  transition: all 0.6s;
-  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-  animation: bnw-color-fill 12s infinite alternate;
+  animation: bnw-color-stroke 12s infinite alternate;
 }
 
-.hamburger-icon:hover{
+/*.hamburger-icon:hover{
   stroke-dasharray: 100;
   animation: dash-line 5s linear;
-}
+}*/
 
 .hamburger-expand-up{
-  transform: translate3d(12px,-55px, 12px);
+  /*transform: translate3d(12px,-55px, 12px);*/
+  transform: translate3d(25%,25%,0);
 }
 
 .hamburger-expand-down{
-  transform: translate3d(0,45px,0);
+  /*transform: translate3d(0,45px,0);*/
+  transform: translate3d(25%,25%,0);
 }
 
 @keyframes dash-line {
@@ -798,6 +794,18 @@ progress::-moz-progress-bar {
   stroke-dasharray: 500;
   stroke-dashoffset: 1000;
   animation: dash 10s linear infinite, bnw-color-stroke 13s infinite alternate;
+}
+
+.name{
+  font-size: 1.8rem;
+  position: absolute;
+  top: 45%;
+  right: 18%;
+  animation: bnw-text-color 13s infinite alternate;
+}
+.name span{
+  font-size: 2.3rem;
+  font-weight: bold;
 }
 
 @keyframes dash {
