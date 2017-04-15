@@ -210,4 +210,5 @@ $(document).ready(function() {
 
     new Vivus('hamburger', { duration: 100 }, initParallax());
     new Vivus('background-svg', { duration: 200 }, initParallax());
+    
 });

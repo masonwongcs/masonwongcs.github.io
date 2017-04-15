@@ -19,6 +19,25 @@ body {
     overflow-x: hidden;
 }
 
+.error-wrapper{
+    text-align: center;
+}
+
+.four-o-four{
+    padding-top: 10%;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.four-o-four-text{
+    display: none;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
 @-webkit-keyframes bg-color {
     0% {
         background-color: #e85454;
