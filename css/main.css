@@ -19,24 +19,68 @@ body {
     overflow-x: hidden;
 }
 
-.error-wrapper{
+.error-wrapper {
     text-align: center;
+    transition: all 0.2s ease-in-out;
 }
 
-.four-o-four{
+#go-home:hover {
+    background-color: #424242;
+    color: #fff;
+    border-radius: 5rem;
+}
+
+#go-home a {
+    text-decoration: none;
+    color: #000;
+}
+
+#go-home:hover .four-o-four-text {
+    opacity: 1;
+}
+
+#go-home:hover .four-o-four-text a {
+    color: #fff;
+}
+
+.four-o-four {
     padding-top: 10%;
     width: 400px;
     margin: 0 auto;
 }
 
-.four-o-four-text{
+.four-o-four-text {
     display: none;
+    line-height: 2.5rem;
     opacity: 0.5;
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
 }
 
+.error-animation {
+    animation: zoomInOut 1s infinite alternate;
+}
+
+.error .footer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    height: 5rem;
+    background-color: rgba(55, 55, 55, 0.4);
+}
+
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
 @-webkit-keyframes bg-color {
     0% {
@@ -199,7 +243,7 @@ body {
     display: none;
 }
 
-#background-svg{
+#background-svg {
     display: none;
 }
 
