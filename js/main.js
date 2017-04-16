@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    $('#background-svg').fadeIn();
+
+    new Vivus('hamburger', { duration: 100 }, initParallax());
+    new Vivus('background-svg', { duration: 200 }, initParallax());
+
     $(".filter-wrapper").stick_in_parent();
 
     $("a[title]").parent("div").remove();
@@ -208,7 +213,5 @@ $(document).ready(function() {
         });
     }
 
-    new Vivus('hamburger', { duration: 100 }, initParallax());
-    new Vivus('background-svg', { duration: 200 }, initParallax());
     
 });

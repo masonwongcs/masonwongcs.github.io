@@ -199,6 +199,10 @@ body {
     display: none;
 }
 
+#background-svg{
+    display: none;
+}
+
 
 /*svg.square g rect{
   animation: bnw-color-fill 12s infinite alternate;
