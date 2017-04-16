@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     $('#background-svg').fadeIn();
+    $('#page-not-found').fadeIn();
 
     if ($('body').hasClass('error')) {
 

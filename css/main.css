@@ -16,7 +16,6 @@ body {
     font-family: Biko-Regular;
     transition: all 1s ease-in-out;
     background-color: #424242;
-    overflow-x: hidden;
 }
 
 .error-wrapper {
@@ -41,6 +40,10 @@ body {
 
 #go-home:hover .four-o-four-text a {
     color: #fff;
+}
+
+#page-not-found{
+    display: none;
 }
 
 .four-o-four {
