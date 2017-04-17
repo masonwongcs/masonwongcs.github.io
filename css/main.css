@@ -42,7 +42,7 @@ body {
     color: #fff;
 }
 
-#page-not-found{
+#page-not-found {
     display: none;
 }
 
@@ -414,11 +414,12 @@ svg.square g:nth-child(10) rect {
 
 .nav-wrapper .nav-item {
     text-align: center;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     flex: 1;
     width: 20vw;
-    margin: 2rem;
+    margin: 3.5rem 2rem 2rem 2rem;
     border: 0px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5rem;
     transition: all 160ms ease-in-out;
 }
 
@@ -428,11 +429,11 @@ svg.square g:nth-child(10) rect {
 }
 
 .nav-wrapper .nav-item:hover {
-    border-bottom: 5px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .nav-wrapper .nav-item.active {
-    border-bottom: 5px solid rgb(52, 152, 219);
+    border: 2px solid rgb(52, 152, 219);
 }
 
 .drawer-content {
@@ -962,7 +963,9 @@ progress::-moz-progress-bar {
     animation: dash 10s linear infinite, bnw-color-stroke 13s infinite alternate;
 }
 
-.name {
+.header .name{
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
     font-size: 1.8rem;
     position: absolute;
     top: 45%;
@@ -970,9 +973,73 @@ progress::-moz-progress-bar {
     animation: bnw-text-color 13s infinite alternate;
 }
 
-.name span {
+.header .name span {
+    vertical-align: text-top;
     font-size: 2.3rem;
     font-weight: bold;
+}
+
+.header .name span:before {
+    transition: all 1s ease-in-out;
+    content:"";
+    width: 0%;
+}
+
+.header .name span:hover:before {
+    content:"";
+    width: 61%;
+    right: 0;
+    bottom: -7px;
+    height: 0.25rem;
+    position: absolute;
+    animation: bnw-text-color-line 4s infinite alternate;
+}
+
+.header .name span:hover{
+    /*animation: color 2s infinite alternate;*/
+}
+
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes dash {
@@ -1005,6 +1072,15 @@ progress::-moz-progress-bar {
     }
     100% {
         color: #fafafa
+    }
+}
+
+@keyframes bnw-text-color-line {
+    0% {
+        background-color: #424242
+    }
+    100% {
+        background-color: #fafafa
     }
 }
 

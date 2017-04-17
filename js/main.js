@@ -31,11 +31,20 @@ $(document).ready(function() {
         });
 
         $("#go-home a").attr("href", getBaseUrl());
-        
+
     } else {
         new Vivus('hamburger', { duration: 100 }, initParallax());
         new Vivus('background-svg', { duration: 200 }, initParallax());
+
+        Typed.new('.header .name', {
+            strings: ["HI, I'm <span>MASON</span>"],
+            typeSpeed: 50
+        });
     }
+
+    $('.header .name').click(function(){
+        new Vivus('background-svg', { duration: 200 }, initParallax());
+    });
 
     $(".filter-wrapper").stick_in_parent();
 
