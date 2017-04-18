@@ -87,13 +87,37 @@ body {
 
 @-webkit-keyframes bg-color {
     0% {
-        background-color: #1d93e2;
+        background-color: #e85454;
     }
-    66% {
-        background-color: #3498db;
+    10% {
+        background-color: #F7DA64;
+    }
+    20% {
+        background-color: #7d7d7d;
+    }
+    30% {
+        background-color: #2969B0;
+    }
+    40% {
+        background-color: #5562eb;
+    }
+    50% {
+        background-color: #597571;
+    }
+    60% {
+        background-color: #28324E;
+    }
+    70% {
+        background-color: #41A85F;
+    }
+    80% {
+        background-color: #FBA026;
+    }
+    90% {
+        background-color: #B8312F;
     }
     100% {
-        background-color: #007ed3;
+        background-color: #2C82C9;
     }
 }
 

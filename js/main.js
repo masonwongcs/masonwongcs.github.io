@@ -37,13 +37,17 @@ $(document).ready(function() {
         new Vivus('background-svg', { duration: 200 }, initParallax());
 
         Typed.new('.header .name', {
-            strings: ["HI, I'm <span>MASON</span>"],
+            strings: ["HI, I'm <span class=\"m\">M</span><span class=\"a\">A</span><span class=\"s\">S</span><span class=\"o\">O</span><span class=\"n\">N</span>"],
             typeSpeed: 50
         });
     }
 
     $('.header .name').click(function(){
         new Vivus('background-svg', { duration: 200 }, initParallax());
+    });
+
+    $('.header .name').hover(function(){
+        $(this).toggleClass("animate");
     });
 
     $(".filter-wrapper").stick_in_parent();
