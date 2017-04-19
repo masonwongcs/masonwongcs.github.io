@@ -42,11 +42,11 @@ $(document).ready(function() {
         });
     }
 
-    $('.header .name').click(function(){
+    $('.header .name').click(function() {
         new Vivus('background-svg', { duration: 200 }, initParallax());
     });
 
-    $('.header .name').hover(function(){
+    $('.header .name').hover(function() {
         $(this).toggleClass("animate");
     });
 
@@ -56,13 +56,30 @@ $(document).ready(function() {
 
     $(".hamburger").click(function(e) {
         e.preventDefault();
-        $(".main-wrapper").toggleClass("drawer-open");
+
+        // $(".main-wrapper").toggleClass("drawer-open");
+
+        // if($(this).hasClass("active")){
+        // TweenMax.to($(".main-wrapper"),0.2,{y:'+=200px', transform: 'scale(1)'});
+        // } else{
+        TweenMax.to($(".main-wrapper"), 0.2, { transform: 'scale(0.93)' });
+        // }
+
+
         $(".logo").toggleClass("logo-float");
         $(".close").fadeToggle(160);
-        $(".nav-wrapper").fadeToggle(160);
+        // $(".nav-wrapper").fadeToggle(160);
+
+        $(".nav-wrapper").show();
+
+        for(var i=1; i<= $(".nav-list .nav-item").length; i++){
+            var j = i-1;
+            TweenMax.to($(".nav-list .nav-item")[j], 0.2, {opacity: '1', delay: i*0.1});
+        }
+
         $(".hamburger-icon").toggleClass("transparent");
         $("body").toggleClass("disable-scrolling");
-        $(".bg").toggleClass("transparent");
+        // $(".bg").toggleClass("transparent");
     });
 
     $(".hamburger-icon").hover(function() {
@@ -127,22 +144,45 @@ $(document).ready(function() {
         $(".filter-item").not($(this)).removeClass("active");
         var filterItem = $(this).find("a").text();
         if (filterItem == "Design") {
-            $('.content[data-type="design"]').removeClass("hide");
-            $('.content:not([data-type="design"])').addClass("hide");
+            // $('.content[data-type="design"]').removeClass("hide");
+            // $('.content:not([data-type="design"])').addClass("hide");
+
+            TweenMax.to($('.content[data-type="design"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content:not([data-type="design"])'), 0.3, { width: '0' });
+
         } else if (filterItem == "Photography") {
-            $('.content[data-type="photography"]').removeClass("hide");
-            $('.content:not([data-type="photography"])').addClass("hide");
+            // $('.content[data-type="photography"]').removeClass("hide");
+            // $('.content:not([data-type="photography"])').addClass("hide");
+
+            TweenMax.to($('.content[data-type="photography"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content:not([data-type="photography"])'), 0.3, { width: '0' });
         } else {
-            $('.content[data-type="design"]').removeClass("hide");
-            $('.content[data-type="photography"]').removeClass("hide");
+            // $('.content[data-type="design"]').removeClass("hide");
+            // $('.content[data-type="photography"]').removeClass("hide");
+
+            TweenMax.to($('.content[data-type="design"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content[data-type="photography"]'), 0.3, { width: '50%' });
         }
     });
 
     $(".close").click(function(e) {
         e.preventDefault();
-        $(".main-wrapper").removeClass("drawer-open");
+        // $(".main-wrapper").removeClass("drawer-open");
+
+        var removeStyle = function() {
+            $(".main-wrapper").attr("style", "");
+        }
+
+        TweenMax.to($(".main-wrapper"), 0.2, { y: '+=10%', transform: 'scale(1)', onComplete: removeStyle });
+
         $(".logo").removeClass("logo-float");
         $(".close").fadeOut(160);
+
+        for(var i=1; i<= $(".nav-list .nav-item").length; i++){
+            var j = i-1;
+            TweenMax.to($(".nav-list .nav-item")[j], 0.2, {opacity: '0', delay: i*0.1});
+        }
+
         $(".nav-wrapper").fadeOut(160);
         $(".nav-wrapper .nav-item").removeClass("active");
         $(".hamburger-icon").removeClass("transparent");
@@ -157,6 +197,8 @@ $(document).ready(function() {
         $("html, body").removeClass("bg-color-paused");
         setTimeout('$(".bg").removeClass("transparent")', 1000);
     });
+
+
 
     // $(".content").hover(function(){
     //  $(this).find("figure figcaption").fadeToggle();
