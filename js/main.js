@@ -62,9 +62,10 @@ $(document).ready(function() {
         // if($(this).hasClass("active")){
         // TweenMax.to($(".main-wrapper"),0.2,{y:'+=200px', transform: 'scale(1)'});
         // } else{
-        TweenMax.to($(".main-wrapper"), 0.2, { transform: 'scale(0.93)' });
+        TweenMax.to($(".main-wrapper"), 0.2, { transform: 'scale(0.93)', opacity: '0.4' });
         // }
 
+        TweenMax.to($(".header"), 0.2, {borderRadius: '1.5rem'});
 
         $(".logo").toggleClass("logo-float");
         $(".close").fadeToggle(160);
@@ -72,9 +73,9 @@ $(document).ready(function() {
 
         $(".nav-wrapper").show();
 
-        for(var i=1; i<= $(".nav-list .nav-item").length; i++){
-            var j = i-1;
-            TweenMax.to($(".nav-list .nav-item")[j], 0.2, {opacity: '1', delay: i*0.1});
+        for (var i = 1; i <= $(".nav-list .nav-item").length; i++) {
+            var j = i - 1;
+            TweenMax.to($(".nav-list .nav-item")[j], 0.2, { opacity: '1', delay: i * 0.1 });
         }
 
         $(".hamburger-icon").toggleClass("transparent");
@@ -165,6 +166,17 @@ $(document).ready(function() {
         }
     });
 
+    $(".close").hover(mouseenter, mouseleave);
+
+    function mouseenter() {
+        TweenMax.to($(this), 0.3, { rotation: 90 });
+    }
+
+    function mouseleave() {
+        TweenMax.to($(this), 0.3, { rotation: -90 });
+    }
+
+
     $(".close").click(function(e) {
         e.preventDefault();
         // $(".main-wrapper").removeClass("drawer-open");
@@ -175,12 +187,14 @@ $(document).ready(function() {
 
         TweenMax.to($(".main-wrapper"), 0.2, { y: '+=10%', transform: 'scale(1)', onComplete: removeStyle });
 
+        TweenMax.to($(".header"), 0.2, {borderRadius: '0'});
+
         $(".logo").removeClass("logo-float");
         $(".close").fadeOut(160);
 
-        for(var i=1; i<= $(".nav-list .nav-item").length; i++){
-            var j = i-1;
-            TweenMax.to($(".nav-list .nav-item")[j], 0.2, {opacity: '0', delay: i*0.1});
+        for (var i = 1; i <= $(".nav-list .nav-item").length; i++) {
+            var j = i - 1;
+            TweenMax.to($(".nav-list .nav-item")[j], 0.2, { opacity: '0', delay: i * 0.1 });
         }
 
         $(".nav-wrapper").fadeOut(160);
