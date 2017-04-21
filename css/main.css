@@ -347,6 +347,7 @@ svg.square g:nth-child(10) rect {
     z-index: 9999;
 }
 
+
 /*.drawer-open {
     transform: perspective(5000px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 4deg);
     box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
@@ -412,14 +413,15 @@ svg.square g:nth-child(10) rect {
 }
 
 .nav-wrapper .nav-item:not(.active):hover {
-    background-color:  rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     border-bottom: 2px solid rgba(255, 255, 255, 0.9);
     transform: translateY(-4px);
 }
 
-.nav-wrapper .nav-item:not(.active):hover a{
+.nav-wrapper .nav-item:not(.active):hover a {
     color: #3498db;
 }
+
 .nav-wrapper .nav-item.active {
     border-bottom: 2px solid rgb(52, 152, 219);
     background-color: rgba(52, 152, 219, 0.7);
@@ -1222,12 +1224,14 @@ a.filter {
 .content {
     background-color: #424242;
     width: 50%;
-    height: 500px;
+    height: 400px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.6s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
+
+.content.fixed {}
 
 .content.hide {
     width: 0;
@@ -1240,18 +1244,24 @@ a.filter {
 
 .content figure {
     margin: auto;
-    margin-top: 10%;
+    margin: 10% auto 10% auto;
+    /*padding: 10%;*/
     display: flex;
     height: 70%;
     width: 70%;
+    transition: all 0.2s ease-in-out;
 }
 
-.content figure:hover {}
+.content figure:hover {
+    /*background-color: rgba(255,255,255,0.4); */
+    /*padding: 1rem;*/
+}
 
 .content:hover figure img {
     /*transform: scale(1.1);*/
-    transform: translateY(-1rem);
-    /*filter: blur(1px);*/
+    /*transform: translateY(-1rem);*/
+    opacity: 0.2;
+    filter: blur(5px);
 }
 
 .content figure img {
@@ -1268,28 +1278,63 @@ a.filter {
 
 .content figure figcaption {
     /*display: none;*/
-    transform: rotate(270deg);
-    font-size: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
     text-transform: uppercase;
     position: absolute;
-    padding-bottom: 25%;
+    padding-top: 10%;
+    padding-bottom: 10%;
     padding-left: auto;
     padding-right: auto;
-    /* margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;*/
+    word-wrap: all;
+    opacity: 0;
+    width: 35%;
+    color: #424242;
     transition: all 0.6s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.content figure figcaption a{
+.content[data-type="photography"] figure figcaption{
+    color: #fafafa;
+}
+
+.content[data-type="photography"] figure figcaption:before{
+    content:"";
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.content figure figcaption:before {
+    content: "";
+    border-bottom: 2px solid rgba(66, 66, 66, 0.3);
+    width: 25%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 40%;
+    top: 0;
+    margin: auto;
+}
+
+.content figure figcaption:after {
+    content: attr(data-date);
+    color: rgba(66, 66, 66, 0.7);
+    left: 0;
+    right: 0;
+    position: absolute;
+    font-size: 0.7rem;
+    top: 65%;
+    margin: auto;
+}
+
+.content figure figcaption a {
     text-decoration: none;
+    color: #424242;
 }
 
 .content:hover figcaption {
-    /*font-size: 1rem;*/
+    transform: translateY(-100px);
+    /*opacity: 1;*/
 }
 
 
@@ -1311,6 +1356,16 @@ a.filter {
 
 .sweet-modal-box {
     font-family: Biko-Regular !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.sweet-modal-content{
+    padding-bottom: 0 !important;
 }
 
 .sweet-modal-content figure {
@@ -1350,6 +1405,20 @@ a.filter {
 .sweet-modal-content .link:hover {
     text-decoration: none;
     color: #2969B0;
+}
+
+.sweet-modal-overlay.open .sweet-modal-box {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    background-color: rgba(255,255,255,0.8);
 }
 
 .footer {

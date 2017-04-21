@@ -65,7 +65,7 @@ $(document).ready(function() {
         TweenMax.to($(".main-wrapper"), 0.2, { transform: 'scale(0.93)', opacity: '0.4' });
         // }
 
-        TweenMax.to($(".header"), 0.2, {borderRadius: '1.5rem'});
+        TweenMax.to($(".header"), 0.2, { borderRadius: '1.5rem' });
 
         $(".logo").toggleClass("logo-float");
         $(".close").fadeToggle(160);
@@ -75,7 +75,8 @@ $(document).ready(function() {
 
         for (var i = 1; i <= $(".nav-list .nav-item").length; i++) {
             var j = i - 1;
-            TweenMax.to($(".nav-list .nav-item")[j], 0.2, { opacity: '1', delay: i * 0.1 });
+            TweenMax.from($(".nav-list .nav-item")[j], 0.3, { y: "50px", delay: i * 0.03 });
+            TweenMax.to($(".nav-list .nav-item")[j], 0.3, { opacity: '1', delay: i * 0.1 });
         }
 
         $(".hamburger-icon").toggleClass("transparent");
@@ -148,7 +149,7 @@ $(document).ready(function() {
             // $('.content[data-type="design"]').removeClass("hide");
             // $('.content:not([data-type="design"])').addClass("hide");
 
-            TweenMax.to($('.content[data-type="design"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content[data-type="design"]'), 0.3, { display: '50%' });
             TweenMax.to($('.content:not([data-type="design"])'), 0.3, { width: '0' });
 
         } else if (filterItem == "Photography") {
@@ -187,7 +188,7 @@ $(document).ready(function() {
 
         TweenMax.to($(".main-wrapper"), 0.2, { y: '+=10%', transform: 'scale(1)', onComplete: removeStyle });
 
-        TweenMax.to($(".header"), 0.2, {borderRadius: '0'});
+        TweenMax.to($(".header"), 0.2, { borderRadius: '0' });
 
         $(".logo").removeClass("logo-float");
         $(".close").fadeOut(160);
@@ -214,9 +215,12 @@ $(document).ready(function() {
 
 
 
-    // $(".content").hover(function(){
-    //  $(this).find("figure figcaption").fadeToggle();
-    // });
+    $(".content").hover(function() {
+        TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 1, y: '-20px' });
+        // $(this).find("figure figcaption").fadeToggle();
+    }, function() {
+        TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 0, y: '20px' });
+    });
 
     $(".content").click(function() {
         var img = $(this).find("img");
