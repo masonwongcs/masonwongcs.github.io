@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+  
+
+ setTimeout(function(){
+    TweenMax.staggerTo('.overlay', 0.6, {width: 0}, 0.3);
+ }, 200);
+
+ setTimeout(function(){
+    $("body").removeClass("disable-scrolling");
+ }, 1200);
+
+    
     $('#background-svg').fadeIn();
     $('#page-not-found').fadeIn();
 
@@ -33,8 +44,11 @@ $(document).ready(function() {
         $("#go-home a").attr("href", getBaseUrl());
 
     } else {
-        new Vivus('hamburger', { duration: 100 }, initParallax());
+        setTimeout(function(){
+                    new Vivus('hamburger', { duration: 100 }, initParallax());
         new Vivus('background-svg', { duration: 200 }, initParallax());
+        }, 600);
+
 
         Typed.new('.header .name', {
             strings: ["HI, I'm <span class=\"m\">M</span><span class=\"a\">A</span><span class=\"s\">S</span><span class=\"o\">O</span><span class=\"n\">N</span>"],
@@ -149,21 +163,27 @@ $(document).ready(function() {
             // $('.content[data-type="design"]').removeClass("hide");
             // $('.content:not([data-type="design"])').addClass("hide");
 
-            TweenMax.to($('.content[data-type="design"]'), 0.3, { display: '50%' });
+            TweenMax.to($('.content[data-type="design"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content[data-type="design"] figcaption'), 0.3, { transform: 'scaleX(1)' });
             TweenMax.to($('.content:not([data-type="design"])'), 0.3, { width: '0' });
+            TweenMax.to($('.content:not([data-type="design"]) figcaption'), 0.3, { transform: 'scaleX(0)' });
 
         } else if (filterItem == "Photography") {
             // $('.content[data-type="photography"]').removeClass("hide");
             // $('.content:not([data-type="photography"])').addClass("hide");
 
             TweenMax.to($('.content[data-type="photography"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content[data-type="photography"] figcaption'), 0.3, { transform: 'scaleX(1)' });
             TweenMax.to($('.content:not([data-type="photography"])'), 0.3, { width: '0' });
+            TweenMax.to($('.content:not([data-type="photography"]) figcaption'), 0.3, { transform: 'scaleX(0)' });
         } else {
             // $('.content[data-type="design"]').removeClass("hide");
             // $('.content[data-type="photography"]').removeClass("hide");
 
             TweenMax.to($('.content[data-type="design"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content[data-type="design"] figcaption'), 0.3, { transform: 'scaleX(1)' });
             TweenMax.to($('.content[data-type="photography"]'), 0.3, { width: '50%' });
+            TweenMax.to($('.content[data-type="photography"] figcaption'), 0.3, { transform: 'scaleX(1)' });
         }
     });
 
