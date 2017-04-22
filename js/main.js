@@ -167,15 +167,11 @@ $(document).ready(function() {
         }
     });
 
-    $(".close").hover(mouseenter, mouseleave);
-
-    function mouseenter() {
+    $(".close").hover(function() {
         TweenMax.to($(this), 0.3, { rotation: 90 });
-    }
-
-    function mouseleave() {
+    }, function() {
         TweenMax.to($(this), 0.3, { rotation: -90 });
-    }
+    });
 
 
     $(".close").click(function(e) {

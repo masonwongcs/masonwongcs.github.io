@@ -1304,7 +1304,14 @@ a.filter {
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+.content:hover figure figcaption:before{
+    visibility: visible;
+    transform: scaleX(1);
+}
+
 .content figure figcaption:before {
+    visibility: hidden;
+    transform: scaleX(0);
     content: "";
     border-bottom: 2px solid rgba(66, 66, 66, 0.3);
     width: 25%;
@@ -1314,6 +1321,7 @@ a.filter {
     bottom: 40%;
     top: 0;
     margin: auto;
+    transition: all 1.6s cubic-bezier(.175, .885, .32, 1.275);
 }
 
 .content figure figcaption:after {
