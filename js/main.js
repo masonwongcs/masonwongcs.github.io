@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-    $('#background-svg').fadeIn();
     $('#page-not-found').fadeIn();
 
     if ($('body').hasClass('error')) {
@@ -60,8 +59,6 @@ $(document).ready(function() {
         var tl = new TimelineMax({ repeat: -1, restart: true });
         tl.staggerFromTo($('.scroll-me .scroller'), 1, { opacity: 0, }, { opacity: 1 }, 0.3);
 
-
-
         $('html, body').bind('mousewheel', function(e) {
             setTimeout(function() {
                 $("body").removeClass("disable-scrolling");
@@ -71,13 +68,14 @@ $(document).ready(function() {
                 $(".scroll-me").hide();
 
                 setTimeout(function() {
+                    $('#background-svg').fadeIn();
                     new Vivus('hamburger', { duration: 100 }, initParallax());
                     new Vivus('background-svg', { duration: 200 }, initParallax());
                 }, 1000);
             }, 480);
 
+            $(this).unbind();
         });
-
 
         // Shrink and unload bg
         setTimeout(function() {
