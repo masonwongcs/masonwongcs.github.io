@@ -1173,10 +1173,11 @@ progress::-moz-progress-bar {
 }
 
 .scroll-down {
+    transform: translateY(-1000px);
     position: absolute;
     left: 49%;
     transition: all 1s ease-in-out;
-    animation: arrow-move 600ms infinite alternate, bnw-text-color 12s linear infinite;
+    animation: arrow-move 600ms infinite alternate;
 }
 
 .scroll-down:after {
