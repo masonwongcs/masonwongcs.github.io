@@ -53,7 +53,7 @@ $(document).ready(function() {
             $('html, body').bind('mousewheel', function(e) {
                 setTimeout(function() {
                     setTimeout(function() {
-                        $("body").removeClass("disable-scrolling");
+                        $("body, html").removeClass("disable-scrolling");
                         TweenMax.to('.scroll-down', 0.2, { ease: Power4.easeOut, y: '0' });
                     }, 4000);
                     TweenMax.staggerTo('.overlay', 1.6, { ease: Power4.easeOut, width: 0 }, 0.3);
@@ -118,7 +118,7 @@ $(document).ready(function() {
         }
 
         $(".hamburger-icon").toggleClass("transparent");
-        $("body").toggleClass("disable-scrolling");
+        $("body, html").toggleClass("disable-scrolling");
         // $(".bg").toggleClass("transparent");
     });
 
@@ -128,6 +128,7 @@ $(document).ready(function() {
     });
 
     $(".nav-wrapper .nav-item").click(function() {
+        $("body, html").addClass("disable-scrolling");
         $(this).addClass("active");
         $(".nav-wrapper .nav-item").not($(this)).removeClass("active");
         var selected = $(this).find("a").attr("class");
@@ -242,7 +243,7 @@ $(document).ready(function() {
         $(".nav-wrapper .nav-item").removeClass("active");
         $(".hamburger-icon").removeClass("transparent");
         $(".main-wrapper").removeClass("nav-open");
-        $("body").removeClass("disable-scrolling");
+        $("body, html").removeClass("disable-scrolling");
         $(".drawer-content").fadeOut();
         $(".drawer-content").addClass("perspective")
 
