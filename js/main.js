@@ -32,6 +32,8 @@ $(document).ready(function() {
         $("#go-home a").attr("href", getBaseUrl());
 
     } else {
+        TweenMax.to($(".overlay:nth-child(1)"), 1, { width: "73%" });
+        TweenMax.to($(".overlay:nth-child(2)"), 1.5, { width: "156%" });
 
         // Wait type js finished
         setTimeout(function() {
@@ -44,6 +46,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".scroll-me").fadeIn();
             new Vivus('scroll-me', { duration: 100 }, initParallax());
+            new Vivus('line', { duration: 100}, initParallax())
         }, 3000);
 
         var tl = new TimelineMax({ repeat: -1, restart: true });
