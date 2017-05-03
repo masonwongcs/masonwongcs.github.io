@@ -3,33 +3,19 @@ $(document).ready(function() {
     $('#page-not-found').fadeIn();
 
     if ($('body').hasClass('error')) {
+        TweenMax.to($(".overlay:nth-child(1)"), 1.5, { width: "83%" });
+        TweenMax.to($(".overlay:nth-child(2)"), 1, { width: "156%" });
 
-        new Vivus('page-not-found', {
-            duration: 100
-        }, initParallax());
+        let b = baffle('.four-o-four h3').start().set({characters: '1234567890'});
+        let c = baffle('.four-o-four h4').start().set({characters: '█▒▓ ░'});
 
-        function initParallax() {
-            $(document).mousemove(function(e) {
-                $('.first-four').parallax(-100, e);
-                $('.o').parallax(-120, e);
-                $('.last-four').parallax(-140, e);
-            });
-            for (var i = 1; i <= $(".error-wrapper").length; i++) {
-                var j = 1;
-                var max = $(".error-wrapper").length + 1;
-                j += i;
-                setTimeout('$(".error-wrapper:nth-child(' + j + ') .four-o-four-text").fadeIn()', i * 1000);
-            }
-            setTimeout('$("#go-home").addClass("error-animation")', 4000);
-            setTimeout('$(".footer").fadeIn()', 4000);
+        $(".footer").fadeIn();
+        setTimeout(function() { 
+            b.reveal(1000);
+            c.reveal(1000); 
+        }, 2000);
 
-        }
-
-        $("#go-home").hover(function() {
-            $(this).toggleClass("error-animation");
-        });
-
-        $("#go-home a").attr("href", getBaseUrl());
+        $("a#go-home").attr("href", getBaseUrl());
 
     } else {
         TweenMax.to($(".overlay:nth-child(1)"), 1, { width: "73%" });
@@ -46,7 +32,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".scroll-me").fadeIn();
             new Vivus('scroll-me', { duration: 100 }, initParallax());
-            new Vivus('line', { duration: 100}, initParallax())
+            new Vivus('line', { duration: 100 }, initParallax())
         }, 3000);
 
         var tl = new TimelineMax({ repeat: -1, restart: true });
