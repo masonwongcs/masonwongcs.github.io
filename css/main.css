@@ -19,7 +19,6 @@ body {
     /*animation: bg-color 5s infinite alternate;*/
     font-family: Biko-Regular;
     transition: all 1s ease-in-out;
-    background-color: #3498db;
 }
 
 .error .overlay:nth-child(1) {
@@ -330,6 +329,7 @@ a#go-home:hover:before{
 
 .disable-scrolling {
     overflow: hidden;
+    background-color: #3498db;
 }
 
 .bg-color-paused {

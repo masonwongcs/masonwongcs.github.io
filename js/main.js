@@ -6,18 +6,71 @@ $(document).ready(function() {
         TweenMax.to($(".overlay:nth-child(1)"), 1.5, { width: "83%" });
         TweenMax.to($(".overlay:nth-child(2)"), 1, { width: "156%" });
 
-        let b = baffle('.four-o-four h3').start().set({characters: '1234567890'});
-        let c = baffle('.four-o-four h4').start().set({characters: '█▒▓ ░'});
+        let b = baffle('.four-o-four h3').start().set({ characters: '1234567890' });
+        let c = baffle('.four-o-four h4').start().set({ characters: '█▒▓ ░' });
 
         $(".footer").fadeIn();
-        setTimeout(function() { 
+        setTimeout(function() {
             b.reveal(1000);
-            c.reveal(1000); 
+            c.reveal(1000);
         }, 2000);
 
         $("a#go-home").attr("href", getBaseUrl());
 
     } else {
+
+        // Compile content
+        var source = $("#content-template").html();
+        var template = Handlebars.compile(source);
+
+        $.getJSON("json/content.json", function(data) {
+            var html = template(data);
+
+            $(".tiles-content").append(html);
+
+            $(".filter-wrapper").stick_in_parent();
+
+            // Content hover animation
+            $(".content").hover(function() {
+                TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 1, y: '-20px' });
+                // $(this).find("figure figcaption").fadeToggle();
+            }, function() {
+                TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 0, y: '20px' });
+            });
+
+            $(".content").click(function() {
+                var img = $(this).find("img");
+                var content = "";
+                if (img.length > 1) {
+                    img.each(function() {
+                        var imgAddr = $(this).attr("src");
+                        var imgCaption = $(this).siblings("figcaption").html();
+                        var imgDesc = $(this).siblings(".desc-text").html();
+
+                        var images = '<figure><img src="' + imgAddr + '"/></figure>';
+                        var title = '<h3>' + imgCaption + '</h3>';
+                        var description = '<p class="desc-text">' + imgDesc + '</p>';
+                        var string = images + title + description;
+                        content += string;
+                    });
+                } else {
+                    var imgAddr = img.attr("src");
+                    var imgCaption = $(this).find("figcaption").html();
+                    var imgDesc = $(this).find(".desc-text").html();
+
+                    var images = '<figure><img src="' + imgAddr + '"/></figure>';
+                    var title = '<h3>' + imgCaption + '</h3>';
+                    var description = '<p class="desc-text">' + imgDesc + '</p>';
+                    content = images + title + description;
+                }
+
+                $.sweetModal({
+                    content: content
+                });
+            });
+        });
+
+
         TweenMax.to($(".overlay:nth-child(1)"), 1, { width: "73%" });
         TweenMax.to($(".overlay:nth-child(2)"), 1.5, { width: "156%" });
 
@@ -32,7 +85,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $(".scroll-me").fadeIn();
             new Vivus('scroll-me', { duration: 100 }, initParallax());
-            new Vivus('line', { duration: 100 }, initParallax())
+            // new Vivus('line', { duration: 100 }, initParallax())
         }, 3000);
 
         var tl = new TimelineMax({ repeat: -1, restart: true });
@@ -77,7 +130,7 @@ $(document).ready(function() {
         $(this).toggleClass("animate");
     });
 
-    $(".filter-wrapper").stick_in_parent();
+    
 
     $("a[title]").parent("div").remove();
 
@@ -244,45 +297,6 @@ $(document).ready(function() {
     });
 
 
-
-    $(".content").hover(function() {
-        TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 1, y: '-20px' });
-        // $(this).find("figure figcaption").fadeToggle();
-    }, function() {
-        TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 0, y: '20px' });
-    });
-
-    $(".content").click(function() {
-        var img = $(this).find("img");
-        var content = "";
-        if (img.length > 1) {
-            img.each(function() {
-                var imgAddr = $(this).attr("src");
-                var imgCaption = $(this).siblings("figcaption").html();
-                var imgDesc = $(this).siblings(".desc-text").html();
-
-                var images = '<figure><img src="' + imgAddr + '"/></figure>';
-                var title = '<h3>' + imgCaption + '</h3>';
-                var description = '<p class="desc-text">' + imgDesc + '</p>';
-                var string = images + title + description;
-                content += string;
-            });
-        } else {
-            var imgAddr = img.attr("src");
-            var imgCaption = $(this).find("figcaption").html();
-            var imgDesc = $(this).find(".desc-text").html();
-
-            var images = '<figure><img src="' + imgAddr + '"/></figure>';
-            var title = '<h3>' + imgCaption + '</h3>';
-            var description = '<p class="desc-text">' + imgDesc + '</p>';
-            content = images + title + description;
-        }
-
-        $.sweetModal({
-            content: content
-        });
-    });
-
     $(".filter-item:last-child").click(function(e) {
         e.preventDefault();
         $("html, body").animate({
@@ -303,40 +317,6 @@ $(document).ready(function() {
 
     $(".content figure img").each(function(index) {
 
-        // var canvas = $(this).siblings("canvas")[0];
-        // var context = canvas.getContext('2d');
-
-        // var img = new Image();
-        // img.onload = function () {
-        //     context.drawImage(img, 0, 0);
-
-        //  //      var colorThief = new ColorThief();
-        //  // var color = colorThief.getColor(context);
-        //  // $(this).closest(".content").css("background-color", "rgb(" + color + ")");
-
-        // }
-
-        // img.src = $(this).attr("src");
-
-        // var dataURL = canvas.toDataURL();
-
-        // console.log(dataURL);
-
-        // // $(this).load(function(){
-        //  // var img = $(this);
-        //  // getDataUri(img, function(dataUri) {
-        //      // Do whatever you'd like with the Data URI!
-        //      // console.log(dataUri);
-        //  // });
-        //  // img.on("load", function(){
-        //  //  var colorThief = new ColorThief();
-        //  //  var color = colorThief.getColor(img);
-        //  //  $(this).closest(".content").css("background-color", "rgb(" + color + ")");
-        //  // });
-        //  // img.onload = function (){
-
-        //  // }
-        // // });
     });
 
     echo.init();
