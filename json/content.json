@@ -6,7 +6,7 @@
          "imgUrl":"img/nanahouse.png",
          "date":"Jan 5, 2016",
          "title":" Nana House ",
-         "desc":"Nana House is a Homestay comunity located in New Zealand.<br><a class=\"link-to-website\" target=\"_blank\" href=\"http://www.nanahousenz.com\">Link to website</a>"
+         "desc":"Nana House is a Homestay comunity located in New Zealand."
       },
       {  
          "type":"design",
@@ -14,7 +14,7 @@
          "imgUrl":"img/nanahouse_web.png",
          "date":"Jan 5, 2016",
          "title":" Nana House ",
-         "desc":"The website was done is the form of PHP in Weebly. It was launched in 2015. "
+         "desc":"The website was done is the form of PHP in Weebly. It was launched in 2015.<br><a class=\"link-to-website\" target=\"_blank\" href=\"http://www.nanahousenz.com\">Link to website</a>"
       },
       {  
          "type":"design",
