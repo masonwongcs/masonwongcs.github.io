@@ -1533,20 +1533,6 @@ a.filter {
     color: #fff;
 }
 
-.content .download-from-appstore {
-    font-size: 0;
-    color: transparent;
-}
-
-.content .download-from-appstore:before{
-    content: "";
-    position: absolute;
-    width: 135px;
-    height: 40px;
-    background-image: url(../img/download-from-appstore.svg);
-}
-
-
 /* Overiding Sweet Modal CSS*/
 
 .sweet-modal-box {
@@ -1589,6 +1575,19 @@ a.filter {
     width: 60%;
     margin: 0 auto;
     padding-bottom: 2rem;
+}
+
+.sweet-modal-content .download-from-appstore {
+    font-size: 0;
+    color: transparent;
+}
+
+.sweet-modal-content .download-from-appstore:before{
+    content: "";
+    position: absolute;
+    width: 135px;
+    height: 40px;
+    background-image: url(../img/download-from-appstore.svg);
 }
 
 .sweet-modal-content .link {
