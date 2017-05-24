@@ -1525,14 +1525,6 @@ a.filter {
     display: none;
 }
 
-.content .link-to-website{
-    text-transform: uppercase;
-    padding: 0.2rem;
-    border-radius: 4px;
-    background-color: rgba(55,55,55,0.5);
-    color: #fff;
-}
-
 /* Overiding Sweet Modal CSS*/
 
 .sweet-modal-box {
@@ -1577,6 +1569,14 @@ a.filter {
     padding-bottom: 2rem;
 }
 
+.sweet-modal-content .link-to-website{
+    text-transform: uppercase;
+    padding: 0.2rem;
+    border-radius: 4px;
+    background-color: rgba(55,55,55,0.5);
+    color: #fff;
+}
+
 .sweet-modal-content .download-from-appstore {
     font-size: 0;
     color: transparent;
@@ -1587,7 +1587,10 @@ a.filter {
     position: absolute;
     width: 135px;
     height: 40px;
-    background-image: url(../img/download-from-appstore.svg);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    transform: translateX(-50%);
+    background: url(../img/download-from-appstore.svg) center no-repeat;
 }
 
 .sweet-modal-content .link {
