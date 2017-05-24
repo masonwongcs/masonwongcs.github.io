@@ -6,7 +6,7 @@
          "imgUrl":"img/nanahouse.png",
          "date":"Jan 5, 2016",
          "title":" Nana House ",
-         "desc":"Nana House is a Homestay comunity located in New Zealand.<br>www.nanahousenz.com"
+         "desc":"Nana House is a Homestay comunity located in New Zealand.<br><a class=\"link-to-website\" href=\"www.nanahousenz.com\">Link to website</a>"
       },
       {  
          "type":"design",
@@ -30,7 +30,7 @@
          "imgUrl":"img/img02.png",
          "date":"Sept 21, 2015",
          "title":" eMoney ",
-         "desc":"This portal allows money transfering, transactions checking and balance enquiry.<br>www.masonwongcs.com/mpay2u"
+         "desc":"This portal allows money transfering, transactions checking and balance enquiry.<br><a class=\"link-to-website\" href=\"www.masonwongcs.com/mpay2u\">Link to website</a>"
       },
       {  
          "type":"design",
@@ -54,7 +54,7 @@
          "imgUrl":"img/img05.png",
          "date":"Sept 5, 2015",
          "title":" MDEX ",
-         "desc":"This is a count down page for the #MYCyberSales2015. The timer will continue to run until the day of the cyber sales.<br>www.masonwongcs.com/mdex"
+         "desc":"This is a count down page for the #MYCyberSales2015. The timer will continue to run until the day of the cyber sales.<br><a class=\"link-to-website\" href=\"www.masonwongcs.com/mdex\">Link to website</a>"
       },
       {  
          "type":"photography",
@@ -70,7 +70,7 @@
          "imgUrl":"img/img06.png",
          "date":"June 13, 2015",
          "title":" MPay ",
-         "desc":"The re-design of the Corporate Website.<br>www.masonwongcs.com/mpay"
+         "desc":"The re-design of the Corporate Website.<br><a class=\"link-to-website\" href=\"www.masonwongcs.com/mpay\">Link to website</a>"
       },
       {  
          "type":"photography",

@@ -1525,6 +1525,27 @@ a.filter {
     display: none;
 }
 
+.content .link-to-website{
+    text-transform: uppercase;
+    padding: 0.2rem;
+    border-radius: 4px;
+    background-color: rgba(55,55,55,0.5);
+    color: #fff;
+}
+
+.content .download-from-appstore {
+    font-size: 0;
+    color: transparent;
+}
+
+.content .download-from-appstore:before{
+    content: "";
+    position: absolute;
+    width: 135px;
+    height: 40px;
+    background-image: url(../img/download-from-appstore.svg);
+}
+
 
 /* Overiding Sweet Modal CSS*/
 
