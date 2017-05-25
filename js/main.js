@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    particlesJS.load('particles-js', 'json/particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
+
     $('#page-not-found').fadeIn();
 
     if ($('body').hasClass('error')) {
@@ -71,8 +75,8 @@ $(document).ready(function() {
         });
 
 
-        TweenMax.to($(".overlay:nth-child(1)"), 1, { width: "73%" });
-        TweenMax.to($(".overlay:nth-child(2)"), 1.5, { width: "156%" });
+        // TweenMax.to($(".overlay:nth-child(1)"), 1, { width: "73%" });
+        // TweenMax.to($(".overlay:nth-child(2)"), 1.5, { width: "156%" });
 
         // Wait type js finished
         setTimeout(function() {

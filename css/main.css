@@ -63,19 +63,11 @@ body {
 }
 
 
-.overlay:nth-child(1) {
+/*.overlay:nth-child(1) {
     position: absolute;
-    /*background-color: #188bd8;*/
     background: #188bd8;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #00c6ff, #188bd8);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #00c6ff, #188bd8);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    /*top: 0;*/
-    /*right: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
     transform: translateX(-11rem) skewX(-23deg);
     margin: auto;
     width: 0;
@@ -83,15 +75,11 @@ body {
     float: left;
     z-index: 99999999;
     box-shadow: 3px 4px 13px rgba(55, 55, 55, 0.2);
-}
+}*/
 
-.overlay:nth-child(2) {
+/*.overlay:nth-child(2) {
     position: absolute;
     background-color: #0b7dc9;
-    /*top: 0;*/
-    /*right: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
     transform: translateX(-63rem) skewX(-69deg);
     margin: auto;
     width: 0;
@@ -99,9 +87,9 @@ body {
     float: left;
     z-index: 99999998;
     box-shadow: 3px 4px 13px rgba(55, 55, 55, 0.2);
-}
+}*/
 
-.overlay:nth-child(3) {
+.overlay:nth-child(1) {
     position: absolute;
     background-color: #3498db;
     /*top: 0;*/
@@ -115,7 +103,7 @@ body {
     z-index: 99999997;
 }
 
-.overlay:nth-child(4) {
+.overlay:nth-child(2) {
     position: absolute;
     background-color: #424242;
     /*top: 0;*/
@@ -448,7 +436,7 @@ svg.square g:nth-child(10) rect {
 }
 
 .hamburger-icon path {
-    stroke: #424242;
+    stroke: #3498db;
     /*animation: bnw-color-stroke 12s infinite alternate;*/
 }
 
@@ -1452,8 +1440,8 @@ a.filter {
     position: absolute;
     padding-top: 10%;
     padding-bottom: 10%;
-    padding-left: auto;
-    padding-right: auto;
+    /* Enable this on Safari */
+    /*transform: translateX(-100%);*/
     word-wrap: all;
     opacity: 0;
     width: 35%;
@@ -1508,7 +1496,7 @@ a.filter {
 }
 
 .content:hover figcaption {
-    transform: translateY(-100px);
+    /*transform: translateY(-50%);*/
     /*opacity: 1;*/
 }
 
