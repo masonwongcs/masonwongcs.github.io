@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     particlesJS.load('particles-js', 'json/particles.json', function() {
-      console.log('callback - particles.js config loaded');
+        console.log('callback - particles.js config loaded');
     });
 
     $('#page-not-found').fadeIn();
@@ -79,44 +79,78 @@ $(document).ready(function() {
         // TweenMax.to($(".overlay:nth-child(2)"), 1.5, { width: "156%" });
 
         // Wait type js finished
-        setTimeout(function() {
-            Typed.new('.header .name', {
-                strings: ["HI, I'm <span class=\"m\">M</span><span class=\"a\">A</span><span class=\"s\">S</span><span class=\"o\">O</span><span class=\"n\">N</span>"],
-                typeSpeed: 50
-            });
-        }, 1000);
+
+        // setTimeout(function() {
+        //     Typed.new('.header .name', {
+        //         strings: ["HI, I'm <span class=\"m\">M</span><span class=\"a\">A</span><span class=\"s\">S</span><span class=\"o\">O</span><span class=\"n\">N</span>"],
+        //         typeSpeed: 50
+        //     });
+        // }, 1000);
+
+        var designSvg = new Vivus('design', { duration: 100 }, initParallax());
+        var photographySvg = new Vivus('photography');
+
 
         setTimeout(function() {
             $(".scroll-me").fadeIn();
-            new Vivus('scroll-me', { duration: 100 }, initParallax());
+
+            // new Vivus('scroll-me', { duration: 100 }, initParallax());
             // new Vivus('line', { duration: 100 }, initParallax())
-        }, 3000);
+        }, 2000);
+
+        setTimeout(function() {
+            TweenMax.to('#photography', 1, { opacity: 1 });
+        }, 7000);
+
+        setInterval(function() {
+            designSvg.play(-1);
+            photographySvg.play(1);
+            // TweenMax.to('#design', 1, { ease: Power4.easeOut, transform: 'translateY(-100vh)' });
+        }, 5000);
+
+        setInterval(function() {
+            photographySvg.play(-1);
+            designSvg.play(1);
+        }, 10000);
 
         var tl = new TimelineMax({ repeat: -1, restart: true });
         tl.staggerFromTo($('.scroll-me .scroller'), 1, { opacity: 0, }, { opacity: 1 }, 0.3);
 
         setTimeout(function() {
             $('html, body').bind('mousewheel', function(e) {
-                setTimeout(function() {
-                    setTimeout(function() {
-                        $("body, html").removeClass("disable-scrolling");
-                        TweenMax.to('.scroll-down', 0.2, { ease: Power4.easeOut, y: '0' });
-                    }, 4000);
-                    TweenMax.staggerTo('.overlay', 1.6, { ease: Power4.easeOut, width: 0 }, 0.3);
-                    TweenMax.to('.name', 1, { ease: Power4.easeOut, fontSize: '1.6rem', color: '#424242' });
-                    TweenMax.to($('.name span'), 2, { ease: Power4.easeOut, fontSize: '2.3rem', color: '#424242' });
-                    $(".scroll-me").hide();
-
-                    setTimeout(function() {
-                        $('#background-svg').fadeIn();
-                        new Vivus('hamburger', { duration: 100 }, initParallax());
-                        new Vivus('background-svg', { duration: 200 }, initParallax());
-                    }, 1000);
-                }, 480);
-
+                initHome();
                 $(this).unbind();
             });
+
+            $('.scroll-me').click(function() {
+                initHome();
+            });
+
         }, 3000);
+
+        function initHome() {
+            setTimeout(function() {
+                setTimeout(function() {
+                    $("body, html").removeClass("disable-scrolling");
+                    TweenMax.to('.scroll-down', 0.2, { ease: Power4.easeOut, y: '0' });
+                }, 4000);
+                TweenMax.staggerTo('.overlay', 1.6, { ease: Power4.easeOut, height: 0 }, 0.3);
+
+                $("#particles-js").fadeOut();
+                $("#design").fadeOut();
+                $("#photography").fadeOut();
+
+                // TweenMax.to('.name', 1, { ease: Power4.easeOut, fontSize: '1.6rem', color: '#424242' });
+                // TweenMax.to($('.name span'), 2, { ease: Power4.easeOut, fontSize: '2.3rem', color: '#424242' });
+                $(".scroll-me").hide();
+
+                setTimeout(function() {
+                    $('#background-svg').fadeIn();
+                    new Vivus('hamburger', { duration: 100 }, initParallax());
+                    new Vivus('background-svg', { duration: 200 }, initParallax());
+                }, 1000);
+            }, 480);
+        };
 
         // Shrink and unload bg
         setTimeout(function() {
@@ -134,7 +168,7 @@ $(document).ready(function() {
         $(this).toggleClass("animate");
     });
 
-    
+
 
     $("a[title]").parent("div").remove();
 
@@ -329,7 +363,7 @@ $(document).ready(function() {
         $(document).mousemove(function(e) {
             $('.laptop').parallax(-30, e);
             $('.mouse').parallax(60, e);
-            $('.scroll-me').parallax(60, e);
+            // $('.scroll-me').parallax(60, e);
         });
     }
 
