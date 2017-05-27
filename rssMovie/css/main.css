@@ -48,9 +48,46 @@ body {
     color: rgba(55, 55, 55, 1);
 }
 
+.breadcrumbs {
+    left: 3.5rem;
+    position: fixed;
+    top: 0;
+    background-color: #fafafa;
+    height: 2.5rem;
+    padding-top: 1rem;
+    width: 100%;
+    z-index: 999999999999;
+}
+
+.breadcrumbs span.breadcrumbs-items {
+    width: 6rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    background-color: #0091EA;
+    border-radius: 3px;
+}
+
+.breadcrumbs span.breadcrumbs-items:not(:last-child):after {
+   content: "\f054";
+    position: absolute;
+    font-family: FontAwesome;
+    font-size: 1rem;
+    padding-left: 1rem;
+    margin-top: 2px;
+    color: #424242;
+}
+
+.breadcrumbs span.breadcrumbs-items a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .content {
     display: flex;
     flex-flow: wrap row;
+    padding-top: 2.5rem;
     padding-left: 4.5rem;
 }
 
@@ -83,6 +120,8 @@ body {
     background-color: #BDBDBD;
     top: 0;
     margin: 0;
+    margin-left: 3.5rem;
+    margin-top: 3.5rem;
     padding: 0;
     transition: all 0.2s ease-in-out;
     z-index: 99999998;
@@ -95,6 +134,7 @@ body {
     height: 3px;
     position: fixed;
     margin: 0;
+    margin-top: 3.5rem;
     top: 0;
     padding: 0;
     transition: all 0.2s ease-in-out;
@@ -111,7 +151,7 @@ body {
     margin: 0;
     pointer-events: none;
     height: 10000px;
-    z-index: 999999999
+    z-index: 999999999999;
 }
 
 .navigate {

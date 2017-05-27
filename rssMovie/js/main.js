@@ -5,28 +5,34 @@ $(document).ready(function() {
     var url = "https://myrss.nu/drama";
     getContent(url);
     putHomeBtn(url);
+    putIntoBreadCrumbs(url, "Home");
     bindHomeBtn();
 });
 
 // $(document).on("", "click", function(e)){}
 function bindClickEvent() {
     $(".content .items").click(function(e) {
-        $(".overlay").fadeIn();
-        $(".progress-bar").css("opacity", "1");
-        $(".progress").css("opacity", "1");
-        $("body").addClass("disable-scrolling");
         // increaseProgress();
         e.preventDefault();
         console.log("clicked");
         var url = $(this).find("a").attr("href");
+        var title = $(this).find("span").text();
 
-        if(url.startsWith("http://hdfree.se")){
-            window.location = url;
-        } else{
+        if (url.startsWith("http://hdfree.se")) {
+            window.open(url);
+        } else {
+            if (!($(this).find("span").text().startsWith("Page"))) {
+                putIntoBreadCrumbs(url, title);
+            }
             getContent(url);
         }
         bindBackBtn();
     });
+}
+
+function putIntoBreadCrumbs(url, title) {
+    $(".breadcrumbs").append("<span class=\"breadcrumbs-items\"><a href=\"" + url + "\">" + title + "</a></span>");
+    bindBreadCrumbsBtn();
 }
 
 function putBackBtn(prevUrl) {
@@ -39,23 +45,61 @@ function putHomeBtn(prevUrl) {
     $(".homeBtn").attr("href", prevUrl);
 }
 
-function bindBackBtn() {
-    $(".backBtn").click(function(e) {
+function pupoluteUrlintoBackBtn() {
+    if ($(".breadcrumbs-items").length >= 2) {
+        var secondLast = $(".breadcrumbs-items").length - 1;
+        var secondLastUrl = $(".breadcrumbs-items:nth-child(" + secondLast + ")").find("a").attr("href");
+        $(".backBtn").attr("href", secondLastUrl);
+    }
+}
+
+function bindBackBtn(url) {
+    $(".backBtn").off().click(function(e) {
         e.preventDefault();
         var prevUrl = $(this).attr("href");
         getContent(prevUrl);
+        $(".breadcrumbs-items:last-child").remove();
     });
+
 }
 
 function bindHomeBtn() {
-    $(".homeBtn").click(function(e) {
+    $(".homeBtn").off().click(function(e) {
         e.preventDefault();
         var prevUrl = $(this).attr("href");
         getContent(prevUrl);
+        $(".breadcrumbs-items:not(:first-child)").remove();
+    });
+}
+
+function bindBreadCrumbsBtn() {
+    $(".breadcrumbs span a").off().click(function(e) {
+        e.preventDefault();
+        var url = $(this).attr("href");
+        getContent(url);
+
+        if ($(this).parent(".breadcrumbs-items").is(":first-child")) {
+             $(".breadcrumbs-items:not(:first-child)").remove();
+        } else {
+            var currentIndex = $(this).parent(".breadcrumbs-items").index();
+            $(".breadcrumbs-items").each(function(index) {
+                if (currentIndex < index) {
+                    // var newIndex = index + 1;
+                    $(".breadcrumbs-items")[index].remove();
+                }
+            });
+        }
     });
 }
 
 function getContent(url) {
+    $(".overlay").fadeIn();
+    $(".progress-bar").css("opacity", "1");
+    $(".progress").css("opacity", "1");
+    $("body").addClass("disable-scrolling");
+
+    pupoluteUrlintoBackBtn();
+
     // Compile content
     var source = $("#content-template").html();
     var template = Handlebars.compile(source);
