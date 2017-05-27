@@ -77,11 +77,32 @@ body {
 }
 
 .breadcrumbs span.breadcrumbs-items:first-child {
+    font-size: 0;
     margin-left: 0;
-    background-color: #2962FF;
     border-radius: 0;
     padding: 1.2rem;
-    margin-right: 0;
+}
+
+.breadcrumbs span.breadcrumbs-items:first-child:before {
+    content: "\f015";
+    position: absolute;
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+    top: 0.8rem;
+    left: 1rem;
+    z-index: 2;
+}
+
+.breadcrumbs span.breadcrumbs-items:first-child:after {
+    content: "";
+    position: absolute;
+    width: 3.5rem;
+    height: 3.3rem;
+    top: 0;
+    left: 0;
+    background-color: #2962FF;
+    z-index: 1;
 }
 
 .breadcrumbs span.breadcrumbs-items:first-child:after {

@@ -5,7 +5,7 @@ $(document).ready(function() {
     var url = "https://myrss.nu/drama";
     getContent(url);
     putHomeBtn(url);
-    putIntoBreadCrumbs(url, "<i class=\"fa fa-home\" aria-hidden=\"true\"></i>");
+    putIntoBreadCrumbs(url, "Home");
     bindHomeBtn();
     $(".backBtn").hide();
 });
