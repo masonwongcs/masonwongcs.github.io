@@ -5,8 +5,9 @@ $(document).ready(function() {
     var url = "https://myrss.nu/drama";
     getContent(url);
     putHomeBtn(url);
-    putIntoBreadCrumbs(url, "Home");
+    putIntoBreadCrumbs(url, "<i class=\"fa fa-home\" aria-hidden=\"true\"></i>");
     bindHomeBtn();
+    $(".backBtn").hide();
 });
 
 // $(document).on("", "click", function(e)){}
@@ -55,6 +56,7 @@ function pupoluteUrlintoBackBtn() {
 
 function bindBackBtn(url) {
     $(".backBtn").off().click(function(e) {
+        e.stopImmediatePropagation();
         e.preventDefault();
         var prevUrl = $(this).attr("href");
         getContent(prevUrl);
@@ -73,15 +75,15 @@ function bindHomeBtn() {
 }
 
 function bindBreadCrumbsBtn() {
-    $(".breadcrumbs span a").off().click(function(e) {
+    $(".breadcrumbs span").off().click(function(e) {
         e.preventDefault();
-        var url = $(this).attr("href");
+        var url = $(this).find("a").attr("href");
         getContent(url);
 
-        if ($(this).parent(".breadcrumbs-items").is(":first-child")) {
-             $(".breadcrumbs-items:not(:first-child)").remove();
+        if ($(this).find("a").parent(".breadcrumbs-items").is(":first-child")) {
+            $(".breadcrumbs-items:not(:first-child)").remove();
         } else {
-            var currentIndex = $(this).parent(".breadcrumbs-items").index();
+            var currentIndex = $(this).find("a").parent(".breadcrumbs-items").index();
             $(".breadcrumbs-items").each(function(index) {
                 if (currentIndex < index) {
                     // var newIndex = index + 1;
@@ -98,11 +100,18 @@ function getContent(url) {
     $(".progress").css("opacity", "1");
     $("body").addClass("disable-scrolling");
 
+    $(".backBtn").show();
+
     pupoluteUrlintoBackBtn();
 
     // Compile content
     var source = $("#content-template").html();
     var template = Handlebars.compile(source);
+
+    // Compile content
+    var sourceOnlyOne = $("#content-template-only-one").html();
+    var templateOnlyOne = Handlebars.compile(sourceOnlyOne);
+
 
     // find some demo xml - DuckDuckGo is great for this
     var xmlSource = url;
@@ -171,11 +180,24 @@ function getContent(url) {
         $(".progress-bar").css("opacity", "0");
         $(".progress").css("opacity", "0");
 
-        var html = template(jsonObj.rss.channel);
+        if (jsonObj.rss.channel.item.length > 1) {
+            var html = template(jsonObj.rss.channel);
+        } else {
+            var html = templateOnlyOne(jsonObj.rss.channel.item);
+        }
+
+
         $(".content").html(html);
         bindClickEvent();
         nextPrevBtn();
         replaceAmp();
+        imgReplace();
+        overrideBrowserBack();
+
+
+        if ($(".breadcrumbs-items").length == 1) {
+            $(".backBtn").hide();
+        }
     });
 }
 
@@ -227,4 +249,51 @@ function setPrevNext() {
         }
 
     }
+}
+
+function imgReplace() {
+    $(".items").each(function() {
+
+        if($(this).find("img").attr("src").endsWith("play3.png")){
+            $(this).find("img").attr("src", "img/play.svg");
+        }
+
+        if ($(this).find("span").text().startsWith("Hong Kong Drama")) {
+            $(this).find("img").attr("src", "img/hkdrama.png");
+        } else if ($(this).find("span").text().startsWith("Hong Kong Shows")) {
+            $(this).find("img").attr("src", "img/hkshow.png");
+        } else if ($(this).find("span").text().startsWith("Hong Kong Movies")) {
+            $(this).find("img").attr("src", "img/hkmovie.png");
+        } else if ($(this).find("span").text().startsWith("Korean Shows")) {
+            $(this).find("img").attr("src", "img/koreashow.png");
+        } else if ($(this).find("span").text().startsWith("Korean Movies")) {
+            $(this).find("img").attr("src", "img/koreamovie.png");
+        } else if ($(this).find("span").text().startsWith("Korean Drama")) {
+            $(this).find("img").attr("src", "img/koreadrama.png");
+        } else if ($(this).find("span").text().startsWith("Recently Updated")) {
+            $(this).find("img").attr("src", "img/recent.png");
+        } else if ($(this).find("span").text().startsWith("Chinese Drama")) {
+            $(this).find("img").attr("src", "img/chinadrama.png");
+        } else if ($(this).find("span").text().startsWith("Chinese Shows")) {
+            $(this).find("img").attr("src", "img/chinashow.png");
+        } else if ($(this).find("span").text().startsWith("Chinese Movies")) {
+            $(this).find("img").attr("src", "img/chinamovie.png");
+        }else if ($(this).find("span").text().startsWith("Japanese Drama")) {
+            $(this).find("img").attr("src", "img/japandrama.png");
+        } else if ($(this).find("span").text().startsWith("Japanese Movies")) {
+            $(this).find("img").attr("src", "img/japanmovie.png");
+        }
+    });
+}
+
+function overrideBrowserBack(){
+    if (window.history && window.history.pushState) {
+
+    window.history.pushState('forward', null, './#');
+
+    $(window).on('popstate', function() {
+        $(".breadcrumbs span:first-child").trigger("click");
+    });
+
+  }
 }

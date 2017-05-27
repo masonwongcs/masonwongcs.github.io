@@ -8,6 +8,7 @@
     <meta name="author" content="Mason Wong">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- <meta content='width=device-width, maximum-scale=0.4, user-scalable=0' name='viewport' /> -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -20,10 +21,11 @@
     </div>
     <div class="breadcrumbs">
     </div>
-    <div class="left-panel">
-        <a class="btn homeBtn" href="javascript:void(0)">Home</a>
-        <a class="btn backBtn" href="javascript:void(0)">Back</a>
-    </div>
+    <!-- <a class="btn backBtn" href="javascript:void(0)">Back</a> -->
+    <!-- <div class="left-panel"> -->
+        <!-- <a class="btn homeBtn" href="javascript:void(0)">Home</a> -->
+        
+    <!-- </div> -->
     <!-- <div class="overlay"></div> -->
     </svg>
     <div class="overlay"></div>
@@ -34,11 +36,20 @@
 <script id="content-template" type="text/x-handlebars-template">
     {{#each item}}
     <div class="items">
-        <div class="img">{{{description}}}</div>
+        <div class="img">
+            {{{description}}}
+        </div>
         <span>{{title}}</span>
         <a href="{{enclosure._url}}" />
     </div>
     {{/each}}
+</script>
+<script id="content-template-only-one" type="text/x-handlebars-template">
+    <div class="items">
+        <div class="img">{{{description}}}</div>
+        <span>{{title}}</span>
+        <a href="{{enclosure._url}}" />
+    </div>
 </script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
