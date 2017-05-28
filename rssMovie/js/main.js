@@ -87,7 +87,7 @@ function bindBreadCrumbsBtn() {
             $(".breadcrumbs-items").each(function(index) {
                 if (currentIndex < index) {
                     // var newIndex = index + 1;
-                    $(".breadcrumbs-items")[index].remove();
+                    $(".breadcrumbs-items")[currentIndex + 1].remove();
                 }
             });
         }
