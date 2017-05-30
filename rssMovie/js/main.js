@@ -158,8 +158,9 @@ function getContent(url) {
         dataType: "jsonp",
         type: 'GET',
         async: true,
-        user-agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
-
+        headers: {"User-Agent": "user-agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
+"}
+        
         // data: {
         //     "rss_url": url,
         //     "api_key": "xm1lxzp3eidynkzud6jmqlowtahpvw2prqwhehnz"
