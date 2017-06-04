@@ -2,7 +2,8 @@ $(document).ready(function() {
     $(".progress-bar").css("opacity", "1");
     $(".progress").css("opacity", "1");
     // var url = "https%3A%2F%2Fmyrss.nu%2Fdrama";
-    var url = "https://myrss.nu/drama";
+    // var url = "https://myrss.nu/drama";
+    var url = "http://irss.se/dramas/";
     getContent(url);
     putHomeBtn(url);
     putIntoBreadCrumbs(url, "Home");
@@ -19,7 +20,7 @@ function bindClickEvent() {
         var url = $(this).find("a").attr("href");
         var title = $(this).find("span").text();
 
-        if (url.startsWith("http://hdfree.se")) {
+        if (!(url.startsWith("http://irss.se")) && !(url.startsWith("http://videobug.se"))) {
             window.open(url);
         } else {
             if (!($(this).find("span").text().startsWith("Page"))) {
@@ -158,8 +159,9 @@ function getContent(url) {
         dataType: "jsonp",
         type: 'GET',
         async: true,
-        headers: {"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"}
-        
+        beforeSend: function (req) {
+            req.setRequestHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1');
+        }
         // data: {
         //     "rss_url": url,
         //     "api_key": "xm1lxzp3eidynkzud6jmqlowtahpvw2prqwhehnz"
@@ -255,23 +257,23 @@ function setPrevNext() {
 function imgReplace() {
     $(".items").each(function() {
 
-        if($(this).find("img").attr("src").endsWith("play3.png")){
+        if($(this).find("img").attr("src").endsWith("play.png")){
             $(this).find("img").attr("src", "img/play.svg");
         }
 
-        if ($(this).find("span").text().startsWith("Hong Kong Drama")) {
+        if ($(this).find("span").text().startsWith("HK Drama")) {
             $(this).find("img").attr("src", "img/hkdrama.png");
-        } else if ($(this).find("span").text().startsWith("Hong Kong Shows")) {
+        } else if ($(this).find("span").text().startsWith("HK Variety & News")) {
             $(this).find("img").attr("src", "img/hkshow.png");
         } else if ($(this).find("span").text().startsWith("Hong Kong Movies")) {
             $(this).find("img").attr("src", "img/hkmovie.png");
-        } else if ($(this).find("span").text().startsWith("Korean Shows")) {
+        } else if ($(this).find("span").text().startsWith("Korean Variety")) {
             $(this).find("img").attr("src", "img/koreashow.png");
         } else if ($(this).find("span").text().startsWith("Korean Movies")) {
             $(this).find("img").attr("src", "img/koreamovie.png");
         } else if ($(this).find("span").text().startsWith("Korean Drama")) {
             $(this).find("img").attr("src", "img/koreadrama.png");
-        } else if ($(this).find("span").text().startsWith("Recently Updated")) {
+        } else if ($(this).find("span").text().startsWith("Recently")) {
             $(this).find("img").attr("src", "img/recent.png");
         } else if ($(this).find("span").text().startsWith("Chinese Drama")) {
             $(this).find("img").attr("src", "img/chinadrama.png");
