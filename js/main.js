@@ -35,12 +35,12 @@ $(document).ready(function() {
             $(".filter-wrapper").stick_in_parent();
 
             // Content hover animation
-            $(".content").hover(function() {
-                TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 1, y: '-20px' });
-                // $(this).find("figure figcaption").fadeToggle();
-            }, function() {
-                TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 0, y: '20px' });
-            });
+            // $(".content").hover(function() {
+            //     TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 1, y: '-20px', x: '-100%' });
+            //     // $(this).find("figure figcaption").fadeToggle();
+            // }, function() {
+            //     TweenMax.to($(this).find("figure figcaption"), 0.2, { opacity: 0, y: '20px', x: '-100%' });
+            // });
 
             $(".content").click(function() {
                 var img = $(this).find("img");

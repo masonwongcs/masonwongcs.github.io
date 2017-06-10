@@ -1,5 +1,4 @@
-    @font-face {
-
+@font-face {
     font-family: Biko-Bold;
     src: url(../fonts/Biko_Bold.otf);
 }
@@ -10,9 +9,10 @@
 }
 
 @font-face {
-     font-family: Biko-Regular;
+    font-family: Biko-Regular;
     src: url(../fonts/Biko_Regular.otf);
 }
+
 html,
 body {
     margin: 0px;
@@ -34,27 +34,28 @@ body {
     z-index: 99999999999;
 }
 
-.strech-window .left{
+.strech-window .left {
     animation: left 1s infinite alternate;
 }
 
-.strech-window .right{
+.strech-window .right {
     animation: right 1s infinite alternate;
 }
 
-@keyframes left{
-    0%{
+@keyframes left {
+    0% {
         transform: translateX(1rem);
     }
-    100%{
+    100% {
         transform: translateX(0);
     }
 }
-@keyframes right{
-    0%{
+
+@keyframes right {
+    0% {
         transform: translateX(-1rem);
     }
-    100%{
+    100% {
         transform: translateX(0);
     }
 }
@@ -101,34 +102,37 @@ body {
 
 
 /*.overlay:nth-child(1) {
-    position: absolute;
-    background: #188bd8;
-    background: -webkit-linear-gradient(to right, #00c6ff, #188bd8);
-    background: linear-gradient(to right, #00c6ff, #188bd8);
-    transform: translateX(-11rem) skewX(-23deg);
-    margin: auto;
-    width: 0;
-    height: 100%;
-    float: left;
-    z-index: 99999999;
-    box-shadow: 3px 4px 13px rgba(55, 55, 55, 0.2);
+position: absolute;
+background: #188bd8;
+background: -webkit-linear-gradient(to right, #00c6ff, #188bd8);
+background: linear-gradient(to right, #00c6ff, #188bd8);
+transform: translateX(-11rem) skewX(-23deg);
+margin: auto;
+width: 0;
+height: 100%;
+float: left;
+z-index: 99999999;
+box-shadow: 3px 4px 13px rgba(55, 55, 55, 0.2);
 }*/
 
+
 /*.overlay:nth-child(2) {
-    position: absolute;
-    background-color: #0b7dc9;
-    transform: translateX(-63rem) skewX(-69deg);
-    margin: auto;
-    width: 0;
-    height: 100%;
-    float: left;
-    z-index: 99999998;
-    box-shadow: 3px 4px 13px rgba(55, 55, 55, 0.2);
+position: absolute;
+background-color: #0b7dc9;
+transform: translateX(-63rem) skewX(-69deg);
+margin: auto;
+width: 0;
+height: 100%;
+float: left;
+z-index: 99999998;
+box-shadow: 3px 4px 13px rgba(55, 55, 55, 0.2);
 }*/
 
 .overlay:nth-child(1) {
     position: absolute;
     background-color: #3498db;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
     /*top: 0;*/
     /*right: 0;*/
     /*bottom: 0;*/
@@ -143,6 +147,8 @@ body {
 .overlay:nth-child(2) {
     position: absolute;
     background-color: #424242;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
     /*top: 0;*/
     /*right: 0;*/
     /*bottom: 0;*/
@@ -157,7 +163,7 @@ body {
 .scroll-me {
     cursor: pointer;
     position: absolute;
-    transform: translateY(50%) rotate(45deg) ;
+    transform: translateY(50%) rotate(45deg);
     width: 4rem;
     left: 0;
     right: 0;
@@ -167,7 +173,7 @@ body {
     background-color: #424242;
     /*border-radius: 50%;*/
     z-index: 999999999;
-    transition: -webkit-transform 300ms cubic-bezier(0.175,0.885,0.32,1.275);  
+    transition: -webkit-transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .scroll-me:hover {
@@ -189,26 +195,26 @@ body {
     border-radius: 5rem;
 }
 
-a#go-home{
+a#go-home {
     text-decoration: none;
     color: #000;
     font-size: 0;
     color: transparent;
 }
 
-a#go-home:before{
+a#go-home:before {
     content: "\f137";
     position: absolute;
     font-family: FontAwesome;
     font-size: 2.5rem;
-    color: rgba(55,55,55,0.5);
+    color: rgba(55, 55, 55, 0.5);
     top: 2rem;
     left: 2.5rem;
     transition: all 0.2s ease-in-out;
 }
 
-a#go-home:hover:before{
-    color: rgba(55,55,55,0.8);
+a#go-home:hover:before {
+    color: rgba(55, 55, 55, 0.8);
 }
 
 #go-home:hover .four-o-four-text {
@@ -224,23 +230,22 @@ a#go-home:hover:before{
 }
 
 .four-o-four {
-    color: rgba(55,55,55,0.8);
+    color: rgba(55, 55, 55, 0.8);
     font-family: Menlo;
     position: absolute;
     top: 30%;
     left: 5%;
 }
 
-.four-o-four h3{
+.four-o-four h3 {
     font-size: 7rem;
     margin: 0;
 }
 
-.four-o-four h4{
+.four-o-four h4 {
     font-size: 1.5em;
     margin: 0;
 }
-
 
 .four-o-four-text {
     display: none;
@@ -255,7 +260,7 @@ a#go-home:hover:before{
     animation: zoomInOut 1s infinite alternate;
 }
 
-.error{
+.error {
     overflow: hidden;
 }
 
@@ -426,7 +431,7 @@ a#go-home:hover:before{
 
 
 /*svg.square g rect{
-  animation: bnw-color-fill 12s infinite alternate;
+animation: bnw-color-fill 12s infinite alternate;
 }*/
 
 svg.square g:nth-child(1) rect {
@@ -491,8 +496,8 @@ svg.square g:nth-child(10) rect {
 
 
 /*.hamburger-icon:hover{
-  stroke-dasharray: 100;
-  animation: dash-line 5s linear;
+stroke-dasharray: 100;
+animation: dash-line 5s linear;
 }*/
 
 .hamburger-expand-up {
@@ -546,11 +551,11 @@ svg.square g:nth-child(10) rect {
 
 
 /*.drawer-open {
-    transform: perspective(5000px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 4deg);
-    box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
-    -webkit-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
-    -moz-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
-    -o-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
+transform: perspective(5000px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 4deg);
+box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
+-webkit-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
+-moz-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
+-o-box-shadow: 0px 0px 25px 5px rgba(66, 66, 66, 0.48);
 }*/
 
 .nav-open {
@@ -694,17 +699,17 @@ svg.square g:nth-child(10) rect {
 
 
 /*.drawer-item.resume  ul:not(.skill-set) li:first-child:before{
-  content: "";
-  width: 30%;
-  float: right;
-  position: absolute;
-  border-bottom: 0.2rem solid rgba(0,0,0,0.1);
+content: "";
+width: 30%;
+float: right;
+position: absolute;
+border-bottom: 0.2rem solid rgba(0,0,0,0.1);
 }
 
 .drawer-item.resume h3{
-  color: #3498db;
-  text-transform: uppercase;
-  font-size: 1rem;
+color: #3498db;
+text-transform: uppercase;
+font-size: 1rem;
 }*/
 
 .drawer-item.resume ul .progress-bar {
@@ -720,10 +725,10 @@ svg.square g:nth-child(10) rect {
 
 
 /*.progress-bar:after {
-    content: attr(data-value)"%";
-    display: block;
-    float: right;
-    margin-top: -1.5rem;
+content: attr(data-value)"%";
+display: block;
+float: right;
+margin-top: -1.5rem;
 }*/
 
 
@@ -828,14 +833,14 @@ progress::-moz-progress-bar {
 
 
 /*.drawer-item.experience .job-title:before{
-  content: "";
-  display: block;
-  width: 40%;
-  padding-top: 14px;
-  margin-right: -1rem;
-  float: right;
-  border-bottom: 2px solid rgba(33,33,33,0.25);
-  position: absolute;
+content: "";
+display: block;
+width: 40%;
+padding-top: 14px;
+margin-right: -1rem;
+float: right;
+border-bottom: 2px solid rgba(33,33,33,0.25);
+position: absolute;
 }*/
 
 .drawer-item.experience .job-title:after {
@@ -1121,8 +1126,8 @@ progress::-moz-progress-bar {
 
 .logo-wrapper {
     /* position: absolute;
-  top: 40%;
-  left: 42%;*/
+top: 40%;
+left: 42%;*/
     margin: auto;
     width: 200px;
     padding-top: 15%;
@@ -1169,7 +1174,7 @@ progress::-moz-progress-bar {
     /*animation: bnw-text-color 13s infinite alternate;*/
 }
 
-.header .name #photography{
+.header .name #photography {
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     /*font-size: 1.8rem;*/
@@ -1185,7 +1190,6 @@ progress::-moz-progress-bar {
     color: #fff;
     z-index: 99999999;
     opacity: 0;
-
 }
 
 .header .name span {
@@ -1197,19 +1201,19 @@ progress::-moz-progress-bar {
 
 
 /*.header .name span:before {
-    transition: all 1s ease-in-out;
-    content: "";
-    width: 0%;
+transition: all 1s ease-in-out;
+content: "";
+width: 0%;
 }
 
 .header .name span:hover:before {
-    content: "";
-    width: 61%;
-    right: 0;
-    bottom: -7px;
-    height: 0.25rem;
-    position: absolute;
-    animation: bnw-text-color-line 4s infinite alternate;
+content: "";
+width: 61%;
+right: 0;
+bottom: -7px;
+height: 0.25rem;
+position: absolute;
+animation: bnw-text-color-line 4s infinite alternate;
 }*/
 
 .header .name.animate span.m {
@@ -1387,14 +1391,16 @@ progress::-moz-progress-bar {
     width: 100%;
     height: 3rem;
     padding: 1rem 0 1rem;
-    background-color: #fafafa;
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 400;
     /*box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
-    -webkit-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
-    -moz-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
-    -o-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);*/
+-webkit-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
+-moz-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);
+-o-box-shadow: 0px 5px 10px 0px rgba(66, 66, 66, 0.48);*/
     z-index: 2;
 }
 
@@ -1411,7 +1417,6 @@ li.filter-item {
     cursor: pointer;
     width: 31.66%;
     height: 3.5rem;
-    background-color: #fafafa;
     transition: all 160ms ease-in-out;
 }
 
@@ -1450,6 +1455,7 @@ a.filter {
 
 .content {
     background-color: #424242;
+    position: relative;
     width: 50%;
     height: 400px;
     overflow: hidden;
@@ -1493,8 +1499,8 @@ a.filter {
 
 .content figure img {
     /*  width: 100%;
-  height: 100%;
-  vertical-align: middle;*/
+height: 100%;
+vertical-align: middle;*/
     margin: auto;
     /* Magic! */
     max-width: 100%;
@@ -1510,16 +1516,24 @@ a.filter {
     text-align: center;
     text-transform: uppercase;
     position: absolute;
-    padding-top: 10%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 32%;
     padding-bottom: 10%;
     /* Enable this on Safari */
-    /*transform: translateX(-100%);*/
     word-wrap: all;
     opacity: 0;
-    width: 35%;
+    width: 100%;
     color: #424242;
     transition: all 0.6s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.content:hover figure figcaption {
+    transform: translateY(-20px);
+    opacity: 1;
 }
 
 .content[data-type="photography"] figure figcaption {
@@ -1558,7 +1572,7 @@ a.filter {
     right: 0;
     position: absolute;
     font-size: 0.7rem;
-    top: 65%;
+    top: 63%;
     margin: auto;
 }
 
@@ -1574,17 +1588,18 @@ a.filter {
 
 
 /*.content figure figcaption:before{
-  content: "";
-  background-color: #fafafa;
-  width: 100%;
-  display: block;
-  height: 4rem;
+content: "";
+background-color: #fafafa;
+width: 100%;
+display: block;
+height: 4rem;
 }
 */
 
 .content figure .desc-text {
     display: none;
 }
+
 
 /* Overiding Sweet Modal CSS*/
 
@@ -1610,8 +1625,8 @@ a.filter {
 
 .sweet-modal-content figure img {
     /*  width: 100%;
-  height: 100%;
-  vertical-align: middle;*/
+height: 100%;
+vertical-align: middle;*/
     margin: auto;
     /* Magic! */
     max-width: 100%;
@@ -1630,14 +1645,14 @@ a.filter {
     padding-bottom: 2rem;
 }
 
-.sweet-modal-content .link-to-website{
+.sweet-modal-content .link-to-website {
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.5rem;
     font-size: 0.75rem;
     line-height: 2rem;
     border-radius: 4px;
-    background-color: rgba(55,55,55,0.8);
+    background-color: rgba(55, 55, 55, 0.8);
     color: #fff;
 }
 
@@ -1646,7 +1661,7 @@ a.filter {
     color: transparent;
 }
 
-.sweet-modal-content .download-from-appstore:before{
+.sweet-modal-content .download-from-appstore:before {
     content: "";
     position: absolute;
     width: 135px;
@@ -1740,18 +1755,19 @@ a.filter {
     }
 }
 
-@media screen and (max-width: 1024px){
-    .main-wrapper, .overlay, .scroll-me, .sweet-modal-overlay {
+@media screen and (max-width: 1024px) {
+    .main-wrapper,
+    .overlay,
+    .scroll-me,
+    .sweet-modal-overlay {
         filter: blur(1rem);
         overflow: hidden;
         pointer-events: none;
     }
-
-    body{
+    body {
         overflow: hidden;
     }
-
-    .strech-window{
+    .strech-window {
         display: block;
     }
 }
@@ -1763,7 +1779,6 @@ a.filter {
 /* Portrait */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
-
     .is_stuck {
         position: fixed !important;
     }
