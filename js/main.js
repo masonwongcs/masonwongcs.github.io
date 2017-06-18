@@ -43,6 +43,7 @@ $(document).ready(function() {
             // });
 
             $(".content").click(function() {
+
                 var img = $(this).find("img");
                 var content = "";
                 if (img.length > 1) {
@@ -70,6 +71,12 @@ $(document).ready(function() {
 
                 $.sweetModal({
                     content: content
+                });
+
+                $(".main-wrapper .main-content ,.header ,.footer").addClass("blur");
+
+                $(".sweet-modal-close-link").click(function() {
+                    $(".main-wrapper .main-content ,.header ,.footer").removeClass("blur");
                 });
             });
         });
