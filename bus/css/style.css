@@ -16,6 +16,21 @@ html, body {
 	}
 }
 
+@keyframes scale{
+	0% {
+		transform: scale(1);
+		opacity: 0;
+	}
+	50%{
+		transform: scale(5);
+		opacity: 1;
+	}
+	100%{
+		transform: scale(10);
+		opacity: 0;
+	}
+}
+
 .loading{
 	position: fixed;
 	height: calc(100% - 4rem);
@@ -27,6 +42,35 @@ html, body {
 	background-color: rgba(55,55,55,0.5);
 	transition: all 0.2s ease-in-out;
 	z-index: 99999;
+}
+.loading:before{
+	content: "";
+	width: 4rem;
+	height: 4rem;
+	background-color: rgba(255,255,255,0.4);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: 50%;
+	margin: auto;
+	animation: scale 1s linear infinite;
+}
+
+.loading:after{
+	content: "";
+	width: 7rem;
+	height: 7rem;
+	background-color: rgba(255,255,255,0.4);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: 50%;
+	margin: auto;
+	animation: scale 2s linear infinite;
 }
 
 .loading.show{
@@ -67,6 +111,7 @@ html, body {
 	box-sizing: border-box;
 	padding: 0.5rem 1.5rem;
 	font-size: 1.5rem;
+	font-weight: bold;
 	border-radius: 5rem;
 	transition: border-radius 200ms ease-in-out;
 	box-shadow: 0 1rem 3rem rgba(55,55,55,0.2);
@@ -98,9 +143,9 @@ html, body {
 .extra-info {
     width: 100%;
     position: fixed;
-    top: 4rem;
+    top: 0;
     left: 0;
-    height: calc(100% - 4rem);
+    height: 100%;
     transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
     opacity: 0;
     z-index: 999;
@@ -119,9 +164,23 @@ html, body {
     -webkit-margin-collapse: collapse;
     transition: height 400ms ease-in-out;
     position: relative;
+    overflow: hidden;
     /*animation: zoomIn linear forwards;*/
 }
-.bus:before {
+
+.bus.coming:before{
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #2ecc71;
+    position: absolute;
+    right: 0;
+    top: 1.5rem;
+    animation: scale 1s linear infinite;
+}
+
+.bus .info:before {
 	content: "\f054";
 	font-family: FontAwesome;
 	font-size: 1rem;
