@@ -10,7 +10,7 @@
 	height: 10rem;
 	position: relative;
 	transition: transform 400ms ease-in-out;
-	transform: translate3d(0,40vh,0) scale(0.9);
+	/*transform: translate3d(0,40vh,0) scale(0.9);*/
 }
 
 .submit-input.focus{
@@ -21,12 +21,21 @@
 	outline: none;
 	border: 0;
 	background-color: #fff;
-	width: 100%;
-	height: 100%;
+	/*width: 100%;*/
+	/*height: 100%;*/
 	box-sizing: border-box;
 	padding: 0.5rem 1.5rem;
 	font-size: 3rem;
 	box-shadow: 0 1rem 3rem rgba(55,55,55,0.2);
+	width: 100%;
+	height: 10rem;
+	position: relative;
+	transition: transform 400ms ease-in-out;
+	transform: translate3d(0,40vh,0) scale(0.9);
+}
+
+.submit-input input.focus{
+	transform: translate3d(0,0,0) scale(1);
 }
 
 .submit-input .submit{
