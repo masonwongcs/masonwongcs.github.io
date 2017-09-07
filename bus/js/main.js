@@ -27,15 +27,15 @@ $(document).ready(function(){
 
   function bindFocusEvent(){
     $(".bus-id").focus(function(){
-      $(this).addClass("focus");
+      $(this).parent(".submit-input").addClass("focus");
     });
 
     $(".bus-id").blur(function(){
       $(".submit").click(function(){
-        $(this).addClass("focus");
+        $(this).parent(".submit-input").addClass("focus");
       });
       if($(".result").is(':empty')){
-        $(this).removeClass("focus");
+        $(this).parent(".submit-input").removeClass("focus");
       }
     });
   }

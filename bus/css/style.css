@@ -10,7 +10,7 @@
 	height: 10rem;
 	position: relative;
 	transition: transform 400ms ease-in-out;
-	/*transform: translate3d(0,40vh,0) scale(0.9);*/
+	transform: translate3d(0,5%,0) scale(0.9);
 }
 
 .submit-input.focus{
@@ -21,23 +21,17 @@
 	outline: none;
 	border: 0;
 	background-color: #fff;
-	/*width: 100%;*/
-	/*height: 100%;*/
+	width: 100%;
+	height: 100%;
 	box-sizing: border-box;
 	padding: 0.5rem 1.5rem;
 	font-size: 3rem;
+	border-radius: 5rem;
+	transition: border-radius 200ms ease-in-out;
 	box-shadow: 0 1rem 3rem rgba(55,55,55,0.2);
-	width: 100%;
-	height: 10rem;
-	position: relative;
-	transition: transform 400ms ease-in-out;
-	transform: translate3d(0,40vh,0) scale(0.9);
-	text-shadow: rgba(0,0,0,0) 0px 0px 0px;
 }
-
-.submit-input input.focus{
-	transform: translate3d(0,0,0) scale(1);
-	text-shadow: none;
+.submit-input.focus input{
+	border-radius: 0;
 }
 
 .submit-input .submit{
@@ -51,10 +45,13 @@
 	top: 0;
 	right: 0;
 	font-size: 0;
-	background-color: #3498db;
-	/*mask: url(../img/magnifier.svg) 80% 80% no-repeat;	*/
-	background: url(../img/magnifier.svg) no-repeat center;
-	background-size: 80% 80%;
+	background-color: #424242;
+}
+
+.submit-input .submit .search-btn{
+	width: 50%;
+	height: 50%;
+	fill: #fff;
 }
 
 .map {
