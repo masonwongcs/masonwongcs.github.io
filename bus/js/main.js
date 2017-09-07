@@ -15,7 +15,7 @@ $(document).ready(function(){
 		}).done(function(data){
 			console.log(data);
 			for(var i=0; i< data.services.length;i++){
-				data.services[i].next.duration_min = Math.floor(data.services[i].next.duration_ms/1000/60)
+				data.services[i].next.duration_min = (data.services[i].next.duration_ms/1000/60).toFixed(0)
 			}
 			$(".result").html(template(data));
 			for(var i=0; i< data.services.length;i++){
@@ -26,6 +26,11 @@ $(document).ready(function(){
 	});
 
   function bindFocusEvent(){
+
+    $(document).on("click", ".bus", function(){
+      $(this).toggleClass("active");
+    });
+
     $(".bus-id").focus(function(){
       $(this).parent(".submit-input").addClass("focus");
     });
