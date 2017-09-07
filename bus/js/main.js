@@ -3,6 +3,9 @@ $(document).ready(function(){
 	var source   = $("#bus-template").html();
 	var template = Handlebars.compile(source);
 
+
+  bindFocusEvent();
+
 	$(".submit").click(function(){
 
 		var currentBus = $(".bus-id").val();
@@ -12,7 +15,7 @@ $(document).ready(function(){
 		}).done(function(data){
 			console.log(data);
 			for(var i=0; i< data.services.length;i++){
-				data.services[i].next.duration_min = Math.floor(data.services[i].next.duration_ms/1000/60)
+				data.services[i].next.duration_min = (data.services[i].next.duration_ms/1000/60).toFixed(0)
 			}
 			$(".result").html(template(data));
 			for(var i=0; i< data.services.length;i++){
@@ -21,6 +24,26 @@ $(document).ready(function(){
 
 		})
 	});
+
+  function bindFocusEvent(){
+
+    $(document).on("click", ".bus", function(){
+      $(this).toggleClass("active");
+    });
+
+    $(".bus-id").focus(function(){
+      $(this).parent(".submit-input").addClass("focus");
+    });
+
+    $(".bus-id").blur(function(){
+      $(".submit").click(function(){
+        $(this).parent(".submit-input").addClass("focus");
+      });
+      if($(".result").is(':empty')){
+        $(this).parent(".submit-input").removeClass("focus");
+      }
+    });
+  }
 
 	function showMap(lat,lng, bus){
 		console.log("into");
@@ -55,26 +78,6 @@ $(document).ready(function(){
         var infowindow = new google.maps.InfoWindow({
           content: '<p>Marker Location:' + marker.getPosition() + '</p>'
         });
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
 
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.open(map, marker);
