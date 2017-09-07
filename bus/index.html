@@ -15,7 +15,8 @@
 
 		<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="./css/style.css" type="text/css"/>
-		<link rel="index" title="" href="" />
+		<link rel="index" title="Bus" href="" />
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 		<!--[if lt IE 9 ]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -45,6 +46,7 @@
 					</svg>
 				</button>
 			</div>
+			<div class="loading"></div>
 			<div class="result"></div>
 		</div>
 	</body>
@@ -54,10 +56,17 @@
 			<div class="bus">
 		    	<div class="info">
 		    		<span class="bus-no">{{no}}</span>
-		    		<span class="next-duration">{{next.duration_min}}</span>
+		    		<span class="next-duration {{next.status}}">{{next.duration_min}}</span>
 		    		<div class="extra-info">
+		    			<div class="nav">
+		    				<span class="back">Back</span>
+		    				<span class="bus-no">{{no}}</span>
+		    				<span class="next-duration {{next.status}}">{{next.duration_min}}</span>
+		    			</div>
 		    			<div class="map" id="bus-{{no}}"></div>
-		    			<a href="http://maps.google.com/maps?q={{next.lat}},{{next.lng}}">With Markers</a>
+		    			<div class="open-in-maps">
+		    				<a href="http://maps.google.com/maps?q={{next.lat}},{{next.lng}}">Open in Maps</a>
+		    			</div>
 						<!-- <a href="comgooglemaps://?center={{next.lat}},{{next.lng}}&zoom=14&views=traffic">Click here iOS</a> -->
 					    <!-- <a href="geo:{{next.lat}},{{next.lng}}">Click here to open in maps</a> -->
 		    		</div>
