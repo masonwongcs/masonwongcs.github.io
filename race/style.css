@@ -141,7 +141,7 @@ body {
 
 .content > div:not(.active){
 	transform: translate3d(100%,0,0) scale(0);
-	opacity: 0;
+	/*opacity: 0;*/
 }
 
 .container {
@@ -1674,7 +1674,7 @@ body {
 }
 
 .component-wrapper .menu ul li.active {
-	border-top: 3px solid #f2665e;
+	/*border-top: 3px solid #f2665e;*/
 	background: #e2461b;
 	background: linear-gradient(to bottom, #e2461b 0%, #c82931 100%);
 }
