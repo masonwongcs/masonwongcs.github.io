@@ -3,6 +3,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font-family: Tahoma, Helvetica, "Microsoft Yahei","Î¢ÈíÑÅºÚ", sans-serif;
+	-webkit-tap-highlight-color: transparent;
 }
 
 @keyframes zoomIn{
@@ -88,6 +89,19 @@ html, body {
 	width: 100%;
 	position: absolute;
 	background-color: #3498db;
+}
+
+.content-wrapper:before{
+	content: "";
+	background: url("../img/bus.svg") no-repeat;
+	background-position: center;
+	background-size: contain;
+	position: absolute;
+	opacity: 0.2;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 
 .submit-input{
@@ -262,6 +276,25 @@ span.bus-no:before{
     color: #95a5a6;
     left: 0;
     line-height: 2.5rem;
+}
+
+span.subsequent-duration {
+    right: 2.6rem;
+    bottom: 0.2rem;
+    position: absolute;
+    font-size: 0.8rem;
+    color: #95a5a6;
+}
+
+span.subsequent-duration:before {
+	content: "\f064";
+    font-family: FontAwesome;
+    font-size: 0.7rem;
+    position: absolute;
+    color: #bdc3c7;
+    left: -14px;
+    top: 3px;
+    opacity: 0.4;
 }
 
 span.next-duration {

@@ -10,21 +10,13 @@ $(document).ready(function(){
 
 		var currentBus = $(".bus-id").val();
 
-    $(".loading").addClass("show");
-
 		$.ajax({
 			url: "https://arrivelah.herokuapp.com/?id=" + currentBus
 		}).done(function(data){
-      $(".loading").removeClass("show");
 			console.log(data);
 			for(var i=0; i< data.services.length;i++){
-				data.services[i].next.duration_min = Math.abs(Math.round(data.services[i].next.duration_ms/1000/60));
-        if(data.services[i].next.duration_min < 2){
-          data.services[i].next.status = "coming"
-        } else if(data.services[i].next.duration_min > 9){
-          data.services[i].next.status = "late"
-        }
-        
+				data.services[i].next.duration_min = Math.abs((data.services[i].next.duration_ms/1000/60).toFixed(0));
+        data.services[i].subsequent.duration_min = Math.abs((data.services[i].subsequent.duration_ms/1000/60).toFixed(0));
 			}
 			$(".result").html(template(data));
 			for(var i=0; i< data.services.length;i++){
@@ -38,9 +30,6 @@ $(document).ready(function(){
 
     $(document).on("click", ".bus", function(){
       $(this).toggleClass("active");
-      $(this).find(".back").click(function(){
-        $(this).toggleClass("active");
-      });
     });
 
     $(".bus-id").focus(function(){
@@ -69,7 +58,7 @@ $(document).ready(function(){
       var map;
       function initialize() {
         var mapOptions = {
-          zoom: 16,
+          zoom: 18,
           center: {lat: lat, lng: lng}
         };
         map = new google.maps.Map(document.getElementById('bus-' + bus),
