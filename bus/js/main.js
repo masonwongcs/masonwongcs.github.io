@@ -1,35 +1,47 @@
 $(document).ready(function(){
 
-	var source   = $("#bus-template").html();
-	var template = Handlebars.compile(source);
+  var source   = $("#bus-template").html();
+  var template = Handlebars.compile(source);
 
 
   bindFocusEvent();
 
-	$(".submit").click(function(){
+  $(".submit").click(function(){
 
-		var currentBus = $(".bus-id").val();
+    var currentBus = $(".bus-id").val();
 
-		$.ajax({
-			url: "https://arrivelah.herokuapp.com/?id=" + currentBus
-		}).done(function(data){
-			console.log(data);
-			for(var i=0; i< data.services.length;i++){
-				data.services[i].next.duration_min = Math.abs((data.services[i].next.duration_ms/1000/60).toFixed(0));
-        data.services[i].subsequent.duration_min = Math.abs((data.services[i].subsequent.duration_ms/1000/60).toFixed(0));
-			}
-			$(".result").html(template(data));
-			for(var i=0; i< data.services.length;i++){
-				showMap(data.services[i].next.lat,data.services[i].next.lng, data.services[i].no);
-			}
+    $(".loading").addClass("show");
 
-		})
-	});
+    $.ajax({
+      url: "https://arrivelah.herokuapp.com/?id=" + currentBus
+    }).done(function(data){
+      $(".loading").removeClass("show");
+      console.log(data);
+      for(var i=0; i< data.services.length;i++){
+        data.services[i].next.duration_min = Math.abs(Math.round(data.services[i].next.duration_ms/1000/60));
+        data.services[i].subsequent.duration_min = Math.abs((data.services[i].subsequent.duration_ms/1000/60).toFixed(0));    
+        if(data.services[i].next.duration_min < 2){
+          data.services[i].next.status = "coming"
+        } else if(data.services[i].next.duration_min > 9){
+          data.services[i].next.status = "late"
+        }
+        
+      }
+      $(".result").html(template(data));
+      for(var i=0; i< data.services.length;i++){
+        showMap(data.services[i].next.lat,data.services[i].next.lng, data.services[i].no);
+      }
+
+    })
+  });
 
   function bindFocusEvent(){
 
     $(document).on("click", ".bus", function(){
       $(this).toggleClass("active");
+      $(this).find(".back").click(function(){
+        $(this).toggleClass("active");
+      });
     });
 
     $(".bus-id").focus(function(){
@@ -46,11 +58,11 @@ $(document).ready(function(){
     });
   }
 
-	function showMap(lat,lng, bus){
-		console.log("into");
+  function showMap(lat,lng, bus){
+    console.log("into");
 
-		initialize();
-	  // In this example, we center the map, and add a marker, using a LatLng object
+    initialize();
+    // In this example, we center the map, and add a marker, using a LatLng object
       // literal instead of a google.maps.LatLng object. LatLng object literals are
       // a convenient way to add a LatLng coordinate and, in most cases, can be used
       // in place of a google.maps.LatLng object.
@@ -58,7 +70,7 @@ $(document).ready(function(){
       var map;
       function initialize() {
         var mapOptions = {
-          zoom: 18,
+          zoom: 16,
           center: {lat: lat, lng: lng}
         };
         map = new google.maps.Map(document.getElementById('bus-' + bus),
@@ -86,5 +98,5 @@ $(document).ready(function(){
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
-	}
+  }
 });
