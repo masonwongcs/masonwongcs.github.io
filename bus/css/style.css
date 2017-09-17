@@ -454,6 +454,7 @@ span.next-duration.late{
 }
 
 .bus-stop-wrapper .bus-stop{
+	cursor: pointer;
 	flex: 0 0 29%;
     background-color: #fff;
     font-weight: bold;
@@ -463,6 +464,7 @@ span.next-duration.late{
     margin: 0.5rem;
     line-height: 4rem;
     position: relative;
+    border-radius: 0.5rem;
 }
 
 .bus-stop-wrapper .bus-stop .delete{
@@ -472,8 +474,10 @@ span.next-duration.late{
 	font-size: 0;
 	top: 0rem;
 	right: 0rem;
+	border: 0;
+	outline: none;
 	line-height: 1rem;
-	z-index: 999;
+	background-color: transparent;
 }
 
 .bus-stop-wrapper .bus-stop .delete:before{
@@ -483,8 +487,8 @@ span.next-duration.late{
 	height: 1rem;
 	width: 1rem;
 	color: #f1c40f;;
-	top: 0rem;
-	right: 0rem;
+	top: 0.25rem;
+	right: 0.25rem;
 	line-height: 1rem;
 	font-size: 1rem;
 }
