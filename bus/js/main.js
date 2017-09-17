@@ -1,13 +1,51 @@
 $(document).ready(function(){
 
+  // Handlebar template
   var source   = $("#bus-template").html();
   var template = Handlebars.compile(source);
 
+  var favouriteSource = $("#favourite-template").html();
+  var favouriteTemplate = Handlebars.compile(favouriteSource);
+
+  // Create new busList instance
+  var busList = new LDB.Collection('busList');
+
+  loadBusStopList();
 
   bindFocusEvent();
 
   $(".submit").click(function(){
+    getBusStopData();
+  });
 
+  $(".favourite").click(function(){
+    $(this).toggleClass("checked");
+    var currentBus = $(".bus-id").val();
+
+    if($(this).hasClass("checked")){
+       if(currentBus !== ""){
+
+          var item = {
+            busNo: currentBus
+          };
+
+          // Check the current input is it stored in DB
+          busList.find({ busNo: currentBus }, function(results){
+            if(!results[0]){
+              //If data not found in DB, save it
+              busList.save(item, function(_item){
+                toast(currentBus + " added");
+              });
+            }
+          });
+       }
+    }else{
+      deleteFavourite(currentBus)
+      toast(currentBus + " removed");
+    }
+  });
+
+  function getBusStopData(){
     var currentBus = $(".bus-id").val();
 
     $(".loading").addClass("show");
@@ -15,6 +53,11 @@ $(document).ready(function(){
     $.ajax({
       url: "https://arrivelah.herokuapp.com/?id=" + currentBus
     }).done(function(data){
+      
+      if(data.services.length === 0){
+        toast("No bus stop found");
+      }
+
       $(".loading").removeClass("show");
       console.log(data);
       for(var i=0; i< data.services.length;i++){
@@ -33,7 +76,43 @@ $(document).ready(function(){
       }
 
     })
-  });
+
+    bindBackToMain();
+  }
+
+  function loadBusStopList(){
+    if(busList.items !== undefined){
+      $(".result").html(favouriteTemplate(busList.items));
+    }
+    bindLoadBusStop();
+    bindBusStopFavouriteButton();
+  }
+
+  function bindLoadBusStop(){
+    $(document).on("click", ".bus-stop", function(){
+      var currentBus = $(this).find("span").text().trim();
+      $(".bus-id").val(currentBus);
+      getBusStopData();
+    });
+  }
+
+  function bindBusStopFavouriteButton(){
+    $(document).on("click", ".bus-stop .delete", function(){
+      var currentBus = $(this).siblings("span").text().trim();
+      deleteFavourite(currentBus);
+      $(this).parent(".bus-stop").fadeOut(200, function(){
+        $(this).remove();
+      })
+    });
+  }
+
+  function deleteFavourite(currentBus){
+    busList.find({ busNo: currentBus }, function(items){
+        for(var i in items){
+          items[i].delete();
+        }
+      });
+  }
 
   function bindFocusEvent(){
 
@@ -58,9 +137,23 @@ $(document).ready(function(){
     });
   }
 
-  function showMap(lat,lng, bus){
-    console.log("into");
+  function bindBackToMain(){
+    $(document).on("click", ".back-to-main", function(){
+      $(".result .bus").each(function(){
+        // setTimeout(function(){
+          $(this).remove();
+        // }, 200);
+      })
+      $(this).fadeOut(200, function(){
+        $(this).remove();
+      })
+      $(".bus-id").val("");
 
+      loadBusStopList();
+    })
+  }
+
+  function showMap(lat,lng, bus){
     initialize();
     // In this example, we center the map, and add a marker, using a LatLng object
       // literal instead of a google.maps.LatLng object. LatLng object literals are
@@ -98,5 +191,22 @@ $(document).ready(function(){
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
+  }
+
+  function toast(msg){
+    $("<div class='toast'><h3>"+msg+"</h3></div>")
+    .css({ display: "block", 
+      opacity: 0.90, 
+      position: "fixed",
+      padding: "0 7px",
+      "text-align": "center",
+      width: "270px",
+      left: ($(window).width() - 284)/2,
+      bottom: "5rem"},
+      )
+    .appendTo( $(".content-wrapper") ).delay( 1500 )
+    .fadeOut( 400, function(){
+      $(this).remove();
+    });
   }
 });

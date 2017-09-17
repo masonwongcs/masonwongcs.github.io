@@ -36,6 +36,7 @@
 		<div class="content-wrapper">
 			<div class="submit-input">
 				<input type="text" class="bus-id" placeholder="Bus Stop ID" />
+				<button class="favourite">Favourite</button>
 				<button class="submit">
 					<svg class="search-btn" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 width="485.213px" height="485.213px" viewBox="0 0 485.213 485.213" style="enable-background:new 0 0 485.213 485.213;"
@@ -83,11 +84,22 @@
 					<!-- {{next.lng}} -->
 					<!-- {{next.time}} -->
 			    </div>
-			    	
 		  	</div>
 	  {{/each}}
+	  <button class="back-to-main">Back to main</button>
+	</script>
+	<script id="favourite-template" type="text/x-handlebars-template">
+		<div class="bus-stop-wrapper">
+		{{#each .}}
+			<div class="bus-stop">
+				<button class="delete">Delete</button>
+		    	<span>{{busNo}}</span>
+		  	</div>
+	  	{{/each}}
+	  </div>
 	</script>
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/handlebar.min.js"></script>
+	<script type="text/javascript" src="./js/LocalDB.min.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
 </html>
