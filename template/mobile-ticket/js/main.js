@@ -14,7 +14,8 @@ $(document).ready(function(){
       	if(diffRatio <= 0.5){
       		$('.qr').css("opacity", 0);
       	}
-      	$('.page-header').css("height", pageHeaderHeight * diffRatio + "px");
+            TweenMax.to($('.page-header'), 0.1, { height: pageHeaderHeight * diffRatio });
+      	// $('.page-header').css("height", pageHeaderHeight * diffRatio + "px");
       }
    });
 });
