@@ -1,27 +1,56 @@
 $(document).ready(function(){
-	new QRCode(document.getElementById("qr"), {text: "1234567", width: 180, height: 180});
-	$('.page-header').click(function(e){
-		e.preventDefault();
-		if($(this).hasClass("active")){
-			TweenMax.to($('.page-header'), 0.3, { height: 50 });
-			TweenMax.to($('.page-header .qr-container'), 0.3, { filter: "blur(5px)" });
-			TweenMax.to($('.page-header'), 0.3, { rotationX: 0 });
-			TweenMax.to($('.page-content'), 0.3, { rotationX: 0 });
-			$(this).removeClass("active");
-			$(this).parents(".ticket-wrapper").addClass("collapsed");
-		} else{
-			TweenMax.to($('.page-header'), 0.3, { height: 250});
-			TweenMax.to($('.page-header .qr-container'), 0.3, { filter: "blur(0)" });
-			TweenMax.to($('.page-header'), 0.3, { rotationX: -2 });
-			TweenMax.to($('.page-content'), 0.3, { rotationX: 1 });
-			setTimeout(function(){
-				TweenMax.to($('.page-header'), 0.3, { rotationX: 0 });
-				TweenMax.to($('.page-content'), 0.3, { rotationX: 0 });
-			}, 300);
-			
-			$(this).addClass("active");
-			$(this).parents(".ticket-wrapper").removeClass("collapsed");
-		}
-		
-	})
+    $('.ui.dropdown').dropdown();
+    $('.ui.rating').rating();
+    var currentPage = 1;
+    var totalQuestion = $(".survey-form .question").length;
+    for(var i = 1; i<= totalQuestion; i++){
+        $(".progress").append('<div class="bar"></div>');
+	}
+
+	$(".progress .bar:nth-child(" + currentPage + ")").addClass("active");
+
+    $(".question-cover .start-button").off().on("click", function(e){
+    	e.preventDefault();
+        TweenMax.to($(this).parent(".question-cover"), 1, { ease: Power4.easeOut, transform: 'translateY(-100vh)' });
+        TweenMax.fromTo($(".survey-form"), 1, { ease: Power4.easeOut, transform: 'scale(0.7)' }, { ease: Power4.easeOut, transform: 'scale(1)' });
+        setTimeout(function(){
+            $(".question-cover").hide();
+		}, 1000);
+    });
+
+    $(".btn.next").off().on("click", function(e){
+        var currentPageElem = $(".survey-form .question.survey-" + currentPage);
+        e.preventDefault();
+        if($(this).hasClass("done")){
+            $(".survey-container").fadeOut();
+            showPopup();
+        } else{
+            currentPageElem.removeClass("active").addClass("prev");
+            currentPageElem.next().addClass("active");
+            currentPage += 1;
+
+            var progress = (currentPage / totalQuestion) * 100;
+
+            $(".progress .bar:nth-child(" + currentPage + ")").addClass("active");
+            if(currentPage === totalQuestion){
+                $(this).addClass("done");
+                $(this).text('Submit')
+            }
+        }
+    });
+
+    $(".popup-close").click(function(){
+        hidePopup();
+    });
 });
+
+function showPopup(){
+    $(".popup").show();
+    var popup = TweenMax.fromTo($('.popup .popup-container'), 1, { ease: Elastic.easeOut.config(1, 0.3), transform: 'scale(0)' }, { ease: Elastic.easeOut.config(1, 0.3), transform: 'scale(1)' });
+    popup.play();
+}
+
+function hidePopup(){
+    $(".popup").fadeOut();
+    window.close();
+}

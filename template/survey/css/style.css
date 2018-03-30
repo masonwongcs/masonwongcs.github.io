@@ -8,7 +8,7 @@ html, body{
 }
 
 body{
-	background-color: #e74c3c !important;
+	background-color: #E43E50 !important;
 	transition: all 200ms ease-in-out;
 	padding: 2rem 1rem !important;
 	-webkit-box-sizing: border-box;
@@ -77,13 +77,17 @@ body{
 	bottom: -2rem;
 	background-color: #FFC300;
 	color: #fff;
-	font-size: 2.75rem;
 	line-height: 4rem;
 	text-align: center;
 	border: 0;
 	outline: none;
 	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 	transition: all 400ms ease-in-out;
+}
+
+
+.survey-container .btn i{
+	font-size: 2.7rem;
 }
 
 .survey-container .btn.done{
@@ -130,7 +134,7 @@ body{
 	margin: 1rem auto;
 	display: block;
 	font-size: 1.75rem;
-	color: #e74c3c
+	color: #E43E50;
 }
 
 .question-wrapper .field{
@@ -167,7 +171,7 @@ body{
 
 .question-wrapper .field.checkbox input[type=radio]:checked + label,
 .question-wrapper .field.checkbox input[type=checkbox]:checked + label{
-	background-color: #c0392b;
+	background-color: #E43E50;
 	color: #fff;
 }
 
@@ -228,7 +232,7 @@ body{
 	width: 90%;
 	margin: auto;
 	height: 3rem;
-	background: linear-gradient(135deg, #FFC300 0%, #c0392b 100% );
+	background: linear-gradient(135deg, #E43E50 0%, #EC6C49 100% );
 	color: #fff;
 	-webkit-appearance: none;
 	-moz-appearance: none;
