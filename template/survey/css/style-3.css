@@ -78,7 +78,7 @@ body{
 	opacity: 0.1;
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 450px){
 	body{
 		padding: 0 !important;
 	}
@@ -137,7 +137,7 @@ body{
 	top: 0;
 	left: -25%;
 	right: 0;
-	height: 300px;
+	height: 40%;
 	width: 150%;
 	border-radius: 0 0 350% 350%;
 	z-index: -1;
@@ -145,7 +145,7 @@ body{
 }
 
 .survey-container .question-cover .title{
-	margin: 330px 2rem 1rem;
+	margin: 45vh 2rem 1rem;
 	display: block;
 	font-size: 1.75rem;
 	color: #F39C12;
