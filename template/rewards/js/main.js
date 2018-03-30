@@ -1,5 +1,10 @@
 $(document).ready(function(){
-			
+    var random_boolean = Math.random() >= 0.5;
+    if(random_boolean){
+    	$("#result").addClass("successful");
+	}else{
+        $("#result").addClass("failed");
+	}
 	$(".btn.next").click(function(){
 		$(this).addClass("loading");
 		var parent = $(this).parents(".reward-wrapper");
@@ -8,16 +13,21 @@ $(document).ready(function(){
 		setTimeout(function(){
 		if(parent.next().hasClass("successful")){
 			$("body").addClass("successful");
+			$(".result.success").show();
 			TweenMax.to($('.confetti'), 1, { ease: Elastic.easeOut.config(1, 0.3), transform: 'scale(1.5)' });
-			TweenMax.fromTo($('.success-icon'), 1, { ease: Elastic.easeOut.config(1, 0.3), transform: 'rotateY(-90deg)' }, { ease: Elastic.easeOut.config(1, 0.3), transform: 'rotateY(0deg)' });
 			
-		} else{
+		} else if(parent.next().hasClass("failed")){
+            $(".result.failed").show();
+            $("body").addClass("failed");
+        }
+		else{
 			TweenMax.to($('.confetti'), 1, { ease: Elastic.easeOut.config(1, 0.3), transform: 'scale(0)' });
 			$("body").removeClass("successful");
+            $("body").removeClass("failed");
 		}
 
-		TweenMax.to(parent, 0.6, {  ease: Elastic.easeOut.config(1, 0.3), transform: 'translate(-100vh, -50%)' });
-		TweenMax.to(parent.next(), 1, {  ease: Elastic.easeOut.config(1, 0.3), transform: 'translate(0, -50%)' });
+		TweenMax.to(parent, 0.6, {  ease: Elastic.easeOut.config(1, 0.3), transform: 'translateX(-100vw)' });
+		TweenMax.to(parent.next(), 1, {  ease: Elastic.easeOut.config(1, 0.3), transform: 'translateX(0)' });
 		}, 2000)
 		
 	})

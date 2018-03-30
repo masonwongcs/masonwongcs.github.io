@@ -16,23 +16,45 @@ body.successful{
 	background-color: #2ecc71;
 }
 
-.reward-wrapper{
-	background-color: #fafafa;
-	max-width: 350px;
-	margin: auto;
-	height: auto;
+body.failed{
+	background-color: #eb3b5a;
+}
+
+.reward-container{
 	position: fixed;
+	top: 50%;
 	left: 0;
 	right: 0;
-	top: 25vh;
+	max-width: 330px;
+	margin: auto;
+	height:430px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.reward-wrapper{
+	background-color: #fafafa;
+	width: 100%;
+	/*margin: auto;*/
+	/*height: auto;*/
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 	border-radius: 0.5rem;
 	padding: 1rem;
 	overflow: hidden;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
 .reward-wrapper:not(.step-1){
-	transform: translateX(100vh);
+	transform: translateX(100vw);
 }
 
 .confetti{
@@ -44,7 +66,7 @@ body.successful{
 	z-index: 0;
 }
 
-.success{
+.result{
 	position: relative;
 	top: 2rem;
 	left: 0;
@@ -54,7 +76,12 @@ body.successful{
 	margin-bottom: 5rem;
 }
 
-.success-message {
+.result.success,
+.result.failed{
+	display: none;
+}
+
+.result-message {
 	margin: 2rem auto;
 	text-align: center;
 	color: #b2b2b2;
@@ -62,7 +89,7 @@ body.successful{
 	font-size: 1.25rem;
 }
 
-.success .success-icon{
+.result .result-icon{
 	border-radius: 50%;
 	background-color: #ccc;
 	padding: 2rem;
@@ -73,9 +100,18 @@ body.successful{
 	height: 12rem;
 	margin: auto;
 	transform-style: preserve-3d;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-ms-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
 }
 
-.success .success-icon svg{
+.result.failed .result-icon{
+	padding: 0;
+}
+
+.result .result-icon svg{
 	transform: translateZ(1rem);
 }
 
@@ -98,6 +134,10 @@ body.successful{
 	transition-timing-function: ease-in-out;
 	transition-duration: 200ms;
 	position: relative;
+}
+
+.btn.failed{
+	background-color: #eb3b5a;
 }
 
 .btn.loading{
@@ -132,11 +172,11 @@ body.successful{
 	background-color: rgba(255,255,255, 0.25);
 }
 
-.reward-wrapper.successful .success-message{
+.reward-wrapper.successful .result-message{
 	color: #fff;
 }
 
-.reward-wrapper.successful .success .success-icon{
+.reward-wrapper.successful .result .result-icon{
 	background-color: rgba(0,0,0,0.15);	
 }
 
