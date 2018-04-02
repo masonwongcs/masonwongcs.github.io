@@ -12,6 +12,7 @@ html, body{
 	min-height: 100%;
 	height: 100%;
 	background-color: var(--main-color-1);
+	overflow: hidden;
 }
 
 body:before{
@@ -23,8 +24,8 @@ body:before{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url(../img/stock-photo.jpg) center / cover no-repeat;
-	opacity: 0.2;
+	background: url(../img/event.jpg) center / cover no-repeat;
+	opacity: 0.1;
 }
 
 .invitation-wrapper{
@@ -42,20 +43,54 @@ body:before{
 
 .envelope{
 	width: 500px;
-	height: 350px;
+	height: 300px;
 	background-color: #ececec;
+	transform: scale(0.7);
+	transition: all 400ms ease-in-out;
+	perspective: 500px;
+	cursor: pointer;
 }
 
-.envelope:hover .cover{
-	/*z-index: 1;*/
+.envelope.animate{
+	transform: rotateX(2deg) rotateY(8deg) rotateZ(-15deg) scale(0.7);
 }
 
-.envelope:hover .cover:before{
+.envelope.animate .cover{
+	z-index: 1;
+}
+
+.envelope.animate .cover:before{
 	transform: rotateX(0);
 }
 
-.envelope:hover .content{
+.envelope .content.animate{
 	transform: translateY(0);
+}
+
+.envelope.view-content .cover{
+	transform: translateY(100vh);
+}
+
+.envelope.view-content {
+	background-color: transparent;
+	transform: scale(1);
+}
+
+.envelope.view-content .front{
+	transform: translateY(100vh);
+}
+
+.envelope.view-content .content{
+	background-color: #fff;
+	animation: slideInOut 1s cubic-bezier(1, 0, 0, 1) forwards;
+}
+
+.envelope.view-content .content .content-title{
+	color: var(--sec-color-1);
+}
+
+.envelope.view-content .content .content-date{
+	color: #999;
 }
 
 .cover{
@@ -63,6 +98,7 @@ body:before{
 	top: -150px;
 	z-index: 3;
 	perspective: 500px;
+	transition: all 200ms ease-in;
 }
 
 .cover:before{
@@ -76,7 +112,8 @@ body:before{
 	transform-origin: bottom;
 	transform: rotateX(180deg);
 	transform-style: preserve-3d;
-	transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in;
+	/*transition-delay: 1s;*/
 	z-index: 1;
 }
 
@@ -88,22 +125,68 @@ body:before{
 	width: 90%;
 	height: 100%;
 	margin: auto;
-	background-color: #ccc;
-	box-shadow: 0 4px 16px rgba(55,55,55,0.8);
+	background-color: var(--sec-color-1);
+	box-shadow: 0 0 16px rgba(55,55,55,0.3);
 	transform: translateY(50px);
+	transform-style: preserve-3d;
 	transition: all 200ms ease-in-out;
-	transition-delay: 400ms;
 	z-index: 1;
+	border-radius: 0.5rem;
+	backface-visibility: hidden;
+}
+
+.content-title{
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 1rem auto;
+}
+
+.content-date{
+	text-align: center;
+	margin: 1rem 0;
+	color: #fff
+}
+
+.content-action{
+	display: block;
+	border-radius: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+	color: #fff;
+	background: var(--sec-color-1);
+	border: 0;
+	border-bottom: 4px solid var(--sec-color-2);
+	outline: none;
+	text-align: center;
+	margin: auto;
+	padding: 0 1rem;
+	position: absolute;
+	bottom: 16px;
+	left: 0;
+	right: 0;
+	width: 230px;
+	font-weight: bold;
+}
+
+.content-action:active{
+	transform: translateY(2px);
+	border-bottom: 2px solid var(--sec-color-2)
 }
 
 .front{
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	height: 250px;
+	height: 200px;
 	width: 100%;
 	background-color: #fff;
 	z-index: 2;
+	transition: all 200ms ease-in;
 }
 
 .front:before{
@@ -160,5 +243,17 @@ body:before{
 		color: #999;
 		font-size: 0.6rem;
 		margin: 0;
+	}
+}
+
+@keyframes slideInOut {
+	0%{
+		transform: translateY(50px) rotateX(0deg);
+	}
+	50%{
+		transform: translateY(-250px) rotateX(720deg);
+	}
+	100%{
+		transform: translateY(50px) rotateX(0);
 	}
 }

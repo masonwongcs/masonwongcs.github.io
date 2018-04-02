@@ -1,9 +1,24 @@
 $(document).ready(function(){
-    TweenMax.fromTo($('.voucher-wrapper'), 1, {ease: Elastic.easeOut.config(1, 0.8), scale: 0}, {ease: Elastic.easeOut.config(1, 0.3),scale:1, y: '-50%'})
-    TweenMax.fromTo($('.voucher-wrapper .price'), 2, {ease: Elastic.easeOut.config(1, 0.8), scale: 0, rotation: 180}, {ease: Elastic.easeOut.config(1, 0.3),scale:1, rotation: 0, y: '-50%'})
-    $(".redeem-btn").click(function(){
-        showPopup();
-    })
+    var envelope;
+    $('.envelope').hover(function(){
+        envelope = $(this);
+        envelope.addClass('animate');
+        setTimeout(function() {
+            envelope.find('.content').addClass('animate');
+        }, 200);
+
+    }, function(){
+        envelope.find('.content').removeClass('animate');
+        setTimeout(function(){
+            envelope.removeClass('animate');
+        }, 200);
+    }).click(function(){
+        envelope.removeClass('animate');
+        envelope.find('.content').removeClass('animate');
+        envelope.addClass('view-content');
+        envelope.unbind();
+    });
+
 });
 
 function showPopup(){
