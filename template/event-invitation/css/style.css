@@ -12,6 +12,7 @@ html, body{
 	min-height: 100%;
 	height: 100%;
 	background-color: var(--main-color-1);
+	overflow: hidden;
 }
 
 body:before{
@@ -23,8 +24,8 @@ body:before{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url(../img/stock-photo.jpg) center / cover no-repeat;
-	opacity: 0.2;
+	background: url(../img/event.jpg) center / cover no-repeat;
+	opacity: 0.1;
 }
 
 .invitation-wrapper{
@@ -42,20 +43,60 @@ body:before{
 
 .envelope{
 	width: 500px;
-	height: 350px;
+	height: 300px;
 	background-color: #ececec;
+	transform: scale(0.7);
+	transition: all 400ms ease-in-out;
+	perspective: 500px;
+	cursor: pointer;
 }
 
-.envelope:hover .cover{
-	/*z-index: 1;*/
+.envelope.animate{
+	transform: rotateX(2deg) rotateY(8deg) rotateZ(-15deg) scale(0.7);
 }
 
-.envelope:hover .cover:before{
+.envelope.animate .cover{
+	z-index: 1;
+}
+
+.envelope.animate .cover:before{
 	transform: rotateX(0);
 }
 
-.envelope:hover .content{
+.envelope .content.animate{
 	transform: translateY(0);
+}
+
+.envelope.view-content .cover{
+	transform: translateY(100vh);
+}
+
+.envelope.view-content {
+	background-color: transparent;
+	transform: scale(1);
+}
+
+.envelope.view-content .front{
+	transform: translateY(100vh);
+}
+
+.envelope.view-content .content{
+	background-color: #fff;
+	animation: slideInOut 1s cubic-bezier(1, 0, 0, 1) forwards;
+	height: auto;
+	padding-bottom: 4rem;
+}
+
+.envelope.view-content .content .content-title{
+	color: var(--sec-color-1);
+}
+
+.envelope.view-content .content .content-date{
+	color: #999;
+}
+
+.envelope.view-content .content .content-details{
+	display: block;
 }
 
 .cover{
@@ -63,6 +104,7 @@ body:before{
 	top: -150px;
 	z-index: 3;
 	perspective: 500px;
+	transition: all 200ms ease-in;
 }
 
 .cover:before{
@@ -72,11 +114,12 @@ body:before{
 	height: 0px;
 	border-style: solid;
 	border-width: 0 250px 150px 250px;
-	border-color: transparent transparent #ececec transparent;
+	border-color: transparent transparent #ccc transparent;
 	transform-origin: bottom;
 	transform: rotateX(180deg);
 	transform-style: preserve-3d;
-	transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in;
+	/*transition-delay: 1s;*/
 	z-index: 1;
 }
 
@@ -88,22 +131,76 @@ body:before{
 	width: 90%;
 	height: 100%;
 	margin: auto;
-	background-color: #ccc;
-	box-shadow: 0 4px 16px rgba(55,55,55,0.8);
+	background-color: var(--sec-color-1);
+	box-shadow: 0 0 16px rgba(55,55,55,0.3);
 	transform: translateY(50px);
+	transform-style: preserve-3d;
 	transition: all 200ms ease-in-out;
-	transition-delay: 400ms;
 	z-index: 1;
+	border-radius: 0.5rem;
+	backface-visibility: hidden;
+}
+
+.content-title{
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 1rem auto;
+}
+
+.content-date{
+	text-align: center;
+	margin: 1rem 0;
+	color: #fff
+}
+
+.content-details{
+	text-align: justify;
+	color: #999;
+	font-size: 0.8125rem;
+	display: none;
+	padding: 0 1rem;
+}
+
+.content-action{
+	display: block;
+	border-radius: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+	color: #fff;
+	background: var(--sec-color-1);
+	border: 0;
+	border-bottom: 4px solid var(--sec-color-2);
+	outline: none;
+	text-align: center;
+	margin: auto;
+	padding: 0 1rem;
+	position: absolute;
+	bottom: 16px;
+	left: 0;
+	right: 0;
+	width: 230px;
+	font-weight: bold;
+}
+
+.content-action:active{
+	transform: translateY(2px);
+	border-bottom: 2px solid var(--sec-color-2)
 }
 
 .front{
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	height: 250px;
+	height: 200px;
 	width: 100%;
 	background-color: #fff;
 	z-index: 2;
+	transition: all 200ms ease-in;
 }
 
 .front:before{
@@ -118,47 +215,59 @@ body:before{
 	border-color: transparent #fff;
 }
 
+@keyframes slideInOut {
+	0%{
+		transform: translateY(50px) rotateX(0deg);
+	}
+	50%{
+		transform: translateY(-250px) rotateX(720deg);
+	}
+	100%{
+		transform: translateY(50px) rotateX(0);
+	}
+}
 
 @media screen and (max-width: 450px){
-	.voucher-wrapper{
+	.invitation-wrapper{
 		width: 330px;
-		height: auto;
-		min-height: 250px;
+		min-height: 200px;
 	}
 
-	.voucher-wrapper .price{
-		right: -20px;
-		width: 160px;
-		height: 160px;
+	.envelope{
+		width: 330px;
+		height: 200px;
 	}
 
-	.voucher-wrapper .price strong{
+	.cover{
+		top: -100px;
+	}
+
+	.cover:before{
+		border-width: 0 165px 100px 165px;
+	}
+
+	.front{
+		height: 100px;
+	}
+
+	.front:before{
+		border-width: 100px 165px 0px 165px;
+	}
+
+	.content-title{
 		font-size: 1rem;
-		line-height: 2rem;
 	}
 
-	.voucher-wrapper .price span{
-		font-size: 3rem;
+	.content-date{
+		margin: 0.7rem 0;
 	}
 
-	.voucher-wrapper .voucher-desc {
-		padding: 0 170px 5rem 1rem;
-		font-size: 0.8rem;
+	.content-details{
+		font-size: 0.7rem;
 	}
 
-	.voucher-wrapper .redeem-btn{
-		bottom: 1.5rem;
-		padding: 0 1rem;
-		font-size: 0.8rem;
-	}
-
-	.voucher-wrapper .voucher-footer{
-		position: absolute;
-		bottom: 4px;
-		right: initial;
-		left: 2rem;
-		color: #999;
-		font-size: 0.6rem;
-		margin: 0;
+	.content-action{
+		height: 2rem;
+		line-height: 1.8rem;
 	}
 }
