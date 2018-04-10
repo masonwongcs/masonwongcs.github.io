@@ -1,3 +1,6 @@
-$(document).ready(function(){
-	TweenMax.fromTo($(".voucher-wrapper .voucher-logo"), 1, {ease: Elastic.easeOut.config(1, 0.3), scale: 0, rotationY: 360}, {ease: Elastic.easeOut.config(1, 0.3), scale : 1, rotationY: 0})
+$(document).ready(function () {
+    TweenMax.from($('.voucher-title'), 1, {y: 100, alpha: 0});
+    TweenMax.from($('.voucher-date'), 1.2, {y: 100, alpha: 0});
+    TweenMax.from($('.voucher-venue'), 1.4, {y: 100, alpha: 0});
+    TweenMax.from($('.voucher-desc'), 1.6, {y: 100, alpha: 0});
 });
