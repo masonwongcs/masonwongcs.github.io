@@ -1,27 +1,31 @@
-$(document).ready(function(){
-	new QRCode(document.getElementById("qr"), {text: "1234567", width: 180, height: 180});
-	$('.page-header').click(function(e){
-		e.preventDefault();
-		if($(this).hasClass("active")){
-			TweenMax.to($('.page-header'), 0.3, { height: 50 });
-			TweenMax.to($('.page-header .qr-container'), 0.3, { filter: "blur(5px)" });
-			TweenMax.to($('.page-header'), 0.3, { rotationX: 0 });
-			TweenMax.to($('.page-content'), 0.3, { rotationX: 0 });
-			$(this).removeClass("active");
-			$(this).parents(".ticket-wrapper").addClass("collapsed");
-		} else{
-			TweenMax.to($('.page-header'), 0.3, { height: 250});
-			TweenMax.to($('.page-header .qr-container'), 0.3, { filter: "blur(0)" });
-			TweenMax.to($('.page-header'), 0.3, { rotationX: -2 });
-			TweenMax.to($('.page-content'), 0.3, { rotationX: 1 });
-			setTimeout(function(){
-				TweenMax.to($('.page-header'), 0.3, { rotationX: 0 });
-				TweenMax.to($('.page-content'), 0.3, { rotationX: 0 });
-			}, 300);
-			
-			$(this).addClass("active");
-			$(this).parents(".ticket-wrapper").removeClass("collapsed");
-		}
-		
-	})
+$(document).ready(function () {
+    $('.btn').click(function () {
+        var random_boolean = Math.random() >= 0.5;
+        var that = $(this);
+        $(this).addClass('loading');
+        setTimeout(function () {
+            that.removeClass('loading');
+            that.text("OK");
+            if(random_boolean){
+                showMessage(random_boolean, "You won the rewards");
+            } else{
+                showMessage(random_boolean, "Try again next time");
+            }
+
+        }, 2000);
+    })
 });
+
+//Params : (Success or Failed) , Message
+function showMessage(isSuccess, message) {
+    var isSuccess = isSuccess, rewardsWrapper = $(".rewards-wrapper"), rewardsIcon;
+    if (isSuccess) {
+        rewardsWrapper.addClass("success");
+        rewardsIcon = rewardsWrapper.find(".rewards-icon svg.success-icon");
+    } else {
+        rewardsWrapper.addClass("failed");
+        rewardsIcon = rewardsWrapper.find(".rewards-icon svg.failed-icon");
+    }
+    rewardsWrapper.find(".content-message").text(message);
+    TweenMax.fromTo(rewardsIcon, 0.4, {scale: 0, alpha: 0}, {scale: 1, alpha: 1})
+}

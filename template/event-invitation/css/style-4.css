@@ -1,6 +1,6 @@
 :root{
 	font-size: 16px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Varela Round', sans-serif;
 	--main-color-1: #2362FF;
 	--main-color-2: #2ECC71;
 }
@@ -9,6 +9,8 @@ html, body{
 	margin: 0;
 	min-height: 100%;
 	height: 100%;
+	background: -webkit-linear-gradient(315deg, var(--main-color-2) 0%, var(--main-color-1) 100%);
+	background: -o-linear-gradient(315deg, var(--main-color-2) 0%, var(--main-color-1) 100%);
 	background: linear-gradient(135deg, var(--main-color-2) 0%, var(--main-color-1) 100%);
 }
 
@@ -20,42 +22,81 @@ html, body{
 	right: 0;
 	margin: auto;
 	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 	border-radius: 0.25rem;
+	-webkit-perspective: 500px;
 	perspective: 500px;
-	background-color: #fff;
-	padding: 1rem;
+	padding: 2rem;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	color: var(--main-color-1);
+	color: #fff;
 }
 
-.voucher-wrapper .voucher-logo{
-	width: 80px;
-	height: auto;
-	margin: 1rem auto;
-}
-
-.voucher-wrapper .voucher-logo svg{
+.voucher-wrapper:before{
+	content :'';
+	position: absolute;
+	top: -1rem;
+	left: -1rem;
+	border: 3px solid rgba(255,255,255,0.5);
 	width: 100%;
-	opacity: 0.5;
+	height: 100%;
+	-webkit-animation: frameAnimationLeft 2s linear forwards;
+	animation: frameAnimationLeft 2s linear forwards;
+}
+
+.voucher-wrapper:after{
+	content :'';
+	position: absolute;
+	right: -1rem;
+	bottom: -1rem;
+	border: 3px solid rgba(255,255,255,0.5);
+	width: 100%;
+	height: 100%;
+	-webkit-animation: frameAnimationRight 2s linear forwards;
+	animation: frameAnimationRight 2s linear forwards;
 }
 
 .voucher-wrapper .voucher-title{
-	font-size: 1.6rem;
+	font-size: 2rem;
 	text-align: center;
-	text-transform: uppercase;
 	font-weight: 300;
-	margin-bottom: 0.25rem;
+	margin: 2rem auto;
+}
+
+.voucher-wrapper .voucher-date {
+	font-size: 1rem;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.voucher-wrapper .voucher-date:before {
+	content: '\f073';
+	font-family: FontAwesome;
+	font-size: 1rem;
+	color: #fff;
+	padding-right: 0.5rem;
+}
+
+.voucher-wrapper .voucher-venue{
+	font-size: 1rem;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.voucher-wrapper .voucher-venue:before {
+	content: '\f041';
+	font-family: FontAwesome;
+	font-size: 1rem;
+	color: #fff;
+	padding-right: 0.5rem;
 }
 
 .voucher-wrapper .voucher-desc{
 	font-size: 1.125rem;
 	margin-bottom: 1rem;
 	text-align: center;
-	text-transform: uppercase;
-	font-weight: 300;
 }
 
 
@@ -63,37 +104,54 @@ html, body{
 	font-weight: bold;
 }
 
-.btn{
-	display: block;
-	width: 40%;
-	margin: 1rem auto;
-	height: 3rem;
-	background: linear-gradient(135deg, var(--main-color-2) 0%, var(--main-color-1) 100%);
-	background-position: 0 0;
-	background-size: 120% 100%;
-	color: #fff;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	outline: 0;
-	border: 0;
-	font-size: 1rem;
-	font-weight: bold;
-	text-transform: uppercase;
-	transition-timing-function: ease-in-out;
-	transition-duration: 200ms;
-	border-radius: 3rem;
-	transiton: all 200ms ease-in-out;
-}
-
-.btn:active{
-	background-position: 100% 0;
-}
-
 @media screen and (max-width: 450px){
 	.voucher-wrapper{
 		width: 330px;
 		height: auto;
 		min-height: 250px;
+	}
+}
+
+@-webkit-keyframes frameAnimationLeft {
+	from{
+		-webkit-transform: translate(1rem, 1rem);
+		transform: translate(1rem, 1rem);
+	}
+	to{
+		-webkit-transform: translate(0);
+		transform: translate(0);
+	}
+}
+
+@keyframes frameAnimationLeft {
+	from{
+		-webkit-transform: translate(1rem, 1rem);
+		transform: translate(1rem, 1rem);
+	}
+	to{
+		-webkit-transform: translate(0);
+		transform: translate(0);
+	}
+}
+
+@-webkit-keyframes frameAnimationRight {
+	from{
+		-webkit-transform: translate(-1rem, -1rem);
+		transform: translate(-1rem, -1rem);
+	}
+	to{
+		-webkit-transform: translate(0);
+		transform: translate(0);
+	}
+}
+
+@keyframes frameAnimationRight {
+	from{
+		-webkit-transform: translate(-1rem, -1rem);
+		transform: translate(-1rem, -1rem);
+	}
+	to{
+		-webkit-transform: translate(0);
+		transform: translate(0);
 	}
 }

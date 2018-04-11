@@ -1,6 +1,8 @@
 :root{
 	font-size: 16px;
 	font-family: 'Varela Round', sans-serif;
+	--main-color-1: #2362FF;
+	--main-color-2: #2ECC71;
 }
 
 html, body{

@@ -9,136 +9,236 @@ html, body{
 	min-height: 100%;
 	height: 100%;
 	background-color: #fafafa;
+	overflow: hidden;
 }
 
-.voucher-wrapper{
+.invitation-wrapper{
 	width: 500px;
 	height: auto;
+	min-height: 300px;
 	position: relative;
 	left: 0;
 	right: 0;
 	margin: auto;
 	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
-	border-radius: 0.25rem;
+	-webkit-perspective: 100px;
+	perspective: 100px;
+}
+
+.envelope{
+	width: 500px;
+	height: 300px;
+	background-color: #ececec;
+	-webkit-transform: scale(0.7);
+	-ms-transform: scale(0.7);
+	transform: scale(0.7);
+	-webkit-transition: all 400ms ease-in-out;
+	-o-transition: all 400ms ease-in-out;
+	transition: all 400ms ease-in-out;
+	-webkit-perspective: 500px;
 	perspective: 500px;
+	cursor: pointer;
 }
 
-.voucher-wrapper:after{
-	content: '';
-	clear: both;
-	display: table;
+.envelope.animate{
+	-webkit-transform: translateY(50px);
+	-ms-transform: translateY(50px);
+	transform: translateY(50px);
 }
 
-.voucher-wrapper .voucher-left{
-	float: left;
-	width: 45%;
-	max-width: 45%;
-	background: #fff url(../img/bg.png) center / cover no-repeat;
-	opacity: 0.5;
-	min-height: 300px;
-	box-shadow: -4px 4px 16px rgba(55,55,55,0.25);
-	display: table;
-	position: relative;
-	transform-style: preserve-3d;
-	transform-origin: right;
-}
-
-.voucher-wrapper .voucher-right{
-	float: right;
-	width: 55%;
-	max-width: 55%;
-	background-color: var(--main-color-1);
-	min-height: 300px;
-	box-shadow: 4px 4px 16px rgba(55,55,55,0.25);
-	display: table;
-	position: relative;
-	color: #fff;
-	transform-style: preserve-3d;
-	transform-origin: left;
-}
-
-.voucher-wrapper .voucher-right:before{
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 5%;
-	bottom: 0;
-	left: 0;
-	height: 90%;
-	margin: auto;
-	border: 4px solid rgba(255,255,255,0.2);
-	border-left: 0;
-}
-
-.voucher-wrapper .price{
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 3.25rem;
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-.voucher-wrapper .price .price-desc{
-	font-size: 2rem;
-}
-
-.voucher-wrapper .voucher-brand{
-	position: absolute;
-	top: 23%;
-	left: 0;
-	right: 0;
-	margin: auto;
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 1rem;
+.envelope.animate .cover{
 	z-index: 1;
 }
 
-.voucher-wrapper .voucher-brand:before{
-	content: '';
-	position: absolute;
-	width: 80%;
-	left: 0;
-	right: 0;
-	border-top: 3px solid #fff;
-	top: 35%;
-	margin: auto;
-	z-index: -1;
+.envelope.animate .cover:before{
+	-webkit-transform: rotateX(0);
+	transform: rotateX(0);
 }
 
-.voucher-wrapper .voucher-brand:after{
-	content: '';
-	position: absolute;
-	width: 50%;
-	height: 1rem;
-	left: 0;
-	right: 0;
-	top: 33%;
-	margin: auto;
-	background-color: var(--main-color-1);
-	z-index: -1;
+.envelope .content.animate{
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
 }
 
-.voucher-wrapper .voucher-title{
-	display: table-cell;
+.envelope.view-content .cover{
+	-webkit-transform: translateY(100vh);
+	-ms-transform: translateY(100vh);
+	transform: translateY(100vh);
+}
+
+.envelope.view-content {
+	background-color: transparent;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+}
+
+.envelope.view-content .front{
+	-webkit-transform: translateY(100vh);
+	-ms-transform: translateY(100vh);
+	transform: translateY(100vh);
+}
+
+
+.envelope.view-content .content .content-title{
+	color: #fff;
+}
+
+.envelope.view-content .content .content-date{
+	color: #fff;
+}
+
+.envelope.view-content .content .content-details{
+	display: block;
+}
+
+.envelope.view-content .content .content-action{
+	display: block;
+}
+
+.cover{
+	position: absolute;
+	top: -150px;
+	z-index: 3;
+	-webkit-perspective: 500px;
+	perspective: 500px;
+	-webkit-transition: all 200ms ease-in;
+	-o-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
+}
+
+.cover:before{
+	content: '';
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 0 250px 150px 250px;
+	border-color: transparent transparent var(--main-color-2) transparent;
+	-webkit-transform-origin: bottom;
+	-ms-transform-origin: bottom;
+	transform-origin: bottom;
+	-webkit-transform: rotateX(180deg);
+	transform: rotateX(180deg);
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transition: all 200ms ease-in;
+	-o-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
+	/*transition-delay: 1s;*/
+	z-index: 1;
+}
+
+.content {
+	position: absolute;
+	top: -50px;
+	left: 0;
+	right: 0;
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	border: 12px solid #fff;
+	-webkit-box-shadow: 0 4px 16px rgba(55,55,55,0.25);
+	box-shadow: 0 4px 16px rgba(55,55,55,0.25);
+	-webkit-transform: translateY(50px) scale(0.9);
+	-ms-transform: translateY(50px) scale(0.9);
+	transform: translateY(50px) scale(0.9);
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+.content:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(../img/bg.png) center / cover no-repeat;
+	opacity: 0.3;
+}
+
+.content-title{
 	text-align: center;
-	vertical-align: middle;
-	text-transform: uppercase;
-	font-size: 2.75rem;
+	font-size: 1.5rem;
 	font-weight: bold;
-	position: relative;
+	text-transform: uppercase;
+	color: var(--main-color-1);
+	margin: 1rem auto;
 }
 
-.voucher-wrapper .voucher-footer{
+.content-date{
+	text-align: center;
+	margin: 1rem 0 2rem;
+	color: #999;
+}
+
+.content-details{
+	text-align: justify;
+	color: #999;
+	font-size: 0.8125rem;
+	padding: 0 1rem;
+}
+
+.content-action{
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+	border-radius: 0.5rem;
+	color: #fff;
+	background: var(--main-color-1);
+	border: 0;
+	outline: none;
+	text-align: center;
+	margin: auto;
+	padding: 0 1rem;
 	position: absolute;
+	bottom: 16px;
 	left: 0;
 	right: 0;
-	bottom: 10%;
-	margin: auto;
-	text-align: center;
-	font-size: 0.8rem;
+	width: 90%;
+	font-weight: bold;
+}
+
+.content-action:active{
+	background-color: #cd820b;
+}
+
+.front{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 200px;
+	width: 100%;
+	background-color: rgba(255,255,255,0.8);
+	z-index: 2;
+	-webkit-transition: all 200ms ease-in;
+	-o-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
+}
+
+.front:before{
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: -100px;
+	border-style: solid;
+	border-width: 100px 250px 0px 250px;
+	border-color: transparent rgba(255,255,255,0.8);
 }
 
 
@@ -150,26 +250,117 @@ html, body{
 	}
 
 	.voucher-wrapper .price{
-		font-size: 2rem;
+		right: -20px;
+		width: 160px;
+		height: 160px;
 	}
 
-	.voucher-wrapper .price .price-desc{
-		font-size: 1.5rem;
+	.voucher-wrapper .price strong{
+		font-size: 1rem;
+		line-height: 2rem;
 	}
 
-	.voucher-wrapper .voucher-brand{
+	.voucher-wrapper .price span{
+		font-size: 3rem;
+	}
+
+	.voucher-wrapper .voucher-desc {
+		padding: 0 170px 5rem 1rem;
 		font-size: 0.8rem;
 	}
 
-	.voucher-wrapper .voucher-brand:after{
-		width: 60%;
-	}
-
-	.voucher-wrapper .voucher-title{
-		font-size: 1.75rem;
+	.voucher-wrapper .redeem-btn{
+		bottom: 1.5rem;
+		padding: 0 1rem;
+		font-size: 0.8rem;
 	}
 
 	.voucher-wrapper .voucher-footer{
+		position: absolute;
+		bottom: 4px;
+		right: initial;
+		left: 2rem;
+		color: #999;
 		font-size: 0.6rem;
+		margin: 0;
+	}
+}
+
+@-webkit-keyframes slideInOut {
+	0%{
+		-webkit-transform: translateY(50px);
+		transform: translateY(50px);
+	}
+	50%{
+		-webkit-transform: translateY(-250px);
+		transform: translateY(-250px);
+	}
+	100%{
+		-webkit-transform: translateY(50px);
+		transform: translateY(50px);
+	}
+}
+
+@keyframes slideInOut {
+	0%{
+		-webkit-transform: translateY(50px);
+		transform: translateY(50px);
+	}
+	50%{
+		-webkit-transform: translateY(-250px);
+		transform: translateY(-250px);
+	}
+	100%{
+		-webkit-transform: translateY(50px);
+		transform: translateY(50px);
+	}
+}
+
+@media screen and (max-width: 450px){
+	.invitation-wrapper{
+		width: 330px;
+		min-height: 200px;
+	}
+
+	.envelope{
+		width: 330px;
+		height: 200px;
+	}
+
+	.cover{
+		top: -100px;
+	}
+
+	.cover:before{
+		border-width: 0 165px 100px 165px;
+	}
+
+	.front{
+		height: 100px;
+	}
+
+	.front:before{
+		border-width: 100px 165px 0px 165px;
+	}
+
+	.content-title{
+		font-size: 1rem;
+	}
+
+	.content-date{
+		margin: 0.7rem 0;
+	}
+
+	.content-details{
+		font-size: 0.7rem;
+	}
+
+	.content-action{
+		height: 2rem;
+		line-height: 1.8rem;
+	}
+
+	.envelope.view-content .content:before {
+		height: 50px;
 	}
 }
