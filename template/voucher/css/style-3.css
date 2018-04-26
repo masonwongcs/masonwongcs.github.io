@@ -19,8 +19,11 @@ html, body{
 	right: 0;
 	margin: auto;
 	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 	border-radius: 0.25rem;
+	-webkit-perspective: 500px;
 	perspective: 500px;
 }
 
@@ -37,10 +40,14 @@ html, body{
 	background: #fff url(../img/bg.png) center / cover no-repeat;
 	opacity: 0.5;
 	min-height: 300px;
+	-webkit-box-shadow: -4px 4px 16px rgba(55,55,55,0.25);
 	box-shadow: -4px 4px 16px rgba(55,55,55,0.25);
 	display: table;
 	position: relative;
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
+	-webkit-transform-origin: right;
+	-ms-transform-origin: right;
 	transform-origin: right;
 }
 
@@ -50,11 +57,15 @@ html, body{
 	max-width: 55%;
 	background-color: var(--main-color-1);
 	min-height: 300px;
+	-webkit-box-shadow: 4px 4px 16px rgba(55,55,55,0.25);
 	box-shadow: 4px 4px 16px rgba(55,55,55,0.25);
 	display: table;
 	position: relative;
 	color: #fff;
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
+	-webkit-transform-origin: left;
+	-ms-transform-origin: left;
 	transform-origin: left;
 }
 

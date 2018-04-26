@@ -13,7 +13,15 @@ $(document).ready(function () {
             }
 
         }, 2000);
-    })
+    });
+
+    $(".instruction").click(function(e){
+        e.preventDefault();
+        showPopup();
+    });
+    $(".popup-close").click(function(){
+        hidePopup();
+    });
 });
 
 //Params : (Success or Failed) , Message
@@ -28,4 +36,14 @@ function showMessage(isSuccess, message) {
     }
     rewardsWrapper.find(".content-message").text(message);
     TweenMax.fromTo(rewardsIcon, 0.4, {scale: 0, alpha: 0}, {scale: 1, alpha: 1})
+}
+
+function showPopup(){
+    $(".popup").show();
+    var popup = TweenMax.fromTo($('.popup .popup-container'), 1, { ease: Elastic.easeOut.config(1, 0.3), transform: 'scale(0)' }, { ease: Elastic.easeOut.config(1, 0.3), transform: 'scale(1)' });
+    popup.play();
+}
+
+function hidePopup(){
+    $(".popup").fadeOut();
 }

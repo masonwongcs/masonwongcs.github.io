@@ -22,6 +22,8 @@ html, body {
 
 .container:before{
     content: attr(data-title);
+    background: -webkit-linear-gradient(315deg, #8e44ad 0%, #e74c3c 100% );
+    background: -o-linear-gradient(315deg, #8e44ad 0%, #e74c3c 100% );
     background: linear-gradient(135deg, #8e44ad 0%, #e74c3c 100% );
     position: absolute;
     top: 0;
@@ -57,7 +59,7 @@ html, body {
 }
 
 .ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url], .ui.selection.dropdown, .ui.form textarea {
-	background-color: rgba(255,255,255,0.1) !important;
+    background-color: rgba(255,255,255,0.1) !important;
     color: #fff !important;
 }
 
@@ -120,13 +122,57 @@ html, body {
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
     transition-duration: 200ms;
     border-radius: 0.25rem;
 }
 
 .btn:active{
     background-color: #fafafa;
+}
+
+.emoji-rate{
+    display: flex;
+    margin: 0.5rem auto;
+}
+
+.emoji-rate > .emoji-checkbox{
+    /*flex-grow: 1;*/
+    margin-right: 0.5rem;
+}
+
+.emoji-rate input[type=radio]{
+    display: none !important;
+}
+
+.emoji-rate input[type=radio] + label{
+    display: block;
+}
+
+.emoji-rate input[type=radio] + label span{
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+    margin: auto;
+    transition: all 200ms ease-in-out;
+    color: rgba(255,255,255,.2);
+}
+
+.emoji-rate input[type=radio] + label span svg{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+.emoji-rate input[type=radio]:checked + label span{
+    background-color: #FFC300;
+    color: #222;
 }
 
 .popup {
@@ -159,7 +205,6 @@ html, body {
     margin: auto;
     padding: 1rem;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -184,6 +229,8 @@ html, body {
     width: 90%;
     margin: auto;
     height: 3rem;
+    background: -webkit-linear-gradient(315deg, #8e44ad 0%, #e74c3c 100%);
+    background: -o-linear-gradient(315deg, #8e44ad 0%, #e74c3c 100%);
     background: linear-gradient(135deg, #8e44ad 0%, #e74c3c 100%);
     color: #fff;
     -webkit-appearance: none;
@@ -194,7 +241,11 @@ html, body {
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
     transition-duration: 200ms;
     border-radius: 0.25rem;
     margin: auto;

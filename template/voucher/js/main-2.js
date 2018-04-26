@@ -1,6 +1,5 @@
 $(document).ready(function(){
     TweenMax.fromTo($('.voucher-wrapper'), 1, {ease: Elastic.easeOut.config(1, 0.8), scale: 0}, {ease: Elastic.easeOut.config(1, 0.3),scale:1, y: '-50%'})
-    TweenMax.fromTo($('.voucher-wrapper .price'), 2, {ease: Elastic.easeOut.config(1, 0.8), scale: 0, rotation: 180}, {ease: Elastic.easeOut.config(1, 0.3),scale:1, rotation: -90, y: '-50%'})
     $(".redeem-btn").click(function(){
         showPopup();
     })

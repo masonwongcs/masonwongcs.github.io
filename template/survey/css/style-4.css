@@ -42,6 +42,7 @@ body:after{
     position: relative;
     top: 2rem;
     overflow: hidden;
+    -webkit-box-shadow: 0 0 24px rgba(0,0,0,0.25);
     box-shadow: 0 0 24px rgba(0,0,0,0.25);
 }
 
@@ -84,56 +85,56 @@ body:after{
 }
 
 /*.ui.checkbox label, .ui.checkbox+label{*/
-    /*color: #fff !important;*/
+/*color: #fff !important;*/
 /*}*/
 
 /*.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url], .ui.selection.dropdown, .ui.form textarea {*/
-	/*background-color: rgba(255,255,255,0.1) !important;*/
-    /*color: #fff !important;*/
+/*background-color: rgba(255,255,255,0.1) !important;*/
+/*color: #fff !important;*/
 /*}*/
 
 /*.ui.dropdown .menu{*/
-    /*background-color: #582c6c !important;*/
+/*background-color: #582c6c !important;*/
 /*}*/
 
 /*.ui.selection.visible.dropdown>.text:not(.default), .ui.dropdown .menu>.item, .ui.dropdown .menu .selected.item, .ui.dropdown.selected{*/
-    /*color: #fff !important;*/
+/*color: #fff !important;*/
 /*}*/
 
 /*.ui.form input:not([type]):focus, .ui.form input[type=date]:focus, .ui.form input[type=datetime-local]:focus, .ui.form input[type=email]:focus, .ui.form input[type=file]:focus, .ui.form input[type=number]:focus, .ui.form input[type=password]:focus, .ui.form input[type=search]:focus, .ui.form input[type=tel]:focus, .ui.form input[type=text]:focus, .ui.form input[type=time]:focus, .ui.form input[type=url]:focus, .ui.selection.dropdown:focus, .ui.selection.active.dropdown, .ui.selection.active.dropdown .menu, .ui.form textarea:focus{*/
-    /*border-color: rgba(255,195,0, 0.4) !important;*/
+/*border-color: rgba(255,195,0, 0.4) !important;*/
 /*}*/
 
 /*.ui.selection.dropdown .menu>.item{*/
-    /*border-top: 1px solid rgba(255,195,0, 0.4) !important;*/
+/*border-top: 1px solid rgba(255,195,0, 0.4) !important;*/
 /*}*/
 
 /*.ui.default.dropdown:not(.button)>.text, .ui.dropdown:not(.button)>.default.text{*/
-    /*color: rgba(255,255,255,.1) !important;*/
+/*color: rgba(255,255,255,.1) !important;*/
 /*}*/
 
 /*.ui.form ::-webkit-input-placeholder {*/
-    /*color: rgba(255,255,255,.1) !important;*/
+/*color: rgba(255,255,255,.1) !important;*/
 /*}*/
 
 /*.ui.form :-ms-input-placeholder {*/
-    /*color: rgba(255,255,255,.1) !important;*/
+/*color: rgba(255,255,255,.1) !important;*/
 /*}*/
 
 /*.ui.form ::-moz-placeholder {*/
-    /*color: rgba(255,255,255,.1) !important;*/
+/*color: rgba(255,255,255,.1) !important;*/
 /*}*/
 
 /*.ui.form :focus::-webkit-input-placeholder {*/
-    /*ccolor: rgba(255,255,255,.2) !important;*/
+/*ccolor: rgba(255,255,255,.2) !important;*/
 /*}*/
 
 /*.ui.form :focus:-ms-input-placeholder {*/
-    /*color: rgba(255,255,255,.2) !important;*/
+/*color: rgba(255,255,255,.2) !important;*/
 /*}*/
 
 /*.ui.form :focus::-moz-placeholder {*/
-    /*color: rgba(255,255,255,.2) !important;*/
+/*color: rgba(255,255,255,.2) !important;*/
 /*}*/
 
 .btn{
@@ -153,7 +154,11 @@ body:after{
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
     transition-duration: 200ms;
     border-radius: 3rem;
 }
@@ -192,7 +197,6 @@ body:after{
     margin: auto;
     padding: 1rem;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -229,7 +233,11 @@ body:after{
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
     transition-duration: 200ms;
     border-radius: 0.5rem;
     margin: auto;

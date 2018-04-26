@@ -18,4 +18,15 @@ $(document).ready(function(){
       	// $('.page-header').css("height", pageHeaderHeight * diffRatio + "px");
       }
    });
+
+	$(".menu-toggle").click(function(e){
+	    e.preventDefault();
+	    $(".sidenav").addClass('active');
+	    $(".overlay").fadeIn();
+        $(".overlay").click(function(e){
+            e.preventDefault();
+            $(".sidenav").removeClass('active');
+            $(".overlay").fadeOut();
+        })
+    })
 });

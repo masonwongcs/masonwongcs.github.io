@@ -36,10 +36,14 @@ body:before{
 	right: 0;
 	margin: auto;
 	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 	background-color: #fff;
 	border-radius: 0.5rem;
+	-webkit-box-shadow: 0 4px 16px rgba(55,55,55,0.2);
 	box-shadow: 0 4px 16px rgba(55,55,55,0.2);
+	-webkit-perspective: 100px;
 	perspective: 100px;
 }
 
@@ -62,6 +66,8 @@ body:before{
 .voucher-wrapper .price{
 	position: absolute;
 	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 	right: -100px;
 	width: 200px;
@@ -70,6 +76,7 @@ body:before{
 	background-color: var(--sec-color-1);
 	border: 8px solid var(--sec-color-2);
 	color: #fff;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	text-align: center;
 	display: table;
@@ -102,8 +109,9 @@ body:before{
 	height: 48px;
 	line-height: 46px;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	background: -webkit-linear-gradient(315deg, var(--main-color-1) 0%, var(--main-color-2) 100% );
+	background: -o-linear-gradient(315deg, var(--main-color-1) 0%, var(--main-color-2) 100% );
 	background: linear-gradient(135deg, var(--main-color-1) 0%, var(--main-color-2) 100% );
 	background-size: 200% 100%;
 	background-position: 0px 0px;
@@ -114,8 +122,6 @@ body:before{
 	padding: 0 2rem;
 	font-family: 'Varela Round', sans-serif;
 	-webkit-transition: background-position 400ms ease;
-	-moz-transition: background-position 400ms ease;
-	-ms-transition: background-position 400ms ease;
 	-o-transition: background-position 400ms ease;
 	transition: background-position 400ms ease;
 }
@@ -164,7 +170,6 @@ body:before{
 	margin: auto;
 	padding: 1rem;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -190,6 +195,8 @@ body:before{
 	width: 90%;
 	margin: auto;
 	height: 3rem;
+	background: -webkit-linear-gradient(315deg, #E43E50 0%, #EC6C49 100% );
+	background: -o-linear-gradient(315deg, #E43E50 0%, #EC6C49 100% );
 	background: linear-gradient(135deg, #E43E50 0%, #EC6C49 100% );
 	color: #fff;
 	-webkit-appearance: none;
@@ -200,7 +207,11 @@ body:before{
 	font-size: 1rem;
 	font-weight: bold;
 	text-transform: uppercase;
+	-webkit-transition-timing-function: ease-in-out;
+	-o-transition-timing-function: ease-in-out;
 	transition-timing-function: ease-in-out;
+	-webkit-transition-duration: 200ms;
+	-o-transition-duration: 200ms;
 	transition-duration: 200ms;
 	border-radius: 3rem;
 	margin: auto;
@@ -211,11 +222,11 @@ body:before{
 	background-color: #2ecc71;
 	padding: 2rem;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 12rem;
 	height: 12rem;
 	margin: auto;
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
 
