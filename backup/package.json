@@ -6,22 +6,12 @@
   "repository": "https://github.com/masonwongcs/masonwongcs.github.io",
   "license": "MIT",
   "author": "Mason Wong",
-  "keywords": [
-    "mason",
-    "portfolio"
-  ],
+  "keywords": ["mason", "portfolio"],
   "devDependencies": {
     "mocha": "2.2.5",
-    "parcel": "^1.12.4",
-    "pug": "^2.0.4",
-    "sass": "^1.26.2",
     "surge": "latest"
   },
-  "scripts": {
-    "dev": "parcel index.pug",
-    "test": "echo \"Error: no test specified.\""
-  },
-  "dependencies": {
-    "jquery": "^3.4.1"
+  "scripts": { 
+    "test": "echo \"Error: no test specified.\"" 
   }
 }
