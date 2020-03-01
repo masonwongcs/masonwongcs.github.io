@@ -5,7 +5,6 @@
   "homepage": "masonwongcs.github.io",
   "repository": "https://github.com/masonwongcs/masonwongcs.github.io",
   "license": "MIT",
-  "private": true,
   "author": "Mason Wong",
   "keywords": ["mason", "portfolio"],
   "devDependencies": {
