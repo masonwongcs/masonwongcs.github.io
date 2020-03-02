@@ -1,5 +1,5 @@
 import $ from "jquery";
-import Rellax from 'rellax'
+import Rellax from "rellax";
 
 const data = require("../data");
 let map;
@@ -210,7 +210,20 @@ $(document).ready(function() {
   const positionDOM = $('article[data-target="home"] .position');
   const homeDOM = $('article[data-target="home"]');
 
-  const parallax = new Rellax('.parallax');
+  const parallax = new Rellax(".parallax");
+
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    $("body").addClass("dark");
+  }
+
+  $(".dark-toggle").click(function(e) {
+    e.preventDefault();
+    $(this).toggleClass("light");
+    $("body").toggleClass("dark");
+  });
 
   renderMap();
 

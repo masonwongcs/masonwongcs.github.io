@@ -20,6 +20,34 @@ html,
 body {
   font-family: "Spartan", "Arial", sans-serif;
   margin: 0;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+html.dark,
+body.dark {
+  background-color: #333333;
+  color: #fff;
+}
+
+body.dark header {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+body.dark .main-wrapper .overlay {
+  opacity: 0.4 !important;
+}
+body.dark .main-wrapper path {
+  fill: #fafafa !important;
+}
+body.dark .main-wrapper article[data-target=home]:before {
+  background: linear-gradient(45deg, #353433, #444);
+}
+body.dark .main-wrapper article[data-target=about] {
+  background-color: #222;
+}
+body.dark .main-wrapper article[data-target=about] .footer {
+  background-color: #111;
+}
+body.dark .main-wrapper article[data-target=about] .footer .footer-wrapper {
+  color: #fff;
 }
 
 @keyframes animateIn {
@@ -210,6 +238,23 @@ body {
   animation-duration: 10000ms;
 }
 
+.dark-toggle {
+  width: 2vw;
+  height: 2vw;
+  position: fixed;
+  top: 1vw;
+  right: 1vw;
+  z-index: 100;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  transform: rotate(-180deg);
+  color: #fafafa;
+}
+.dark-toggle.light {
+  transform: rotate(180deg);
+  color: #333;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -239,7 +284,6 @@ header .logo .title {
 header .logo .position {
   font-size: 1vw;
 }
-
 .main-wrapper {
   overflow-x: hidden;
   overflow-y: auto;
@@ -258,7 +302,7 @@ header .logo .position {
   position: relative;
 }
 .main-wrapper article .overlay {
-  z-index: -1;
+  z-index: 0;
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .main-wrapper article .article-wrapper {
@@ -329,6 +373,9 @@ header .logo .position {
   left: -20%;
   opacity: 0.1;
 }
+.main-wrapper article[data-target=developer] .article-wrapper .left-wrapper {
+  color: transparent;
+}
 .main-wrapper article[data-target=developer] .article-wrapper .left-wrapper .developer-icon {
   width: 60%;
   opacity: 0.2;
@@ -350,7 +397,7 @@ header .logo .position {
 .main-wrapper article[data-target=designer] .article-wrapper .right-wrapper {
   display: flex;
   align-items: center;
-  color: #fff;
+  color: transparent;
 }
 .main-wrapper article[data-target=designer] .article-wrapper .right-wrapper .design-icon {
   width: 60%;

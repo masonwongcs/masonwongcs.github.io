@@ -10,11 +10,14 @@ html(lang='en')
         link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet')
         link(href="style/main.scss" rel="stylesheet")
     body
+        a.dark-toggle
+            include icon/dark-toggle
         header
             .logo
                 h1.title Hi, I am a
                 h3.position
             .nav
+
         main.main-wrapper
             article(data-target="home")
                 //.overlay
@@ -49,7 +52,7 @@ html(lang='en')
             article(data-target="photographer")
                 .overlay
                 .article-wrapper
-                    .left-wrapper.parallax(data-rellax-speed="1")
+                    .left-wrapper.parallax(data-rellax-speed="0.25")
                         .photo-frame(data-image)
                             //.photo-row
                             //    .photo-item

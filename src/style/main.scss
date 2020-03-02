@@ -23,6 +23,41 @@ html,
 body {
   font-family: "Spartan", "Arial", sans-serif;
   margin: 0;
+  transition: all 400ms $materialCubicBezier;
+  &.dark {
+    background-color: #333333;
+    color: #fff;
+  }
+}
+
+body.dark {
+  header {
+    background-color: (rgba(0, 0, 0, 0.2));
+  }
+  .main-wrapper {
+    .overlay {
+      opacity: 0.4 !important;
+    }
+    path {
+      fill: #fafafa !important;
+    }
+    article {
+      &[data-target="home"] {
+        &:before {
+          background: linear-gradient(45deg, #353433, #444);
+        }
+      }
+      &[data-target="about"] {
+        background-color: #222;
+        .footer {
+          background-color: #111;
+          .footer-wrapper {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 
 .animate-text {
@@ -76,6 +111,23 @@ body {
   }
 }
 
+.dark-toggle {
+  width: 2vw;
+  height: 2vw;
+  position: fixed;
+  top: 1vw;
+  right: 1vw;
+  z-index: 100;
+  transition: all 400ms $materialCubicBezier;
+  cursor: pointer;
+  transform: rotate(-180deg);
+  color: #fafafa;
+  &.light {
+    transform: rotate(180deg);
+    color: #333;
+  }
+}
+
 header {
   position: fixed;
   top: 0;
@@ -106,6 +158,8 @@ header {
       font-size: 1vw;
     }
   }
+  .nav {
+  }
 }
 
 .main-wrapper {
@@ -126,7 +180,7 @@ header {
     //display: flex;
     //align-items: center;
     .overlay {
-      z-index: -1;
+      z-index: 0;
       transition: all 1s $materialCubicBezier;
     }
     .article-wrapper {
@@ -202,6 +256,7 @@ header {
       }
       .article-wrapper {
         .left-wrapper {
+          color: transparent;
           .developer-icon {
             width: 60%;
             opacity: 0.2;
@@ -233,7 +288,7 @@ header {
         .right-wrapper {
           display: flex;
           align-items: center;
-          color: #fff;
+          color: transparent;
           .design-icon {
             width: 60%;
             margin-left: auto;

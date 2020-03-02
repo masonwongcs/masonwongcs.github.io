@@ -11641,7 +11641,17 @@ var renderMap = function renderMap() {
       images = data.images;
   var positionDOM = (0, _jquery.default)('article[data-target="home"] .position');
   var homeDOM = (0, _jquery.default)('article[data-target="home"]');
-  var parallax = new _rellax.default('.parallax');
+  var parallax = new _rellax.default(".parallax");
+
+  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    (0, _jquery.default)("body").addClass("dark");
+  }
+
+  (0, _jquery.default)(".dark-toggle").click(function (e) {
+    e.preventDefault();
+    (0, _jquery.default)(this).toggleClass("light");
+    (0, _jquery.default)("body").toggleClass("dark");
+  });
   renderMap();
   animateSlideText(positionDOM, position, 0);
   scrollingEffect(position);
