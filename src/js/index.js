@@ -1,6 +1,8 @@
 import $ from "jquery";
+import Rellax from 'rellax'
 
 const data = require("../data");
+let map;
 
 const animateSlideText = (selector, data, iteration) => {
   const totalArr = data.length;
@@ -49,6 +51,9 @@ const scrollingEffect = position => {
   $(window).scroll(function(e) {
     const innerHeight = window.innerHeight;
     const scrollTop = $(this).scrollTop();
+    const pageHeight = document.documentElement.scrollHeight;
+    const mapviewConstant = 10;
+    const currentPercentageScroll = (scrollTop + innerHeight) / pageHeight;
 
     if (scrollTop > innerHeight / 2) {
       $("header").addClass("active");
@@ -72,7 +77,8 @@ const scrollingEffect = position => {
       .removeClass("active");
 
     const activeRoute = currentActive.data("target");
-    const currentPosition = position.find(item => item.id === activeRoute);
+    const currentPosition =
+      position.find(item => item.id === activeRoute) || position[0];
     $("header .logo .position").html(
       `<span style="color: ${currentPosition.color}">${currentPosition.text}</span>`
     );
@@ -80,6 +86,20 @@ const scrollingEffect = position => {
     currentActive
       .find(".overlay")
       .css("background-color", currentPosition.color);
+
+    currentActive.find("[data-icon]").css("color", currentPosition.color);
+
+    if ($('article[data-target="about"]').hasClass("active")) {
+      map.flyTo({
+        zoom: mapviewConstant,
+        essential: true
+      });
+    } else {
+      map.flyTo({
+        zoom: 4,
+        essential: false
+      });
+    }
 
     location.hash = activeRoute;
   });
@@ -131,11 +151,11 @@ const renderImage = images => {
 
       function calculatePhotoWidth(total) {
         $(value)
-            .find(".photo-item")
-            .each((index, value) => {
-              total += $(value).width() + 10;
-            });
-        return total
+          .find(".photo-item")
+          .each((index, value) => {
+            total += $(value).width() + 10;
+          });
+        return total;
       }
 
       function marqueeRun() {
@@ -174,10 +194,25 @@ const renderImage = images => {
   });
 };
 
+const renderMap = () => {
+  mapboxgl.accessToken =
+    "pk.eyJ1Ijoic2Vvbmc2MjMyIiwiYSI6ImNrNDZud3RzcjAwaHkzbXFxczlrY3FxbWoifQ.V_JI6rnsPFdOCFMFDmvNMg";
+  map = new mapboxgl.Map({
+    container: "locationMap",
+    style: "mapbox://styles/seong6232/ck7a7jlih04cw1inzp1d9216m",
+    center: [103.8198, 1.3521],
+    zoom: 4
+  });
+};
+
 $(document).ready(function() {
   const { position, images } = data;
   const positionDOM = $('article[data-target="home"] .position');
   const homeDOM = $('article[data-target="home"]');
+
+  const parallax = new Rellax('.parallax');
+
+  renderMap();
 
   animateSlideText(positionDOM, position, 0);
   scrollingEffect(position);

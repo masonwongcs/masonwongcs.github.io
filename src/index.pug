@@ -7,6 +7,7 @@ html(lang='en')
         meta(name='author', content='Mason Wong')
         link(href='https://fonts.googleapis.com/css?family=Cookie', rel='stylesheet')
         link(href="https://fonts.googleapis.com/css?family=Spartan:400,700&display=swap" rel="stylesheet")
+        link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet')
         link(href="style/main.scss" rel="stylesheet")
     body
         header
@@ -22,11 +23,12 @@ html(lang='en')
                     h3.position.animate-text &nbsp;
 
             article(data-target="developer")
+                .overlay
                 .article-wrapper
-                    .left-wrapper
-
-                    .right-wrapper
-                        h3.title Frontend & Backend
+                    .left-wrapper(data-icon)
+                        include icon/developer
+                    .right-wrapper.parallax(data-rellax-speed="-1")
+                        h3.title Lead Developer
                         p.desc I mostly develop in React.js, Vanilla JS and old school jQuery as well.
                             | Most of the time I develop components etc. I'm proficient in styling and the art of CSS.
                             | For backend development, I do use Express JS and of course Node JS and Java too.
@@ -36,17 +38,18 @@ html(lang='en')
             article(data-target="designer")
                 .overlay
                 .article-wrapper
-                    .left-wrapper
+                    .left-wrapper.parallax(data-rellax-speed="1")
                         h3.title Graphic Design
                         p.desc Before I became a Software Engineer. I was a part time graphic designer,
                             | this eventually guide me to be more graphical sense to design and logical thinking.
                             | I was a graphic designer for about 5 years and stopped after I finish my college.
-                    .right-wrapper
+                    .right-wrapper(data-icon)
+                        include icon/design
 
             article(data-target="photographer")
                 .overlay
                 .article-wrapper
-                    .left-wrapper
+                    .left-wrapper.parallax(data-rellax-speed="1")
                         .photo-frame(data-image)
                             //.photo-row
                             //    .photo-item
@@ -93,18 +96,19 @@ html(lang='en')
             article(data-target="ui")
                 .overlay
                 .article-wrapper
-                    .left-wrapper
+                    .left-wrapper.parallax(data-rellax-speed="0.5")
                         h3.title User Experience
                         p.desc User interface is the entrance of an application, I am always try to create something that is
                             | easy to use and simple enough for people to use it. Because I'm graphic designer, I was
                             | doing UI design by myself as well.
-                    .right-wrapper
+                    .right-wrapper(data-icon)
+                        include icon/ui
 
             article(data-target="coffee")
                 .overlay
                 .article-wrapper
-                    .left-wrapper
-
+                    .left-wrapper(data-icon)
+                        include icon/coffee
                     .right-wrapper
                         h3.title Coffee
                         p.desc A good day starts with a cup of nice coffee is a must for developer. Hence, buy me a coffee please.
@@ -112,7 +116,25 @@ html(lang='en')
                             img(src='https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg', alt='Buy me a coffee')
                             span(style='margin-left:15px;font-size:28px !important;') Buy me a coffee
 
+            article(data-target="about")
+                .article-wrapper
+                    .left-wrapper
 
+                    .right-wrapper
+                        .map-container
+                            #locationMap.map-item
+                .footer
+                    .article-wrapper
+                        h3.minimal-title
+                        .footer-wrapper
+                            p Design by Mason &copy; 2020
+                            a.icon(href="https://github.com/masonwongcs", target="_blank")
+                                include icon/github
+                            a.icon(href="https://www.linkedin.com/in/masonwongcs/", target="_blank")
+                                include icon/linkedin
+
+
+        script(src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js')
         script(src="js/index.js")
 
 
