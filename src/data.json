@@ -3,27 +3,27 @@
     {
       "id": "home",
       "text": "Mason",
-      "color": "#304ffe"
+      "color": "#3F8EFC"
     },
     {
       "id": "developer",
       "text": "Developer",
-      "color": "#424242"
+      "color": "#2667FF"
     },
     {
       "id": "designer",
       "text": "Designer",
-      "color": "#00695c"
+      "color": "#87BFFF"
     },
     {
       "id": "photographer",
       "text": "Photographer",
-      "color": "#b71c1c"
+      "color": "#3B28CC"
     },
     {
       "id": "ui",
       "text": "UI/UX guy",
-      "color": "#ff8f00"
+      "color": "#3B28CC"
     },
     {
       "id": "coffee",

@@ -54,6 +54,7 @@ const scrollingEffect = position => {
     const pageHeight = document.documentElement.scrollHeight;
     const mapviewConstant = 10;
     const currentPercentageScroll = (scrollTop + innerHeight) / pageHeight;
+    const strokeDashOffset = currentPercentageScroll * 13000;
 
     if (scrollTop > innerHeight / 2) {
       $("header").addClass("active");
@@ -82,6 +83,8 @@ const scrollingEffect = position => {
     $("header .logo .position").html(
       `<span style="color: ${currentPosition.color}">${currentPosition.text}</span>`
     );
+
+    $(".line path").attr("style", `stroke-dashoffset: -${(13000 - strokeDashOffset)}; stroke: ${currentPosition.color}`);
 
     currentActive
       .find(".overlay")
@@ -212,12 +215,12 @@ $(document).ready(function() {
 
   const parallax = new Rellax(".parallax");
 
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    $("body").addClass("dark");
-  }
+  // if (
+  //   window.matchMedia &&
+  //   window.matchMedia("(prefers-color-scheme: dark)").matches
+  // ) {
+  //   $("body").addClass("dark");
+  // }
 
   $(".dark-toggle").click(function(e) {
     e.preventDefault();

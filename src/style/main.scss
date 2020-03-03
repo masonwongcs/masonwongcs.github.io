@@ -1,8 +1,14 @@
+$mainColor: #304ffe;
+$transparentMainColor: rgba(48, 79, 254, 0.2);
 $springCubicBezier: cubic-bezier(0.77, 0.2, 0.05, 1);
 $materialCubicBezier: cubic-bezier(0.4, 0, 0.2, 1);
+$mobileScreenSize: 480px;
 
 :root {
   font-size: 16px;
+  @media screen and(max-width: $mobileScreenSize) {
+    font-size: 10px;
+  }
 }
 
 * {
@@ -24,6 +30,10 @@ body {
   font-family: "Spartan", "Arial", sans-serif;
   margin: 0;
   transition: all 400ms $materialCubicBezier;
+  position: relative;
+  //background-color: #eee;
+  overflow-x: hidden;
+  overflow-y: auto;
   &.dark {
     background-color: #333333;
     color: #fff;
@@ -34,9 +44,23 @@ body.dark {
   header {
     background-color: (rgba(0, 0, 0, 0.2));
   }
+  .dark-toggle {
+    color: #fafafa;
+  }
+  .line {
+    path {
+      opacity: 0.2 !important;
+    }
+  }
   .main-wrapper {
+    .title {
+      color: #fff;
+    }
+    .desc {
+      color: #fafafa;
+    }
     .overlay {
-      opacity: 0.4 !important;
+      //opacity: 0.4 !important;
     }
     path {
       fill: #fafafa !important;
@@ -64,20 +88,24 @@ body.dark {
   @keyframes animateIn {
     from {
       transform: translateY(5px);
+      -webkit-clip-path: inset(100% 0% 0% 0%);
       clip-path: inset(100% 0% 0% 0%);
     }
     to {
       transform: translateY(0);
+      -webkit-clip-path: inset(0);
       clip-path: inset(0);
     }
   }
   @keyframes animateOut {
     from {
       transform: translateY(0);
+      -webkit-clip-path: inset(0);
       clip-path: inset(0);
     }
     to {
       transform: translateY(-5px);
+      -webkit-clip-path: inset(0% 0% 100% 0%);
       clip-path: inset(0% 0% 100% 0%);
     }
   }
@@ -100,7 +128,7 @@ body.dark {
     animation-fill-mode: forwards;
     animation-name: animateIn;
     &.empty {
-      width: 1vw;
+      width: 1rem;
     }
     @for $i from 1 through 50 {
       &:nth-child(#{$i}) {
@@ -112,19 +140,40 @@ body.dark {
 }
 
 .dark-toggle {
-  width: 2vw;
-  height: 2vw;
+  width: 2rem;
+  height: 2rem;
   position: fixed;
-  top: 1vw;
-  right: 1vw;
+  top: 1rem;
+  right: 1rem;
   z-index: 100;
   transition: all 400ms $materialCubicBezier;
   cursor: pointer;
   transform: rotate(-180deg);
-  color: #fafafa;
-  &.light {
-    transform: rotate(180deg);
-    color: #333;
+  color: #333;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  //height: 6480px;
+  height: 700vh;
+  //width: 100vw;
+  width: 1920px;
+  margin: auto;
+  z-index: 0;
+  path {
+    fill: none;
+    //stroke: rgba(55, 55, 55, 0.4);
+    /* stroke-dasharray: 0; */
+    stroke-dasharray: 13000;
+    stroke-dashoffset: 13000;
+    stroke-width: 200px;
+    //stroke: #ccc;
+    opacity: 0.1;
+    transition: stroke 1s $materialCubicBezier,
+      stroke-dashoffset 100ms $materialCubicBezier;
   }
 }
 
@@ -133,9 +182,9 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  width: 16vw;
+  width: 16rem;
   border-radius: 0 0 40px 0;
-  padding: 0 0 0 5vw;
+  padding: 0 0 0 5rem;
   transform-origin: top;
   transform: translateY(-100%);
   background: rgba(255, 255, 255, 0.6);
@@ -146,16 +195,26 @@ header {
   align-items: center;
   transition: all 300ms $springCubicBezier;
   z-index: 100;
+  @media screen and(max-width: $mobileScreenSize) {
+    padding: 0 0 0 2rem;
+    height: 60px;
+  }
   &.active {
     transform: translateY(0);
   }
   .logo {
     .title {
-      margin-bottom: 0.2vw;
-      font-size: 1vw;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      @media screen and(max-width: $mobileScreenSize) {
+        font-size: 1.4rem;
+      }
     }
     .position {
-      font-size: 1vw;
+      font-size: 1rem;
+      @media screen and(max-width: $mobileScreenSize) {
+        font-size: 1.4rem;
+      }
     }
   }
   .nav {
@@ -163,35 +222,87 @@ header {
 }
 
 .main-wrapper {
-  overflow-x: hidden;
-  overflow-y: auto;
+  //overflow-x: hidden;
+  //overflow-y: auto;
   .title {
-    font-size: 4vw;
-    margin-bottom: 1vw;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+    @media screen and(max-width: $mobileScreenSize) {
+      font-size: 3rem;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: calc(100% + 1.5rem);
+      height: calc(100% + 1.5rem);
+      left: -1rem;
+      top: -1rem;
+      transform-origin: left;
+      transform: scaleX(0);
+      background-color: $transparentMainColor;
+      transition: all 1s $springCubicBezier;
+      z-index: -1;
+    }
   }
   .desc {
-    font-size: 1vw;
-    line-height: 1.5vw;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: #666;
+    @media screen and(max-width: $mobileScreenSize) {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+    }
   }
   article {
     height: 100vh;
-    padding: 0 10vw;
+    padding: 0 10rem;
     position: relative;
     //display: flex;
     //align-items: center;
+    @media screen and(max-width: $mobileScreenSize) {
+      padding: 0 2rem;
+    }
     .overlay {
       z-index: 0;
       transition: all 1s $materialCubicBezier;
+    }
+    &.active {
+      .title {
+        &:before {
+          transform: scaleX(1);
+        }
+      }
     }
     .article-wrapper {
       display: flex;
       align-items: center;
       height: 100%;
+      @media screen and(max-width: $mobileScreenSize) {
+        display: block;
+        [data-icon] {
+          svg {
+            height: 15rem;
+          }
+        }
+      }
       .left-wrapper {
-        width: 50%;
+        width: 100%;
+        @media screen and(max-width: $mobileScreenSize) {
+          font-size: 2rem;
+          text-align: left;
+        }
       }
       .right-wrapper {
         width: 50%;
+        @media screen and(max-width: $mobileScreenSize) {
+          font-size: 2rem;
+          width: 100%;
+          text-align: right;
+        }
       }
     }
     &[data-target="home"] {
@@ -201,42 +312,45 @@ header {
         font-weight: 700;
         .title {
           font-weight: 400;
-          font-size: 3vw;
+          font-size: 3rem;
           > span {
             display: inline-block;
             transform: translateY(0);
+            -webkit-clip-path: inset(0);
             clip-path: inset(0);
             transition: all 400ms $springCubicBezier;
             &.hide {
               transform: translateY(5px);
+              -webkit-clip-path: inset(100% 0% 0% 0%);
               clip-path: inset(100% 0% 0% 0%);
             }
           }
         }
         .position {
           //font-weight: 400;
-          font-size: 4vw;
+          font-size: 4rem;
         }
       }
       &:before {
         content: "";
-        width: 60vw;
-        height: 80vw;
+        width: 60rem;
+        height: 80rem;
         border-radius: 40px;
         transform: skewX(-11deg) rotate(31deg);
         position: absolute;
-        bottom: -10vw;
-        right: -20vw;
+        bottom: -10rem;
+        right: -20rem;
         background: linear-gradient(45deg, #fafafa, #eee);
+        z-index: -1;
       }
       .overlay {
-        width: 90vw;
-        height: 120vw;
+        width: 90rem;
+        height: 120rem;
         border-radius: 20px;
         transform: rotate(40deg);
         position: absolute;
-        top: -10vw;
-        left: -20vw;
+        top: -10rem;
+        left: -20rem;
         opacity: 0.1;
         transition: background-color 1s $springCubicBezier;
         mix-blend-mode: exclusion;
@@ -245,8 +359,8 @@ header {
 
     &[data-target="developer"] {
       .overlay {
-        width: 60vw;
-        height: 60vw;
+        width: 60rem;
+        height: 60rem;
         border-radius: 20px;
         transform: rotate(32deg);
         position: absolute;
@@ -273,13 +387,13 @@ header {
     &[data-target="designer"] {
       .overlay {
         content: "";
-        width: 60vw;
-        height: 80vw;
+        width: 60rem;
+        height: 80rem;
         border-radius: 40px;
         transform: skewX(-11deg) rotate(31deg);
         position: absolute;
-        bottom: -10vw;
-        right: -20vw;
+        bottom: -10rem;
+        right: -20rem;
         opacity: 0.1;
       }
       .article-wrapper {
@@ -305,8 +419,8 @@ header {
     &[data-target="photographer"] {
       position: relative;
       .overlay {
-        width: 60vw;
-        height: 60vw;
+        width: 60rem;
+        height: 60rem;
         border-radius: 20px;
         transform: rotate(32deg);
         position: absolute;
@@ -316,11 +430,11 @@ header {
       }
       $imageGap: 10px;
       .photo-frame {
-        height: 30vw;
-        margin-right: 3vw;
+        height: 30rem;
+        margin-right: 3rem;
         overflow: hidden;
         .photo-row {
-          height: calc(100% / 3 - #{$imageGap} - 1vw);
+          height: calc(100% / 3 - #{$imageGap} - 1rem);
           display: flex;
           align-items: center;
 
@@ -342,7 +456,7 @@ header {
       //    transform: translateX(0);
       //  }
       //  to {
-      //    //transform: translateX(calc(var(--0Width) / -2 + 30vw));
+      //    //transform: translateX(calc(var(--0Width) / -2 + 30rem));
       //  }
       //}
       //@keyframes imageMoveRight {
@@ -358,13 +472,13 @@ header {
     &[data-target="ui"] {
       .overlay {
         content: "";
-        width: 60vw;
-        height: 80vw;
+        width: 60rem;
+        height: 80rem;
         border-radius: 40px;
         transform: skewX(-11deg) rotate(31deg);
         position: absolute;
-        bottom: -10vw;
-        right: -20vw;
+        bottom: -10rem;
+        right: -20rem;
         opacity: 0.1;
       }
       .article-wrapper {
@@ -393,8 +507,8 @@ header {
         margin-bottom: 20px;
       }
       .overlay {
-        width: 50vw;
-        height: 50vw;
+        width: 50rem;
+        height: 50rem;
         border-radius: 20px;
         transform: rotate(45deg) translate(-7%, 84%);
         position: absolute;
@@ -421,20 +535,100 @@ header {
     }
     &[data-target="about"] {
       position: relative;
-      background-color: #fafafa;
+      //background-color: #fafafa;
+      .left-wrapper {
+        .desc {
+          margin-bottom: 20px;
+        }
+        .list-wrapper {
+          display: flex;
+          > .list-view {
+            &:not(:last-child) {
+              margin-right: 3rem;
+            }
+          }
+        }
+        .list-view {
+          margin: 0;
+          padding: 0 0 0 1rem;
+          list-style: none;
+          $listRadiusSize: 0.5rem;
+          $listRadiusSizeSmall: 0.4rem;
+          $lineHeight: 1.7rem;
+          @media screen and(max-width: $mobileScreenSize) {
+            font-size: 1rem;
+          }
+          > li {
+            position: relative;
+            line-height: $lineHeight;
+            margin-bottom: calc(#{$lineHeight} / 2);
+            font-weight: bold;
+
+            &:before {
+              content: "";
+              position: absolute;
+              width: $listRadiusSize;
+              height: $listRadiusSize;
+              left: calc(-1rem - 3px);
+              top: calc(#{$lineHeight} / 2 - #{$listRadiusSize});
+              //background-color: #333;
+              border-radius: 50%;
+              border: 2px solid $mainColor;
+              font-size: 0;
+            }
+            > ul {
+              margin: 0;
+              padding: 0;
+              list-style: none;
+              &:before {
+                content: "";
+                width: 2px;
+                top: calc(#{$lineHeight} + 8px);
+                position: absolute;
+                left: calc(-1rem + 2px);
+                height: calc(100% - #{$lineHeight} * 2);
+                background-color: #eee;
+              }
+              li {
+                position: relative;
+                line-height: $lineHeight;
+                font-weight: normal;
+                &:before {
+                  content: "";
+                  position: absolute;
+                  width: $listRadiusSizeSmall;
+                  height: $listRadiusSizeSmall;
+                  left: -1rem;
+                  top: calc(#{$lineHeight} / 2 - #{$listRadiusSizeSmall});
+                  //background-color: #333;
+                  border-radius: 50%;
+                  background-color: #ccc;
+                  font-size: 0;
+                }
+              }
+            }
+          }
+        }
+      }
       .right-wrapper {
         .map-container {
           display: flex;
           align-items: center;
           justify-content: center;
           position: absolute;
-          height: 60vw;
-          width: 60vw;
-          bottom: 5vw;
-          right: -20vw;
+          height: 60rem;
+          width: 60rem;
+          bottom: 5rem;
+          right: -20rem;
+          -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
           clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
           z-index: 10;
           pointer-events: none;
+          @media screen and(max-width: $mobileScreenSize) {
+            width: 40rem;
+            height: 40rem;
+            right: -14rem;
+          }
           .map-item {
             width: 100%;
             height: 100%;
@@ -448,26 +642,50 @@ header {
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 0 10vw;
+        padding: 0 10rem;
         box-sizing: border-box;
-        font-size: 0.8vw;
+        font-size: 0.8rem;
+        @media screen and(max-width: $mobileScreenSize) {
+          padding: 0 2rem;
+        }
         .footer-wrapper {
           display: flex;
           align-items: center;
           width: 100%;
           color: #333;
+          @media screen and(max-width: $mobileScreenSize) {
+            flex-flow: row wrap;
+            height: 100%;
+            font-size: 1.1rem;
+          }
           p {
             margin-right: auto;
-          }
-          .icon {
-            width: 1vw;
-            height: 1vw;
-            text-decoration: none;
-            &:not(:last-child) {
-              margin-right: 1vw;
+            @media screen and(max-width: $mobileScreenSize) {
+              width: 100%;
+              margin-top: auto;
+              margin-bottom: 1rem;
             }
-            path {
-              fill: #333;
+          }
+          .contact-wrapper {
+            display: flex;
+            align-items: center;
+            @media screen and(max-width: $mobileScreenSize) {
+              width: 100%;
+              margin-bottom: auto;
+            }
+            .contact {
+              margin-right: 2rem;
+            }
+            .icon {
+              width: 1rem;
+              height: 1rem;
+              text-decoration: none;
+              &:not(:last-child) {
+                margin-right: 1rem;
+              }
+              path {
+                fill: #333;
+              }
             }
           }
         }

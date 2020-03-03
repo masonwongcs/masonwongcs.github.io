@@ -11435,23 +11435,23 @@ module.exports = {
   "position": [{
     "id": "home",
     "text": "Mason",
-    "color": "#304ffe"
+    "color": "#3F8EFC"
   }, {
     "id": "developer",
     "text": "Developer",
-    "color": "#424242"
+    "color": "#2667FF"
   }, {
     "id": "designer",
     "text": "Designer",
-    "color": "#00695c"
+    "color": "#87BFFF"
   }, {
     "id": "photographer",
     "text": "Photographer",
-    "color": "#b71c1c"
+    "color": "#3B28CC"
   }, {
     "id": "ui",
     "text": "UI/UX guy",
-    "color": "#ff8f00"
+    "color": "#3B28CC"
   }, {
     "id": "coffee",
     "text": "Coffee Lover",
@@ -11509,6 +11509,7 @@ var scrollingEffect = function scrollingEffect(position) {
     var pageHeight = document.documentElement.scrollHeight;
     var mapviewConstant = 10;
     var currentPercentageScroll = (scrollTop + innerHeight) / pageHeight;
+    var strokeDashOffset = currentPercentageScroll * 13000;
 
     if (scrollTop > innerHeight / 2) {
       (0, _jquery.default)("header").addClass("active");
@@ -11531,6 +11532,7 @@ var scrollingEffect = function scrollingEffect(position) {
       return item.id === activeRoute;
     }) || position[0];
     (0, _jquery.default)("header .logo .position").html("<span style=\"color: ".concat(currentPosition.color, "\">").concat(currentPosition.text, "</span>"));
+    (0, _jquery.default)(".line path").attr("style", "stroke-dashoffset: -".concat(13000 - strokeDashOffset, "; stroke: ").concat(currentPosition.color));
     currentActive.find(".overlay").css("background-color", currentPosition.color);
     currentActive.find("[data-icon]").css("color", currentPosition.color);
 
@@ -11641,11 +11643,12 @@ var renderMap = function renderMap() {
       images = data.images;
   var positionDOM = (0, _jquery.default)('article[data-target="home"] .position');
   var homeDOM = (0, _jquery.default)('article[data-target="home"]');
-  var parallax = new _rellax.default(".parallax");
-
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    (0, _jquery.default)("body").addClass("dark");
-  }
+  var parallax = new _rellax.default(".parallax"); // if (
+  //   window.matchMedia &&
+  //   window.matchMedia("(prefers-color-scheme: dark)").matches
+  // ) {
+  //   $("body").addClass("dark");
+  // }
 
   (0, _jquery.default)(".dark-toggle").click(function (e) {
     e.preventDefault();
@@ -11685,7 +11688,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49397" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53498" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
