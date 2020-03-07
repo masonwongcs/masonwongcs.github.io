@@ -13214,6 +13214,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var data = require("../data");
 
 var map;
+var isDark = false;
 
 var animateSlideText = function animateSlideText(selector, data, iteration) {
   var totalArr = data.length;
@@ -13387,7 +13388,7 @@ var renderImage = function renderImage(images) {
   });
 };
 
-var renderMap = function renderMap(isDark) {
+var renderMap = function renderMap() {
   mapboxgl.accessToken = "pk.eyJ1Ijoic2Vvbmc2MjMyIiwiYSI6ImNrNDZud3RzcjAwaHkzbXFxczlrY3FxbWoifQ.V_JI6rnsPFdOCFMFDmvNMg";
   map = new mapboxgl.Map({
     container: "locationMap",
@@ -13413,7 +13414,8 @@ var renderMap = function renderMap(isDark) {
     e.preventDefault();
     (0, _jquery.default)(this).toggleClass("light");
     (0, _jquery.default)("body").toggleClass("dark");
-    renderMap(true);
+    isDark = !isDark;
+    renderMap();
   });
   renderMap();
   animateSlideText(positionDOM, position, 0);

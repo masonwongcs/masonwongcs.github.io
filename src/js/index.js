@@ -4,6 +4,7 @@ import anime from "animejs/lib/anime.es.js";
 
 const data = require("../data");
 let map;
+let isDark = false;
 
 const animateSlideText = (selector, data, iteration) => {
   const totalArr = data.length;
@@ -227,7 +228,7 @@ const renderImage = images => {
   });
 };
 
-const renderMap = isDark => {
+const renderMap = () => {
   mapboxgl.accessToken =
     "pk.eyJ1Ijoic2Vvbmc2MjMyIiwiYSI6ImNrNDZud3RzcjAwaHkzbXFxczlrY3FxbWoifQ.V_JI6rnsPFdOCFMFDmvNMg";
   map = new mapboxgl.Map({
@@ -258,7 +259,8 @@ $(document).ready(function() {
     e.preventDefault();
     $(this).toggleClass("light");
     $("body").toggleClass("dark");
-    renderMap(true);
+    isDark = !isDark;
+    renderMap();
   });
 
   renderMap();
