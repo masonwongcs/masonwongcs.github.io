@@ -1,5 +1,6 @@
 import $ from "jquery";
 import Rellax from "rellax";
+import anime from "animejs/lib/anime.es.js";
 
 const data = require("../data");
 let map;
@@ -47,6 +48,17 @@ const animateSlideText = (selector, data, iteration) => {
   }, 5000);
 };
 
+const hexToRgb = hex => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      }
+    : null;
+};
+
 const scrollingEffect = position => {
   $(window).scroll(function(e) {
     const innerHeight = window.innerHeight;
@@ -84,11 +96,29 @@ const scrollingEffect = position => {
       `<span style="color: ${currentPosition.color}">${currentPosition.text}</span>`
     );
 
-    $(".line path").attr("style", `stroke-dashoffset: -${(13000 - strokeDashOffset)}; stroke: ${currentPosition.color}`);
+    $(".line path").attr(
+      "style",
+      `stroke-dashoffset: ${strokeDashOffset - 13000}; stroke: ${
+        currentPosition.color
+      }`
+    );
+    // anime({
+    //   targets: ".line path",
+    //   stroke: currentPosition.color,
+    //   strokeDashoffset: strokeDashOffset - 13000,
+    //   strokeWidth: 200,
+    //   easing: "linear",
+    //   duration: 200
+    // });
+
+    const rgbaColor = hexToRgb(currentPosition.color);
 
     currentActive
       .find(".overlay")
-      .css("background-color", currentPosition.color);
+      .css(
+        "box-shadow",
+        `30px 30px 50px rgba(${rgbaColor.r},${rgbaColor.g},${rgbaColor.b}, 0.1), -30px -30px 50px rgba(255,255,255,0.3)`
+      );
 
     currentActive.find("[data-icon]").css("color", currentPosition.color);
 
@@ -197,12 +227,14 @@ const renderImage = images => {
   });
 };
 
-const renderMap = () => {
+const renderMap = isDark => {
   mapboxgl.accessToken =
     "pk.eyJ1Ijoic2Vvbmc2MjMyIiwiYSI6ImNrNDZud3RzcjAwaHkzbXFxczlrY3FxbWoifQ.V_JI6rnsPFdOCFMFDmvNMg";
   map = new mapboxgl.Map({
     container: "locationMap",
-    style: "mapbox://styles/seong6232/ck7a7jlih04cw1inzp1d9216m",
+    style: isDark
+      ? "mapbox://styles/seong6232/ck7hdcj524hbg1ikik9k0iew5"
+      : "mapbox://styles/seong6232/ck7a7jlih04cw1inzp1d9216m",
     center: [103.8198, 1.3521],
     zoom: 4
   });
@@ -226,6 +258,7 @@ $(document).ready(function() {
     e.preventDefault();
     $(this).toggleClass("light");
     $("body").toggleClass("dark");
+    renderMap(true);
   });
 
   renderMap();
