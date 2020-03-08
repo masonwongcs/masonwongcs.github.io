@@ -426,6 +426,7 @@ header .logo .position {
   background-color: #efeeee;
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 200px;
+  box-shadow: 30px 30px 50px rgba(0, 0, 0, 0.2), -30px -30px 50px rgba(255, 255, 255, 0.8);
 }
 .main-wrapper article.active .title:before {
   transform: scaleX(1);
@@ -437,6 +438,8 @@ header .logo .position {
   display: flex;
   align-items: center;
   height: 100%;
+  position: relative;
+  z-index: 10;
 }
 @media screen and (max-width: 480px) {
   .main-wrapper article .article-wrapper {
@@ -475,6 +478,8 @@ header .logo .position {
 .main-wrapper article[data-target=home] section .title {
   font-weight: 400;
   font-size: 3rem;
+  position: relative;
+  z-index: 10;
 }
 .main-wrapper article[data-target=home] section .title:before {
   display: none;
@@ -493,11 +498,13 @@ header .logo .position {
 }
 .main-wrapper article[data-target=home] section .position {
   font-size: 4rem;
+  position: relative;
+  z-index: 10;
 }
 .main-wrapper article[data-target=home]:before {
   content: "";
-  width: 60rem;
-  height: 80rem;
+  width: 65vw;
+  height: 65vw;
   border-radius: 200px;
   transform: skewX(-11deg) rotate(31deg);
   position: absolute;
@@ -518,8 +525,8 @@ header .logo .position {
   mix-blend-mode: exclusion;
 }
 .main-wrapper article[data-target=developer] .overlay {
-  width: 60rem;
-  height: 60rem;
+  width: 60vw;
+  height: 60vw;
   transform: rotate(32deg);
   position: absolute;
   bottom: 20%;
@@ -542,8 +549,8 @@ header .logo .position {
 }
 .main-wrapper article[data-target=designer] .overlay {
   content: "";
-  width: 60rem;
-  height: 80rem;
+  width: 65vw;
+  height: 65vw;
   transform: skewX(-11deg) rotate(31deg);
   position: absolute;
   bottom: -10rem;
@@ -567,8 +574,8 @@ header .logo .position {
   position: relative;
 }
 .main-wrapper article[data-target=photographer] .overlay {
-  width: 60rem;
-  height: 60rem;
+  width: 60vw;
+  height: 60vw;
   transform: rotate(32deg);
   position: absolute;
   bottom: 20%;
@@ -604,8 +611,8 @@ header .logo .position {
 }
 .main-wrapper article[data-target=ui] .overlay {
   content: "";
-  width: 60rem;
-  height: 80rem;
+  width: 65vw;
+  height: 65vw;
   transform: skewX(-11deg) rotate(31deg);
   position: absolute;
   bottom: -10rem;

@@ -315,6 +315,8 @@ header {
       background-color: #efeeee;
       transition: all 1s $materialCubicBezier;
       border-radius: 200px;
+      box-shadow: 30px 30px 50px rgba(0, 0, 0, 0.2),
+        -30px -30px 50px rgba(255, 255, 255, 0.8);
     }
     &.active {
       .title {
@@ -330,6 +332,8 @@ header {
       display: flex;
       align-items: center;
       height: 100%;
+      position: relative;
+      z-index: 10;
       @media screen and(max-width: $mobileScreenSize) {
         display: block;
         [data-icon] {
@@ -362,6 +366,8 @@ header {
         .title {
           font-weight: 400;
           font-size: 3rem;
+          position: relative;
+          z-index: 10;
           &:before {
             display: none;
           }
@@ -381,12 +387,14 @@ header {
         .position {
           //font-weight: 400;
           font-size: 4rem;
+          position: relative;
+          z-index: 10;
         }
       }
       &:before {
         content: "";
-        width: 60rem;
-        height: 80rem;
+        width: 65vw;
+        height: 65vw;
         border-radius: 200px;
         transform: skewX(-11deg) rotate(31deg);
         position: absolute;
@@ -414,8 +422,8 @@ header {
 
     &[data-target="developer"] {
       .overlay {
-        width: 60rem;
-        height: 60rem;
+        width: 60vw;
+        height: 60vw;
         //border-radius: 20px;
         transform: rotate(32deg);
         position: absolute;
@@ -445,8 +453,8 @@ header {
     &[data-target="designer"] {
       .overlay {
         content: "";
-        width: 60rem;
-        height: 80rem;
+        width: 65vw;
+        height: 65vw;
         //border-radius: 40px;
         transform: skewX(-11deg) rotate(31deg);
         position: absolute;
@@ -477,8 +485,8 @@ header {
     &[data-target="photographer"] {
       position: relative;
       .overlay {
-        width: 60rem;
-        height: 60rem;
+        width: 60vw;
+        height: 60vw;
         //border-radius: 20px;
         transform: rotate(32deg);
         position: absolute;
@@ -539,8 +547,8 @@ header {
     &[data-target="ui"] {
       .overlay {
         content: "";
-        width: 60rem;
-        height: 80rem;
+        width: 65vw;
+        height: 65vw;
         //border-radius: 40px;
         transform: skewX(-11deg) rotate(31deg);
         position: absolute;
