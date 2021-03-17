@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.2d6935ff.chunk.js",
+    "main.js": "/static/js/main.ce8f34cb.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.9cc8eb11.js",
     "static/css/2.ef41acfd.chunk.css": "/static/css/2.ef41acfd.chunk.css",
-    "static/js/2.4c5888d3.chunk.js": "/static/js/2.4c5888d3.chunk.js",
+    "static/js/2.13c951b5.chunk.js": "/static/js/2.13c951b5.chunk.js",
     "static/js/3.6cc886ff.chunk.js": "/static/js/3.6cc886ff.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.4c5888d3.chunk.js.LICENSE.txt": "/static/js/2.4c5888d3.chunk.js.LICENSE.txt",
+    "static/js/2.13c951b5.chunk.js.LICENSE.txt": "/static/js/2.13c951b5.chunk.js.LICENSE.txt",
     "static/media/allianz.png": "/static/media/allianz.838e2afc.png",
     "static/media/aspirasi.png": "/static/media/aspirasi.0461f706.png",
     "static/media/bond.png": "/static/media/bond.99e15b09.png",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.9cc8eb11.js",
     "static/css/2.ef41acfd.chunk.css",
-    "static/js/2.4c5888d3.chunk.js",
-    "static/js/main.2d6935ff.chunk.js"
+    "static/js/2.13c951b5.chunk.js",
+    "static/js/main.ce8f34cb.chunk.js"
   ]
 }
