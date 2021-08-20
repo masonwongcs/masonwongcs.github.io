@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.6701e356.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.e2d2a020.js",
-    "static/js/2.a3b527a3.chunk.js": "/static/js/2.a3b527a3.chunk.js",
-    "static/js/3.15ce5163.chunk.js": "/static/js/3.15ce5163.chunk.js",
+    "main.js": "/static/js/main.54a4c624.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.f37a9baa.js",
+    "static/js/2.7f986156.chunk.js": "/static/js/2.7f986156.chunk.js",
+    "static/js/3.6a382555.chunk.js": "/static/js/3.6a382555.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.a3b527a3.chunk.js.LICENSE.txt": "/static/js/2.a3b527a3.chunk.js.LICENSE.txt",
+    "static/js/2.7f986156.chunk.js.LICENSE.txt": "/static/js/2.7f986156.chunk.js.LICENSE.txt",
     "static/media/allianz.png": "/static/media/allianz.838e2afc.png",
     "static/media/aspirasi.png": "/static/media/aspirasi.0461f706.png",
     "static/media/bond.png": "/static/media/bond.99e15b09.png",
@@ -22,8 +22,8 @@
     "static/media/var1.9424f6ae.jpeg": "/static/media/var1.9424f6ae.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e2d2a020.js",
-    "static/js/2.a3b527a3.chunk.js",
-    "static/js/main.6701e356.chunk.js"
+    "static/js/runtime-main.f37a9baa.js",
+    "static/js/2.7f986156.chunk.js",
+    "static/js/main.54a4c624.chunk.js"
   ]
 }
